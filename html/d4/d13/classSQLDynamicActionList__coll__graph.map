@@ -1,0 +1,7 @@
+<map id="SQLDynamicActionList&lt; ARGS_TYPE, OUT_TYPE &gt;" name="SQLDynamicActionList&lt; ARGS_TYPE, OUT_TYPE &gt;">
+<area shape="rect" id="node2" href="$d8/d3c/classSQLActionList.html" title="Interface which defines methods to implement to build a working ActionList. An ActionList is a collec..." alt="" coords="5,667,161,833"/>
+<area shape="rect" id="node3" href="$dc/d20/classsmart_1_1SmartList.html" title="{smart::SmartList\&lt; SQLAction\l\&lt; ARGS_TYPE, OUT_TYPE \&gt; \&gt;\n||+ begin()\l+ begin()\l+ empty()\l+ end()\l+ end()\l+ getList()\l+ pop_back()\l+ pop_front()\l+ push_back()\l+ push_back()\land 7 more...\l}" alt="" coords="185,631,400,869"/>
+<area shape="rect" id="node9" href="$dc/d20/classsmart_1_1SmartList.html" title="SmartList implements all the main methods of an ordinary stl list&lt;T&gt; using shared pointer..." alt="" coords="215,329,381,553"/>
+<area shape="rect" id="node6" href="$de/ddd/classstd_1_1shared__ptr_3_01SQLAction_3_01ARGS__TYPE_00_01OUT__TYPE_01_4_01_4.html" title="{shared_ptr\&lt; SQLAction\l\&lt; ARGS_TYPE, OUT_TYPE \&gt; \&gt;\n||}" alt="" coords="372,145,587,237"/>
+<area shape="rect" id="node7" title="STL class. " alt="" coords="611,153,705,230"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="BESXMLSetContextCommand" name="BESXMLSetContextCommand">
+<area shape="rect" id="node2" href="$d4/dfd/classBESXMLCommand.html" title="Base class for the BES&#39;s commands. " alt="" coords="888,1481,1053,1705"/>
+<area shape="rect" id="node3" href="$d9/d76/classBESObj.html" title="top level BES object to house generic methods " alt="" coords="874,287,971,379"/>
+<area shape="rect" id="node6" href="$dd/da4/classBESDataHandlerInterface.html" title="Structure storing information used by the BES to handle the request. " alt="" coords="873,1180,1069,1419"/>
+<area shape="rect" id="node7" href="$d4/d3f/classBESResponseHandler.html" title="handler object that knows how to create a specific response object " alt="" coords="1085,908,1269,1073"/>
+<area shape="rect" id="node8" href="$da/d1a/classBESResponseObject.html" title="Abstract base class representing a specific set of information in response to a request to the BES..." alt="" coords="835,592,1011,699"/>
+<area shape="rect" id="node22" href="$d2/d74/classBESContainer.html" title="A container is something that holds data. E.G., a netcdf file or a database entry. " alt="" coords="272,504,435,787"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="1425,294,1505,371"/>
+<area shape="rect" id="node14" href="$d8/d47/classBESInfo.html" title="informational response object " alt="" coords="750,879,906,1103"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="1402,132,1529,224"/>
+<area shape="rect" id="node10" title="STL class. " alt="" coords="1067,294,1187,371"/>
+<area shape="rect" id="node16" title="STL class. " alt="" coords="321,294,431,371"/>
+<area shape="rect" id="node23" title="STL class. " alt="" coords="79,403,174,480"/>
+<area shape="rect" id="node13" href="$d9/db9/classbool.html" title="{bool\n||}" alt="" coords="459,607,506,684"/>
+<area shape="rect" id="node17" title="STL class. " alt="" coords="531,607,627,684"/>
+<area shape="rect" id="node18" title="STL class. " alt="" coords="164,287,297,379"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="5,139,160,217"/>
+<area shape="rect" id="node20" title="STL class. " alt="" coords="33,5,133,83"/>
+</map>

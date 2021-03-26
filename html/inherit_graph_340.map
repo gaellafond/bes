@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d1/dd0/classSQLPlugin.html" title="SQLPlugin base SQLHandler class which should be extended to build a plugin. SQLPlugin base SQLHandler..." alt="" coords="5,31,91,57"/>
+<area shape="rect" id="node2" href="$de/d2a/classODBCPlugin.html" title="unixODBC the default plugin used by the SQLHandler. " alt="" coords="143,5,241,32"/>
+<area shape="rect" id="node3" href="$d7/d4c/classSQLITEPlugin.html" title="SQLPlugin for the SQLHandler. " alt="" coords="139,56,245,83"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="BESXMLInterface" name="BESXMLInterface">
+<area shape="rect" id="node2" href="$de/d37/classBESInterface.html" title="Entry point into BES, building responses to given requests. " alt="" coords="113,1632,320,1871"/>
+<area shape="rect" id="node3" href="$d9/d76/classBESObj.html" title="top level BES object to house generic methods " alt="" coords="320,287,417,379"/>
+<area shape="rect" id="node4" href="$de/d2b/classBESTransmitter.html" title="{BESTransmitter\n||+ add_method()\l+ BESTransmitter()\l+ dump()\l+ find_method()\l+ remove_method()\l+ send_html()\l+ send_response()\l+ send_text()\l+ ~BESTransmitter()\l}" alt="" coords="191,811,335,1005"/>
+<area shape="rect" id="node5" href="$dd/da4/classBESDataHandlerInterface.html" title="Structure storing information used by the BES to handle the request. " alt="" coords="619,1331,815,1569"/>
+<area shape="rect" id="node6" href="$d4/d3f/classBESResponseHandler.html" title="handler object that knows how to create a specific response object " alt="" coords="625,1059,809,1224"/>
+<area shape="rect" id="node7" href="$da/d1a/classBESResponseObject.html" title="Abstract base class representing a specific set of information in response to a request to the BES..." alt="" coords="605,592,781,699"/>
+<area shape="rect" id="node23" href="$d2/d74/classBESContainer.html" title="A container is something that holds data. E.G., a netcdf file or a database entry. " alt="" coords="367,504,530,787"/>
+<area shape="rect" id="node15" href="$d8/d47/classBESInfo.html" title="informational response object " alt="" coords="1260,1029,1416,1253"/>
+<area shape="rect" id="node8" title="STL class. " alt="" coords="1241,294,1321,371"/>
+<area shape="rect" id="node9" title="STL class. " alt="" coords="1217,132,1344,224"/>
+<area shape="rect" id="node11" title="STL class. " alt="" coords="878,294,998,371"/>
+<area shape="rect" id="node17" title="STL class. " alt="" coords="1065,294,1174,371"/>
+<area shape="rect" id="node24" title="STL class. " alt="" coords="5,403,100,480"/>
+<area shape="rect" id="node14" href="$d9/db9/classbool.html" title="{bool\n||}" alt="" coords="1629,607,1676,684"/>
+<area shape="rect" id="node18" title="STL class. " alt="" coords="1509,607,1605,684"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="1490,287,1623,379"/>
+<area shape="rect" id="node20" title="STL class. " alt="" coords="1479,139,1634,217"/>
+<area shape="rect" id="node21" title="STL class. " alt="" coords="1507,5,1607,83"/>
+</map>

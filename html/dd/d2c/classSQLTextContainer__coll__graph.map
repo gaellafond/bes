@@ -1,0 +1,10 @@
+<map id="SQLTextContainer" name="SQLTextContainer">
+<area shape="rect" id="node2" href="$d9/d9b/classSQLContainer.html" title="Abstract class which defines methods used by the SQLHandler to explore and get data from a dataset..." alt="" coords="242,795,385,1019"/>
+<area shape="rect" id="node3" href="$de/dd2/classBESFileContainer.html" title="Holds real data, container type and constraint for symbolic name read from persistence. " alt="" coords="107,565,263,745"/>
+<area shape="rect" id="node4" href="$d2/d74/classBESContainer.html" title="A container is something that holds data. E.G., a netcdf file or a database entry. " alt="" coords="5,147,168,429"/>
+<area shape="rect" id="node5" href="$d9/d76/classBESObj.html" title="top level BES object to house generic methods " alt="" coords="38,5,135,97"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="192,249,272,327"/>
+<area shape="rect" id="node7" title="STL class. " alt="" coords="169,5,295,97"/>
+<area shape="rect" id="node8" href="$dc/d74/structsmart_1_1Clone.html" title="{smart::Clone\&lt; SQLContainer \&gt;\n||+ clone()\l+ create()\l}" alt="" coords="296,609,501,701"/>
+<area shape="rect" id="node9" href="$dc/d74/structsmart_1_1Clone.html" title="The template interface to implement to make clone of objects. " alt="" coords="343,242,473,334"/>
+</map>

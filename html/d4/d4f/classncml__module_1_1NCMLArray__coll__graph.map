@@ -1,0 +1,4 @@
+<map id="ncml_module::NCMLArray&lt; T &gt;" name="ncml_module::NCMLArray&lt; T &gt;">
+<area shape="rect" id="node2" href="$d7/d3e/classncml__module_1_1NCMLBaseArray.html" title="{ncml_module::NCMLBaseArray\n||+ cacheCurrentConstraints()\l+ cacheSuperclassStateIfNeeded()\l+ cacheUnconstrainedDimensions()\l+ cacheValuesIfNeeded()\l+ copyDataFrom()\l+ createAndSetConstrainedValue\lBuffer()\l+ getSuperShape()\l+ haveConstraintsChangedSince\lLastRead()\l+ isConstrained()\l+ isDataCached()\land 8 more...\l}" alt="" coords="5,336,239,589"/>
+<area shape="rect" id="node4" href="$d6/db5/classncml__module_1_1Shape.html" title="A wrapper class for a vector of Array::dimension structs. " alt="" coords="95,5,306,259"/>
+</map>

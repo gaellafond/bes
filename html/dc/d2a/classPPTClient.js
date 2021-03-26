@@ -1,0 +1,28 @@
+var classPPTClient =
+[
+    [ "PPTClient", "dc/d2a/classPPTClient.html#a6678de7342585ec3057c233e24d45214", null ],
+    [ "PPTClient", "dc/d2a/classPPTClient.html#a6ee80ae90d64d72bc855774582461bef", null ],
+    [ "~PPTClient", "dc/d2a/classPPTClient.html#a2706530f2b9bcf2892f2b0f6a905171a", null ],
+    [ "brokenPipe", "dc/d2a/classPPTClient.html#a38aa032be8c4f718d287292ba3847b4a", null ],
+    [ "closeConnection", "dc/d2a/classPPTClient.html#a4f90867aea8babc14b75276c21adc2a6", null ],
+    [ "dump", "dc/d2a/classPPTClient.html#aa4549e167feda01b9b61da2749e174ba", null ],
+    [ "exit", "dc/d2a/classPPTClient.html#a0d38a70be31bd7b4d3707818c81b1f8c", null ],
+    [ "getOutputStream", "dc/d2a/classPPTClient.html#af57ddc9af254f57531925f8e399ca7f6", null ],
+    [ "getRecvChunkSize", "dc/d2a/classPPTClient.html#aff597096a94db7443a16301fca18225a", null ],
+    [ "getSendChunkSize", "dc/d2a/classPPTClient.html#af8e7aef3769f7b3ab8b99389633cebca", null ],
+    [ "getSocket", "dc/d2a/classPPTClient.html#a749545de62d520f07a9a3e610330d8a4", null ],
+    [ "initConnection", "dc/d2a/classPPTClient.html#a5805cf988df813cf6e8c0c0540a8dc41", null ],
+    [ "isConnected", "dc/d2a/classPPTClient.html#a1ea3262764024aa4b96096004455b852", null ],
+    [ "read_extensions", "dc/d2a/classPPTClient.html#a899d4ed5a6bbbdfae136c61a46542eed", null ],
+    [ "readBuffer", "dc/d2a/classPPTClient.html#a20648354de71337260b5ebe6a8452b0f", null ],
+    [ "readBufferNonBlocking", "dc/d2a/classPPTClient.html#a993ed02c14866be98a4d00a082912b36", null ],
+    [ "receive", "dc/d2a/classPPTClient.html#abd58dda1abba400cba7837ba5fd1e163", null ],
+    [ "send", "dc/d2a/classPPTClient.html#a83227926dbc0e7b217b27cc0f80b78b6", null ],
+    [ "send", "dc/d2a/classPPTClient.html#a911e0005108549df05b5b7a6986e1418", null ],
+    [ "sendExit", "dc/d2a/classPPTClient.html#a05995624a62b70aab89813fcb574ef0f", null ],
+    [ "sendExtensions", "dc/d2a/classPPTClient.html#a5b68e1d0402a71c5106f95803532e24f", null ],
+    [ "setOutputStream", "dc/d2a/classPPTClient.html#aec343bd7f07f0f36fb8cc709834f6725", null ],
+    [ "_brokenPipe", "dc/d2a/classPPTClient.html#a3e30238049ee5886fc11dea453a71585", null ],
+    [ "_mySock", "dc/d2a/classPPTClient.html#a30386ff9beb53987efeb77b57b14f59f", null ],
+    [ "_out", "dc/d2a/classPPTClient.html#ac223ce6f1700160fe7bcd404aa7ec8a3", null ]
+];

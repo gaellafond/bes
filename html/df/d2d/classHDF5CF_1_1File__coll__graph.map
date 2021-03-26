@@ -1,0 +1,11 @@
+<map id="HDF5CF::File" name="HDF5CF::File">
+<area shape="rect" id="node4" href="$d9/db9/classbool.html" title="{bool\n||}" alt="" coords="164,255,211,333"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="414,255,494,333"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="391,5,517,97"/>
+<area shape="rect" id="node7" title="STL class. " alt="" coords="754,255,874,333"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="5,255,103,333"/>
+<area shape="rect" id="node12" title="STL class. " alt="" coords="1459,255,1574,333"/>
+<area shape="rect" id="node11" href="$d2/dd9/classHDF5CF_1_1Var.html" title="This class represents one HDF5 dataset(CF variable) " alt="" coords="1232,160,1393,428"/>
+<area shape="rect" id="node17" href="$da/da7/classHDF5CF_1_1Group.html" title="This class represents an HDF5 group. The group will be flattened according to the CF conventions..." alt="" coords="1837,226,1959,362"/>
+<area shape="rect" id="node22" href="$d7/dc6/classHDF5CF_1_1Attribute.html" title="This class represents one attribute. " alt="" coords="1984,189,2116,399"/>
+</map>

@@ -1,0 +1,27 @@
+var structmenu__index__struct =
+[
+    [ "binary_menu", "dd/da4/structmenu__index__struct.html#acc707dc10da59d60a9106d3060da01ac", null ],
+    [ "buffer_length", "dd/da4/structmenu__index__struct.html#adbf0544c2600c57f36a14df662480d1f", null ],
+    [ "bytes_in_index", "dd/da4/structmenu__index__struct.html#a7599e4d3b4a5074ee9d3e04b150f2a5b", null ],
+    [ "bytes_in_menu", "dd/da4/structmenu__index__struct.html#aad4f3d8a69de32d511168a331949a28f", null ],
+    [ "check_address", "dd/da4/structmenu__index__struct.html#ae9047bdafaf1fe28515191fefd268ba7", null ],
+    [ "correct_eol_len", "dd/da4/structmenu__index__struct.html#a8e80dbc65579844efe86031b90677e55", null ],
+    [ "data_path_one", "dd/da4/structmenu__index__struct.html#ad622aa97901435b3141110fcf3bada0f", null ],
+    [ "data_path_two", "dd/da4/structmenu__index__struct.html#a5718cf3b8d53a276ff018d6655cb566c", null ],
+    [ "file_eol_str", "dd/da4/structmenu__index__struct.html#aaee18ef29c5930bfa3336eab110dd2fa", null ],
+    [ "file_eollen", "dd/da4/structmenu__index__struct.html#ac46be1c0bcb4de3d5fcbbd321e12c370", null ],
+    [ "file_index_exists", "dd/da4/structmenu__index__struct.html#a24a1b698e1ea9e9d5134a03ec5d07e63", null ],
+    [ "index_buffer", "dd/da4/structmenu__index__struct.html#aecfc6c7b1a937db8c9b16b80ff98478a", null ],
+    [ "index_corrupt", "dd/da4/structmenu__index__struct.html#aa2c8889d140aa51fc88a2d0fd37935e0", null ],
+    [ "index_eol_len", "dd/da4/structmenu__index__struct.html#a7d99f90503bea5516169d9a6b3dec28f", null ],
+    [ "index_origion", "dd/da4/structmenu__index__struct.html#a358c316d873e678e207b6f9663e1fbf9", null ],
+    [ "lines_in_index", "dd/da4/structmenu__index__struct.html#ab49cc8c8fcf635a76062e7188e6ebe35", null ],
+    [ "lines_in_menu", "dd/da4/structmenu__index__struct.html#abff0b70636199f2b47f34367300f54ca", null ],
+    [ "max_buffer_size", "dd/da4/structmenu__index__struct.html#a7b912b7f6379545f71c3f6287c148bd2", null ],
+    [ "menu_file", "dd/da4/structmenu__index__struct.html#a345b87da0d041b0de4d97129de2c75ec", null ],
+    [ "menu_in_mem", "dd/da4/structmenu__index__struct.html#aadc8a221b410ae6ba3d48394b49d45b3", null ],
+    [ "menu_name", "dd/da4/structmenu__index__struct.html#abc673b4895da0509381df30fc8d13f1f", null ],
+    [ "num_buffers", "dd/da4/structmenu__index__struct.html#a02d374d96c99deeeb2f31faa924b2f74", null ],
+    [ "num_sections", "dd/da4/structmenu__index__struct.html#a647695df0caa9e3c6575b903edf6af84", null ],
+    [ "text_content", "dd/da4/structmenu__index__struct.html#ab02636c1a4d4059858402bdc89fe4c18", null ]
+];

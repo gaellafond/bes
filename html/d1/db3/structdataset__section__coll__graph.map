@@ -1,0 +1,6 @@
+<map id="dataset_section" name="dataset_section">
+<area shape="rect" id="node2" href="$df/d4d/classSQLQuery.html" title="Class which introduce a layer to take SQL query manipulation separated by the SQLContainer. It implement storage for clauses and predicates and a set of filter functions which make take decisions on what insert and what not in the SQL query. " alt="" coords="5,315,140,583"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="163,160,243,237"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="140,5,267,97"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="282,160,402,237"/>
+</map>

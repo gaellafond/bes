@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title="STL class. " alt="" coords="5,56,109,83"/>
+<area shape="rect" id="node2" href="$da/dac/classHDF5CF_1_1Exception.html" title="HDF5CF::Exception" alt="" coords="157,5,297,32"/>
+<area shape="rect" id="node3" href="$d9/d8c/classHDFSP_1_1Exception.html" title="HDFSP::Exception" alt="" coords="161,56,294,83"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="164,107,291,133"/>
+<area shape="rect" id="node5" href="$d3/dc5/classagg__util_1_1AggregationException.html" title="agg_util::AggregationException" alt="" coords="345,81,552,108"/>
+<area shape="rect" id="node7" href="$d1/d3c/classagg__util_1_1BadWeakPtr.html" title="agg_util::BadWeakPtr" alt="" coords="373,132,524,159"/>
+<area shape="rect" id="node6" href="$dc/d2c/classagg__util_1_1DimensionNotFoundException.html" title="agg_util::DimensionNotFound\lException" alt="" coords="600,74,797,115"/>
+</map>

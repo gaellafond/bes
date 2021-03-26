@@ -1,0 +1,25 @@
+var classSQLITESimpleConnector =
+[
+    [ "SQLITESimpleConnector", "d2/dc8/classSQLITESimpleConnector.html#a335808c09cda49004bbf2e0a39bd85ee", null ],
+    [ "~SQLITESimpleConnector", "d2/dc8/classSQLITESimpleConnector.html#a6cc4b0fd9844f5575e32748ffbab476e", null ],
+    [ "close", "d2/dc8/classSQLITESimpleConnector.html#a7b925fc92f1a601b3df5877296767a87", null ],
+    [ "connect", "d2/dc8/classSQLITESimpleConnector.html#a40f63abde5438cb0b90cb871a481b695", null ],
+    [ "getCol", "d2/dc8/classSQLITESimpleConnector.html#a02a895188b8a7509f120d156ed88dddc", null ],
+    [ "getColDesc", "d2/dc8/classSQLITESimpleConnector.html#a8877405ec4f9fa043c154e4da5341a26", null ],
+    [ "getColName", "d2/dc8/classSQLITESimpleConnector.html#a61fbdb55d140272e42546b704af6ffa3", null ],
+    [ "getCols", "d2/dc8/classSQLITESimpleConnector.html#afefb595903afbecac21b172579634b3c", null ],
+    [ "getNext", "d2/dc8/classSQLITESimpleConnector.html#afba56fac64d4ba74543531964235a582", null ],
+    [ "getParams", "d2/dc8/classSQLITESimpleConnector.html#a89351ae2078afafbec513c76b9812ad5", null ],
+    [ "getRow", "d2/dc8/classSQLITESimpleConnector.html#a1b1238fd8fd51c45773475819cdb056c", null ],
+    [ "getRows", "d2/dc8/classSQLITESimpleConnector.html#a6175dc77e08a6a8c38804f43a02ba2b1", null ],
+    [ "getType", "d2/dc8/classSQLITESimpleConnector.html#acffc0f2965e2f52e5f865bcee25ecd28", null ],
+    [ "isReady", "d2/dc8/classSQLITESimpleConnector.html#a4d02ac7e5a405562f5ad101f3b56f826", null ],
+    [ "notEnd", "d2/dc8/classSQLITESimpleConnector.html#a8af358515a5495b2e1e2903914c137a3", null ],
+    [ "query", "d2/dc8/classSQLITESimpleConnector.html#a5e358b65344885ec47234ea6af140cbe", null ],
+    [ "reset", "d2/dc8/classSQLITESimpleConnector.html#a48b21d226a6663e7dc57e3b9701c76c6", null ],
+    [ "setCols", "d2/dc8/classSQLITESimpleConnector.html#a489b85519b92790cd52771dedbf29f41", null ],
+    [ "setNext", "d2/dc8/classSQLITESimpleConnector.html#a8f397e75c394c9a9a42d05800158fa2b", null ],
+    [ "setParams", "d2/dc8/classSQLITESimpleConnector.html#ac15d1231c5c1e97a4038d49f109c50ba", null ],
+    [ "setReady", "d2/dc8/classSQLITESimpleConnector.html#a915adfeafb3f5c8d6131629697d621e0", null ],
+    [ "setRows", "d2/dc8/classSQLITESimpleConnector.html#ac89311f330eab5d4ee9bfa23d1ca92cb", null ]
+];

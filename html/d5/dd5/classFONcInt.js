@@ -1,0 +1,28 @@
+var classFONcInt =
+[
+    [ "FONcInt", "d5/dd5/classFONcInt.html#a85f31430e58960fce705f53489300b2e", null ],
+    [ "~FONcInt", "d5/dd5/classFONcInt.html#a4618777382d38ed6c50542cbb05342a8", null ],
+    [ "clear_embedded", "d5/dd5/classFONcInt.html#a75d8994df58529bc3086b456656629a0", null ],
+    [ "convert", "d5/dd5/classFONcInt.html#ae5813a9a3082fbb41256d131df60f7b2", null ],
+    [ "define", "d5/dd5/classFONcInt.html#a01ec392b1fcc548223897d200c54f8de", null ],
+    [ "dump", "d5/dd5/classFONcInt.html#ab0d3ea263a60669836f3f45b871f608c", null ],
+    [ "dump", "d5/dd5/classFONcInt.html#a360df8801258d1b27f6b27380d95ad87", null ],
+    [ "isNetCDF4", "d5/dd5/classFONcInt.html#a3ebfbddaa4079288a5769b17d769f21c", null ],
+    [ "isNetCDF4_ENHANCED", "d5/dd5/classFONcInt.html#a8e8297c54c4b5e69b316cd538872a17c", null ],
+    [ "name", "d5/dd5/classFONcInt.html#a4bc8e717298ff2492b691e4b52b792e9", null ],
+    [ "set_is_dap4", "d5/dd5/classFONcInt.html#a815de9da543f169b072164785f714ad4", null ],
+    [ "setNC4DataModel", "d5/dd5/classFONcInt.html#a1fc54de630706e5ee091cc9b94a058c4", null ],
+    [ "setVersion", "d5/dd5/classFONcInt.html#a0dc4ea259469d9c4557fda6a37138d2d", null ],
+    [ "type", "d5/dd5/classFONcInt.html#a91db94e6ee044e07a64ac5a48bfb0794", null ],
+    [ "varid", "d5/dd5/classFONcInt.html#aaebc1aab9fc8d569dbd48dc225da337f", null ],
+    [ "write", "d5/dd5/classFONcInt.html#ab70dab3a3f4f0fa8530aac047016b740", null ],
+    [ "_defined", "d5/dd5/classFONcInt.html#a17b3a58f2cc971f5229b29e8cf6a5f68", null ],
+    [ "_embed", "d5/dd5/classFONcInt.html#a439d112e2ac383eb1cb831145bb119ba", null ],
+    [ "_nc4_datamodel", "d5/dd5/classFONcInt.html#ad7aac982b0a3c6346cd3c9b16b360ada", null ],
+    [ "_ncVersion", "d5/dd5/classFONcInt.html#ab50c8391debbbde26c8729dea407ef5c", null ],
+    [ "_orig_varname", "d5/dd5/classFONcInt.html#af5a38de91556fe56138d69c76a82bd68", null ],
+    [ "_varid", "d5/dd5/classFONcInt.html#a08604a460db5650991fbd154295ea64f", null ],
+    [ "_varname", "d5/dd5/classFONcInt.html#afc41d84450d34d8832b5bd76dba39b53", null ],
+    [ "is_dap4", "d5/dd5/classFONcInt.html#a6cb0122a22a2890c1ae224a611414b3e", null ],
+    [ "is_dap4_group", "d5/dd5/classFONcInt.html#a56129b0b04eceda3de390a42eb968a55", null ]
+];

@@ -1,0 +1,6 @@
+<map id="dmrpp::DmrppRequestHandler" name="dmrpp::DmrppRequestHandler">
+<area shape="rect" id="node2" href="$d7/db0/classBESRequestHandler.html" title="Represents a specific data type request handler. " alt="" coords="5,147,179,371"/>
+<area shape="rect" id="node3" href="$d9/d76/classBESObj.html" title="top level BES object to house generic methods " alt="" coords="43,5,141,97"/>
+<area shape="rect" id="node4" href="$dd/d60/classdmrpp_1_1CurlHandlePool.html" title="{dmrpp::CurlHandlePool\n||+ CurlHandlePool()\l+ get_easy_handle()\l+ get_handles_available()\l+ get_max_handles()\l+ release_all_handles()\l+ release_handle()\l+ release_handle()\l+ ~CurlHandlePool()\l}" alt="" coords="203,169,378,349"/>
+<area shape="rect" id="node5" href="$d9/db9/classbool.html" title="{bool\n||}" alt="" coords="411,220,458,297"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="SQLDynamicTypeFactory&lt; SQL_TYPE, ODBC_TYPE &gt;" name="SQLDynamicTypeFactory&lt; SQL_TYPE, ODBC_TYPE &gt;">
+<area shape="rect" id="node2" href="$da/d91/classSQLDynamicActionFactory.html" title="{SQLDynamicActionFactory\l\&lt; SQL_TYPE, SQL_TYPE,\l libdap::BaseType \&gt;\n||+ addAction()\l+ SQLDynamicActionFactory()\l+ ~SQLDynamicActionFactory()\l}" alt="" coords="57,520,268,656"/>
+<area shape="rect" id="node3" href="$dd/d05/classSQLActionFactory.html" title="{SQLActionFactory\&lt; SQL\l_TYPE, SQL_TYPE, libdap\l::BaseType \&gt;\n||+ getActions()\l+ getArgs()\l+ getCode()\l+ SQLActionFactory()\l+ stop()\l+ ~SQLActionFactory()\l}" alt="" coords="5,263,189,443"/>
+<area shape="rect" id="node4" href="$dd/d05/classSQLActionFactory.html" title="Interface to provide a methods to interact with an ActionManager. " alt="" coords="119,5,305,185"/>
+<area shape="rect" id="node5" href="$da/d91/classSQLDynamicActionFactory.html" title="This is a DynamicActionFactory useful to dynamically add Actions to a map. " alt="" coords="213,285,424,421"/>
+</map>

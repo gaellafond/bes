@@ -1,0 +1,25 @@
+var classncml__module_1_1VariableAggElement =
+[
+    [ "VariableAggElement", "d3/d14/classncml__module_1_1VariableAggElement.html#a6e56b7ab2abf09bd4c45f04df9c2fb99", null ],
+    [ "VariableAggElement", "d3/d14/classncml__module_1_1VariableAggElement.html#a2e994ecaacabdc92a0004bbefda6011f", null ],
+    [ "~VariableAggElement", "d3/d14/classncml__module_1_1VariableAggElement.html#a8c97f663720f02a2b0cdfb95f7263cab", null ],
+    [ "addPreDeleteCB", "d3/d14/classncml__module_1_1VariableAggElement.html#a825ce9286f38578da1c4baf95858d397", null ],
+    [ "clone", "d3/d14/classncml__module_1_1VariableAggElement.html#aee49cfcfd035ffb004e598fbc68bb01f", null ],
+    [ "getParentAggregation", "d3/d14/classncml__module_1_1VariableAggElement.html#a6c7cf8a770be288b6b26a491b3738329", null ],
+    [ "getRefCount", "d3/d14/classncml__module_1_1VariableAggElement.html#ad52e5254f9ef76ed57107bad8f424d24", null ],
+    [ "getTypeName", "d3/d14/classncml__module_1_1VariableAggElement.html#a49727825c8e6451ef443b0bb8080f0c0", null ],
+    [ "handleBegin", "d3/d14/classncml__module_1_1VariableAggElement.html#a27986e28d7e5fa9ee2bcc32c26a28b76", null ],
+    [ "handleContent", "d3/d14/classncml__module_1_1VariableAggElement.html#a3869bd1ac582f80c8392234c8d5f9526", null ],
+    [ "handleEnd", "d3/d14/classncml__module_1_1VariableAggElement.html#aae21d80549b7e5af8e9e626cbefc6834", null ],
+    [ "line", "d3/d14/classncml__module_1_1VariableAggElement.html#a8d084602b0c68e0a722b6ddc4cd62f73", null ],
+    [ "name", "d3/d14/classncml__module_1_1VariableAggElement.html#ab464818ffc3374ca045edc4bf224a5cd", null ],
+    [ "ref", "d3/d14/classncml__module_1_1VariableAggElement.html#a3943bb51839badd3b0371604a60c68c3", null ],
+    [ "removeFromPool", "d3/d14/classncml__module_1_1VariableAggElement.html#ac5c62699b426933460c8d3c5a2461291", null ],
+    [ "removePreDeleteCB", "d3/d14/classncml__module_1_1VariableAggElement.html#a71f6dd7016edbc9dabadb6b83726e715", null ],
+    [ "setAttributes", "d3/d14/classncml__module_1_1VariableAggElement.html#a49477eceeb7aeecf8b175d8315f7ce46", null ],
+    [ "setParser", "d3/d14/classncml__module_1_1VariableAggElement.html#a1bc22081d00b64ab6468b10ed1f0fdd0", null ],
+    [ "toString", "d3/d14/classncml__module_1_1VariableAggElement.html#a8882f24d0dc84895dca81389846e5ab2", null ],
+    [ "unref", "d3/d14/classncml__module_1_1VariableAggElement.html#aec6b78be142077ec3c960a7b550385f3", null ],
+    [ "validateAttributes", "d3/d14/classncml__module_1_1VariableAggElement.html#a7fa8be63844ea73dcc17fe9346d7f9f4", null ],
+    [ "_parser", "d3/d14/classncml__module_1_1VariableAggElement.html#a2c804d76055e3ea75b5dbbcbbb75094f", null ]
+];

@@ -1,0 +1,5 @@
+<map id="SQLITETypeFactoryComponent" name="SQLITETypeFactoryComponent">
+<area shape="rect" id="node2" href="$d6/d42/classSQLTypeFactoryComponent.html" title="Factory of libdap::BaseType objects. Inherit from this class to implement a factory of objects..." alt="" coords="15,531,235,681"/>
+<area shape="rect" id="node3" href="$d0/d63/structSQLAction.html" title="{SQLAction\&lt; SQL_TYPE,\l libdap::BaseType \&gt;\n||+ action()\l+ operator()()\l+ SQLAction()\l+ ~SQLAction()\l}" alt="" coords="41,345,210,481"/>
+<area shape="rect" id="node5" href="$d0/d63/structSQLAction.html" title="This class is used to: " alt="" coords="141,132,323,268"/>
+</map>

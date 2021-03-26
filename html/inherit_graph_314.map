@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$dd/d05/classSQLActionFactory.html" title="SQLActionFactory\&lt; error\l_t, message_t, void \&gt;" alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node2" href="$db/d91/classSQLErrorFactory.html" title="SQLErrorFactory\&lt; error\l_t, message_t \&gt;" alt="" coords="223,5,385,47"/>
+<area shape="rect" id="node3" href="$d5/d96/classODBCErrorFactoryComponent.html" title="This class is a container for static error components of the unixODBC SQLPlugin. &#160;Note: it is called ..." alt="" coords="433,13,637,39"/>
+</map>

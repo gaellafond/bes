@@ -1,0 +1,24 @@
+<map id="struct_ff_dll_node" name="struct_ff_dll_node">
+<area shape="rect" id="node4" href="$de/dd8/structstruct__ff__format.html" title="{struct_ff_format\n||}" alt="" coords="1550,307,1665,384"/>
+<area shape="rect" id="node2" href="$dc/dcc/structstruct__ff__dll__data.html" title="{struct_ff_dll_data\n||}" alt="" coords="1643,1367,1767,1444"/>
+<area shape="rect" id="node3" href="$d7/df2/unionstruct__ff__dll__data_1_1union__struct__ff__dll__data__u.html" title="{struct_ff_dll_data\l::union_struct_ff_dll\l_data_u\n||}" alt="" coords="1636,1197,1773,1304"/>
+<area shape="rect" id="node10" href="$de/d83/structstruct__ff__format__data.html" title="{struct_ff_format_data\n||}" alt="" coords="1549,571,1697,649"/>
+<area shape="rect" id="node7" href="$d1/d05/structstruct__ff__array__conduit.html" title="{struct_ff_array_conduit\n||}" alt="" coords="1077,1057,1234,1135"/>
+<area shape="rect" id="node8" href="$d9/d63/structstruct__ff__array__dipole.html" title="{struct_ff_array_dipole\n||}" alt="" coords="1195,903,1345,980"/>
+<area shape="rect" id="node12" href="$de/d00/structstruct__ff__bufsize.html" title="{struct_ff_bufsize\n||}" alt="" coords="1137,307,1256,384"/>
+<area shape="rect" id="node15" href="$dc/de7/unionstruct__ff__array__dipole_1_1struct__connect_1_1union__locus.html" title="{struct_ff_array_dipole\l::struct_connect::union_locus\n||}" alt="" coords="1173,564,1367,656"/>
+<area shape="rect" id="node19" href="$de/da4/structarray__mapping__struct.html" title="{array_mapping_struct\n||}" alt="" coords="648,755,799,833"/>
+<area shape="rect" id="node22" href="$da/d84/structarray__descriptor__struct.html" title="{array_descriptor_struct\n|+ granularity\l+ num_groups\l+ total_elements\l|}" alt="" coords="751,292,909,399"/>
+<area shape="rect" id="node24" href="$df/d81/structstruct__ff__variable.html" title="{struct_ff_variable\n||}" alt="" coords="2372,571,2496,649"/>
+<area shape="rect" id="node27" href="$de/db2/structeqninfstruct.html" title="{eqninfstruct\n||}" alt="" coords="2555,307,2646,384"/>
+<area shape="rect" id="node32" href="$d1/d9d/structstruct__ff__process__info.html" title="{struct_ff_process_info\n||}" alt="" coords="1258,1057,1410,1135"/>
+<area shape="rect" id="node33" href="$d3/d02/structstruct__ff__data__flag.html" title="{struct_ff_data_flag\n||}" alt="" coords="2024,755,2156,833"/>
+<area shape="rect" id="node34" href="$df/d54/structstruct__ff__error.html" title="{struct_ff_error\n||}" alt="" coords="1689,307,1795,384"/>
+<area shape="rect" id="node11" href="$d5/d5b/structstruct__ff__format__data_1_1struct__fd__state.html" title="{struct_ff_format_data\l::struct_fd_state\n||}" alt="" coords="2019,299,2167,391"/>
+<area shape="rect" id="node16" href="$df/de5/structstruct__ff__array__dipole_1_1struct__connect_1_1struct__file__info.html" title="{struct_ff_array_dipole\l::struct_connect::struct\l_file_info\n||}" alt="" coords="1424,428,1580,535"/>
+<area shape="rect" id="node30" href="$da/d7f/structstruct__ff__translator.html" title="{struct_ff_translator\n||}" alt="" coords="2781,307,2913,384"/>
+<area shape="rect" id="node31" href="$d4/deb/structstruct__ff__max__min.html" title="{struct_ff_max_min\n||}" alt="" coords="2999,307,3130,384"/>
+<area shape="rect" id="node9" href="$dd/da1/structstruct__ff__format__data__mapping.html" title="{struct_ff_format_data\l_mapping\n||}" alt="" coords="1489,748,1637,840"/>
+<area shape="rect" id="node13" href="$df/d3c/structstruct__ff__array__dipole_1_1struct__connect.html" title="{struct_ff_array_dipole\l::struct_connect\n||}" alt="" coords="1195,748,1345,840"/>
+<area shape="rect" id="node20" href="$dd/da1/structarray__index__struct.html" title="{array_index_struct\n||}" alt="" coords="523,571,655,649"/>
+</map>

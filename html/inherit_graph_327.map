@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$d5/d8a/classSQLBaseType.html" title="This class is used to inherit dap components and to provide casting functionality to types..." alt="" coords="146,9,339,65"/>
+<area shape="rect" id="node4" href="$d5/d8a/classSQLBaseType.html" title="SQLBaseType\&lt; SQL_TYPE,\l ODBC_TYPE, DAP_TYPE \&gt;" alt="" coords="145,93,340,134"/>
+<area shape="rect" id="node6" href="$d5/d8a/classSQLBaseType.html" title="SQLBaseType\&lt; SQL_TYPE,\l ODBC_TYPE, DAP_TYPE,\l void \&gt;" alt="" coords="146,161,339,217"/>
+<area shape="rect" id="node3" href="$d4/dbe/classSQLSimpleType.html" title="This is a implementation of a SQLBaseType abstract class This is useful when DAP_TYPE could be static..." alt="" coords="388,5,575,61"/>
+<area shape="rect" id="node5" href="$d4/d42/classSQLComplexType.html" title="This class is used as BaseType for complex types such us Array or Vector and provide the methods to r..." alt="" coords="388,85,575,141"/>
+<area shape="rect" id="node7" href="$dc/de6/classSQLSimpleType_3_01SQL__TYPE_00_01ODBC__TYPE_00_01DAP__TYPE_01_4.html" title="SPECIALIZATION class which use void* as cast output type, this class define a different read() which ..." alt="" coords="388,165,575,221"/>
+</map>

@@ -1,0 +1,28 @@
+var classFONcUInt =
+[
+    [ "FONcUInt", "df/d9a/classFONcUInt.html#a3c2ef0f0e043021f53b78045fffa7b1a", null ],
+    [ "~FONcUInt", "df/d9a/classFONcUInt.html#a9c88a54ec964394baff29b863ab13869", null ],
+    [ "clear_embedded", "df/d9a/classFONcUInt.html#a75d8994df58529bc3086b456656629a0", null ],
+    [ "convert", "df/d9a/classFONcUInt.html#ae5813a9a3082fbb41256d131df60f7b2", null ],
+    [ "define", "df/d9a/classFONcUInt.html#a1e8b85cbd6d0b58db6694b023885debc", null ],
+    [ "dump", "df/d9a/classFONcUInt.html#a7972686ba840a3b1803197958bbf1061", null ],
+    [ "dump", "df/d9a/classFONcUInt.html#a360df8801258d1b27f6b27380d95ad87", null ],
+    [ "isNetCDF4", "df/d9a/classFONcUInt.html#a3ebfbddaa4079288a5769b17d769f21c", null ],
+    [ "isNetCDF4_ENHANCED", "df/d9a/classFONcUInt.html#a8e8297c54c4b5e69b316cd538872a17c", null ],
+    [ "name", "df/d9a/classFONcUInt.html#af81bbbd928c053a30269337b3f423c4a", null ],
+    [ "set_is_dap4", "df/d9a/classFONcUInt.html#a815de9da543f169b072164785f714ad4", null ],
+    [ "setNC4DataModel", "df/d9a/classFONcUInt.html#a1fc54de630706e5ee091cc9b94a058c4", null ],
+    [ "setVersion", "df/d9a/classFONcUInt.html#a0dc4ea259469d9c4557fda6a37138d2d", null ],
+    [ "type", "df/d9a/classFONcUInt.html#ac76682fe14a397a3c04e6c456d87da47", null ],
+    [ "varid", "df/d9a/classFONcUInt.html#aaebc1aab9fc8d569dbd48dc225da337f", null ],
+    [ "write", "df/d9a/classFONcUInt.html#a82168c3977512f9e7d6ffe333d5708dd", null ],
+    [ "_defined", "df/d9a/classFONcUInt.html#a17b3a58f2cc971f5229b29e8cf6a5f68", null ],
+    [ "_embed", "df/d9a/classFONcUInt.html#a439d112e2ac383eb1cb831145bb119ba", null ],
+    [ "_nc4_datamodel", "df/d9a/classFONcUInt.html#ad7aac982b0a3c6346cd3c9b16b360ada", null ],
+    [ "_ncVersion", "df/d9a/classFONcUInt.html#ab50c8391debbbde26c8729dea407ef5c", null ],
+    [ "_orig_varname", "df/d9a/classFONcUInt.html#af5a38de91556fe56138d69c76a82bd68", null ],
+    [ "_varid", "df/d9a/classFONcUInt.html#a08604a460db5650991fbd154295ea64f", null ],
+    [ "_varname", "df/d9a/classFONcUInt.html#afc41d84450d34d8832b5bd76dba39b53", null ],
+    [ "is_dap4", "df/d9a/classFONcUInt.html#a6cb0122a22a2890c1ae224a611414b3e", null ],
+    [ "is_dap4_group", "df/d9a/classFONcUInt.html#a56129b0b04eceda3de390a42eb968a55", null ]
+];

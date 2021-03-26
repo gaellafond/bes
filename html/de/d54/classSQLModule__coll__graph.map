@@ -1,0 +1,11 @@
+<map id="SQLModule" name="SQLModule">
+<area shape="rect" id="node2" href="$d9/d97/classBESAbstractModule.html" title="{BESAbstractModule\n||+ BESAbstractModule()\l+ dump()\l+ initialize()\l+ terminate()\l+ ~BESAbstractModule()\l}" alt="" coords="5,395,175,531"/>
+<area shape="rect" id="node3" href="$d9/d76/classBESObj.html" title="top level BES object to house generic methods " alt="" coords="80,5,177,97"/>
+<area shape="rect" id="node9" href="$d7/db0/classBESRequestHandler.html" title="Represents a specific data type request handler. " alt="" coords="127,147,301,371"/>
+<area shape="rect" id="node4" href="$d9/d01/classSQLContainerFactory.html" title="Factory used to build SQLContainers, this factory provides an abstraction layer between SQLHandler an..." alt="" coords="335,747,514,957"/>
+<area shape="rect" id="node5" href="$de/d01/classSQLContainerStorage.html" title="Interface to implement SQLContainer persistence to pass to the SQLContainerFactory. " alt="" coords="538,769,719,935"/>
+<area shape="rect" id="node6" href="$d8/d4a/classSQLRequestHandler.html" title="SQLHandler base RequestHandler which is the main SQL request handler. &#160;This RequestHandler act as a w..." alt="" coords="127,711,311,993"/>
+<area shape="rect" id="node7" href="$d0/d71/classthe.html" title="{the\n||}" alt="" coords="297,569,337,647"/>
+<area shape="rect" id="node8" href="$d6/d98/classSQLLinker.html" title="Abstract class which define the link layer between shared library module libsql_module and other comp..." alt="" coords="159,555,272,661"/>
+<area shape="rect" id="node10" href="$d3/dc8/classSQLPluginList.html" title="{SQLPluginList\n||+ add_sql_handler()\l+ add_sql_wrapper()\l+ find_sql_handler()\l+ remove_sql_handler()\l+ remove_sql_handlers()\l+ remove_sql_wrapper()\l+ SQLPluginList()\l+ update_wrap_count()\l+ ~SQLPluginList()\l}" alt="" coords="325,161,495,356"/>
+</map>

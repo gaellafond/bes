@@ -1,0 +1,4 @@
+<map id="SQLSimpleType&lt; SQL_TYPE, ODBC_TYPE, DAP_TYPE &gt;" name="SQLSimpleType&lt; SQL_TYPE, ODBC_TYPE, DAP_TYPE &gt;">
+<area shape="rect" id="node2" href="$d5/d8a/classSQLBaseType.html" title="{SQLBaseType\&lt; SQL_TYPE,\l ODBC_TYPE, DAP_TYPE,\l void \&gt;\n||+ cast()\l+ SQLBaseType()\l+ SQLBaseType()\l+ SQLBaseType()\l+ ~SQLBaseType()\l# check()\l# getCast()\l# getCol()\l# getConnector()\l}" alt="" coords="5,433,199,657"/>
+<area shape="rect" id="node4" href="$d5/d8a/classSQLBaseType.html" title="This class is used to inherit dap components and to provide casting functionality to types..." alt="" coords="119,132,312,356"/>
+</map>

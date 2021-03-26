@@ -1,0 +1,28 @@
+var classFONcUShort =
+[
+    [ "FONcUShort", "d4/de1/classFONcUShort.html#aee7268e828639a078771435a272f934b", null ],
+    [ "~FONcUShort", "d4/de1/classFONcUShort.html#aee8843488f4158878b2988833272964b", null ],
+    [ "clear_embedded", "d4/de1/classFONcUShort.html#a75d8994df58529bc3086b456656629a0", null ],
+    [ "convert", "d4/de1/classFONcUShort.html#ae5813a9a3082fbb41256d131df60f7b2", null ],
+    [ "define", "d4/de1/classFONcUShort.html#a3932a0fa6f026f531350c01cc7506a96", null ],
+    [ "dump", "d4/de1/classFONcUShort.html#abe224bb867575c2e35c79fe3f1526ab7", null ],
+    [ "dump", "d4/de1/classFONcUShort.html#a360df8801258d1b27f6b27380d95ad87", null ],
+    [ "isNetCDF4", "d4/de1/classFONcUShort.html#a3ebfbddaa4079288a5769b17d769f21c", null ],
+    [ "isNetCDF4_ENHANCED", "d4/de1/classFONcUShort.html#a8e8297c54c4b5e69b316cd538872a17c", null ],
+    [ "name", "d4/de1/classFONcUShort.html#a8bdf1f3d5d51bc625a96ca3ab4d7694e", null ],
+    [ "set_is_dap4", "d4/de1/classFONcUShort.html#a815de9da543f169b072164785f714ad4", null ],
+    [ "setNC4DataModel", "d4/de1/classFONcUShort.html#a1fc54de630706e5ee091cc9b94a058c4", null ],
+    [ "setVersion", "d4/de1/classFONcUShort.html#a0dc4ea259469d9c4557fda6a37138d2d", null ],
+    [ "type", "d4/de1/classFONcUShort.html#a42d06bb3e4dfb5af9059e7944170fcad", null ],
+    [ "varid", "d4/de1/classFONcUShort.html#aaebc1aab9fc8d569dbd48dc225da337f", null ],
+    [ "write", "d4/de1/classFONcUShort.html#af1b906841e172a3c2770897b42733910", null ],
+    [ "_defined", "d4/de1/classFONcUShort.html#a17b3a58f2cc971f5229b29e8cf6a5f68", null ],
+    [ "_embed", "d4/de1/classFONcUShort.html#a439d112e2ac383eb1cb831145bb119ba", null ],
+    [ "_nc4_datamodel", "d4/de1/classFONcUShort.html#ad7aac982b0a3c6346cd3c9b16b360ada", null ],
+    [ "_ncVersion", "d4/de1/classFONcUShort.html#ab50c8391debbbde26c8729dea407ef5c", null ],
+    [ "_orig_varname", "d4/de1/classFONcUShort.html#af5a38de91556fe56138d69c76a82bd68", null ],
+    [ "_varid", "d4/de1/classFONcUShort.html#a08604a460db5650991fbd154295ea64f", null ],
+    [ "_varname", "d4/de1/classFONcUShort.html#afc41d84450d34d8832b5bd76dba39b53", null ],
+    [ "is_dap4", "d4/de1/classFONcUShort.html#a6cb0122a22a2890c1ae224a611414b3e", null ],
+    [ "is_dap4_group", "d4/de1/classFONcUShort.html#a56129b0b04eceda3de390a42eb968a55", null ]
+];

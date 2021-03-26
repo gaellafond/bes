@@ -1,0 +1,25 @@
+var classConnection =
+[
+    [ "Connection", "d0/db7/classConnection.html#a9de94289ca6259f94ef6aeba3b134a77", null ],
+    [ "~Connection", "d0/db7/classConnection.html#a76ed7fcdea279ebd59789ea16aebc96e", null ],
+    [ "brokenPipe", "d0/db7/classConnection.html#a38aa032be8c4f718d287292ba3847b4a", null ],
+    [ "closeConnection", "d0/db7/classConnection.html#acd06c2af502057caa2ab4005d75a835a", null ],
+    [ "dump", "d0/db7/classConnection.html#a0b6de68050588299f1427df0c0eb6982", null ],
+    [ "exit", "d0/db7/classConnection.html#af8f1a2093fc26ada9472c63104704202", null ],
+    [ "getOutputStream", "d0/db7/classConnection.html#af57ddc9af254f57531925f8e399ca7f6", null ],
+    [ "getRecvChunkSize", "d0/db7/classConnection.html#a640599bb5453c87c47a88a371e622743", null ],
+    [ "getSendChunkSize", "d0/db7/classConnection.html#a2f6e62638437ab25146aa57cbc98264e", null ],
+    [ "getSocket", "d0/db7/classConnection.html#a749545de62d520f07a9a3e610330d8a4", null ],
+    [ "initConnection", "d0/db7/classConnection.html#a1d77e0303401e277b82b6437976151d2", null ],
+    [ "isConnected", "d0/db7/classConnection.html#a1ea3262764024aa4b96096004455b852", null ],
+    [ "receive", "d0/db7/classConnection.html#a944c5f2e13ed3651c0e8c5c72961bc41", null ],
+    [ "send", "d0/db7/classConnection.html#a9df1fc1eec27c3cf6f529935bff82627", null ],
+    [ "send", "d0/db7/classConnection.html#ab4b86f51bf1fe928e093dfc81f0f5502", null ],
+    [ "sendChunk", "d0/db7/classConnection.html#a07bd186d50570aafd55a54b1a14ba458", null ],
+    [ "sendExit", "d0/db7/classConnection.html#a407af7220c2ebef742f7c79dc8713dc8", null ],
+    [ "sendExtensions", "d0/db7/classConnection.html#a03d87efedeeea69e673ef201f3b7bbac", null ],
+    [ "setOutputStream", "d0/db7/classConnection.html#aec343bd7f07f0f36fb8cc709834f6725", null ],
+    [ "_brokenPipe", "d0/db7/classConnection.html#a3e30238049ee5886fc11dea453a71585", null ],
+    [ "_mySock", "d0/db7/classConnection.html#a30386ff9beb53987efeb77b57b14f59f", null ],
+    [ "_out", "d0/db7/classConnection.html#ac223ce6f1700160fe7bcd404aa7ec8a3", null ]
+];

@@ -1,0 +1,5 @@
+<map id="SQLLinker" name="SQLLinker">
+<area shape="rect" id="node2" href="$d7/db0/classBESRequestHandler.html" title="Represents a specific data type request handler. " alt="" coords="5,145,179,369"/>
+<area shape="rect" id="node3" href="$d9/d76/classBESObj.html" title="top level BES object to house generic methods " alt="" coords="43,5,141,97"/>
+<area shape="rect" id="node4" href="$d3/dc8/classSQLPluginList.html" title="{SQLPluginList\n||+ add_sql_handler()\l+ add_sql_wrapper()\l+ find_sql_handler()\l+ remove_sql_handler()\l+ remove_sql_handlers()\l+ remove_sql_wrapper()\l+ SQLPluginList()\l+ update_wrap_count()\l+ ~SQLPluginList()\l}" alt="" coords="203,160,373,355"/>
+</map>

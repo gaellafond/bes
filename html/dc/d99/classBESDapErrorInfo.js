@@ -1,0 +1,26 @@
+var classBESDapErrorInfo =
+[
+    [ "BESDapErrorInfo", "dc/d99/classBESDapErrorInfo.html#a157ad05f4ef5b9a4dd81980c73996d68", null ],
+    [ "~BESDapErrorInfo", "dc/d99/classBESDapErrorInfo.html#a384fc194236760fe5f28a969f6db798e", null ],
+    [ "add_break", "dc/d99/classBESDapErrorInfo.html#af90d07b5d7d9d0f2afa242c6f7d2effe", null ],
+    [ "add_data", "dc/d99/classBESDapErrorInfo.html#aaa1dcf0bece73388d76f81f133553640", null ],
+    [ "add_data_from_file", "dc/d99/classBESDapErrorInfo.html#ad8952d542189a53100f8cd2d63335e2a", null ],
+    [ "add_exception", "dc/d99/classBESDapErrorInfo.html#ad80673ebcbb3a2e7ee2a66421b15894e", null ],
+    [ "add_space", "dc/d99/classBESDapErrorInfo.html#aa4f3d0251df6612229d141490acbe3ae", null ],
+    [ "add_tag", "dc/d99/classBESDapErrorInfo.html#a5f8f3c02224d7d6d37d2811d81c26acc", null ],
+    [ "begin_response", "dc/d99/classBESDapErrorInfo.html#aaa72e858cb8ec2be49c6e5fb9760ac3d", null ],
+    [ "begin_response", "dc/d99/classBESDapErrorInfo.html#a72aa89e2f6a2b2fbdc95733409a75dcd", null ],
+    [ "begin_tag", "dc/d99/classBESDapErrorInfo.html#a0ec6e28629c58096c149c09ab280b96c", null ],
+    [ "dump", "dc/d99/classBESDapErrorInfo.html#a9f347471ff3e8403c8f11c76e1b6a97e", null ],
+    [ "end_response", "dc/d99/classBESDapErrorInfo.html#a3962c0116349e613bbf9e9cd23117157", null ],
+    [ "end_tag", "dc/d99/classBESDapErrorInfo.html#ace36d10a709144df10a915ba8d5ca658", null ],
+    [ "is_buffered", "dc/d99/classBESDapErrorInfo.html#a2b40061f62dec480c91f0bae9faf5828", null ],
+    [ "print", "dc/d99/classBESDapErrorInfo.html#a66f95ca51a307c92845ebd48122603fd", null ],
+    [ "transmit", "dc/d99/classBESDapErrorInfo.html#aae84f24e4a95cd1b2f12719d9d261b58", null ],
+    [ "_buffered", "dc/d99/classBESDapErrorInfo.html#abe37e9570d48e9a5409a5655e2baae14", null ],
+    [ "_response_name", "dc/d99/classBESDapErrorInfo.html#a58360f56ee11e77c8476843376b4e289", null ],
+    [ "_response_started", "dc/d99/classBESDapErrorInfo.html#ac80632da2194d29d3d24df20b3656f88", null ],
+    [ "_strm", "dc/d99/classBESDapErrorInfo.html#a23f0a0420e290ab310668914f02d70cc", null ],
+    [ "_strm_owned", "dc/d99/classBESDapErrorInfo.html#a805c1213df79f2b78a9620318550b439", null ],
+    [ "_tags", "dc/d99/classBESDapErrorInfo.html#aba31e3e53689ace1d4839b492ffbb7f4", null ]
+];

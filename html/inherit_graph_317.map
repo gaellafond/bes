@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$dd/d05/classSQLActionFactory.html" title="SQLActionFactory\&lt; SQL\l_TYPE, SQL_TYPE, libdap\l::BaseType \&gt;" alt="" coords="5,43,189,99"/>
+<area shape="rect" id="node2" href="$da/d91/classSQLDynamicActionFactory.html" title="SQLDynamicActionFactory\l\&lt; SQL_TYPE, SQL_TYPE,\l libdap::BaseType \&gt;" alt="" coords="247,5,430,61"/>
+<area shape="rect" id="node4" href="$d0/dc1/classSQLObjectTypeFactory.html" title="SPECIALIZATION class which inherit SQLActionFactory specializing its template parameter &lt;CODE_TYPE..." alt="" coords="237,86,440,127"/>
+<area shape="rect" id="node3" href="$d9/d38/classSQLDynamicTypeFactory.html" title="SPECIALIZATION class which inherit SQLDynamicActionFactory specializing its template parameter &lt;CODE_..." alt="" coords="488,13,691,54"/>
+</map>

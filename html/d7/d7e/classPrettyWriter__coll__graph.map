@@ -1,0 +1,6 @@
+<map id="PrettyWriter&lt; OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags &gt;" name="PrettyWriter&lt; OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags &gt;">
+<area shape="rect" id="node2" href="$d0/d88/classWriter.html" title="JSON writer. " alt="" coords="249,593,478,1433"/>
+<area shape="rect" id="node5" href="$d9/db9/classbool.html" title="{bool\n||}" alt="" coords="325,365,372,443"/>
+<area shape="rect" id="node6" href="$d3/dab/classinternal_1_1Stack.html" title="{internal::Stack\&lt; StackAllocator \&gt;\n||+ Bottom()\l+ Bottom()\l+ Clear()\l+ Empty()\l+ End()\l+ End()\l+ GetAllocator()\l+ GetCapacity()\l+ GetSize()\l+ HasAllocator()\land 10 more...\l}" alt="" coords="396,292,611,516"/>
+<area shape="rect" id="node7" href="$d3/dab/classinternal_1_1Stack.html" title="A type&#45;unsafe stack for storing different types of data. " alt="" coords="413,5,594,229"/>
+</map>

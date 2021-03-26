@@ -1,0 +1,5 @@
+<map id="SQLCastAction&lt; IN, OUT &gt;" name="SQLCastAction&lt; IN, OUT &gt;">
+<area shape="rect" id="node2" href="$dd/dc4/classSQLObjectAction.html" title="class which extends an SQLAction to implement a stateful action. The state variable is a pointer whic..." alt="" coords="7,501,161,696"/>
+<area shape="rect" id="node3" href="$d0/d63/structSQLAction.html" title="{SQLAction\&lt; IN, OUT \&gt;\n||+ action()\l+ operator()()\l+ SQLAction()\l+ ~SQLAction()\l}" alt="" coords="5,331,163,452"/>
+<area shape="rect" id="node5" href="$d0/d63/structSQLAction.html" title="This class is used to: " alt="" coords="100,132,281,268"/>
+</map>

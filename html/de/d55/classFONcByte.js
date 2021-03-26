@@ -1,0 +1,28 @@
+var classFONcByte =
+[
+    [ "FONcByte", "de/d55/classFONcByte.html#afb34fe2f77c3ed4477b6e8f8ceba2177", null ],
+    [ "~FONcByte", "de/d55/classFONcByte.html#a5f55e2705e98f9b714eadf96146930ad", null ],
+    [ "clear_embedded", "de/d55/classFONcByte.html#a75d8994df58529bc3086b456656629a0", null ],
+    [ "convert", "de/d55/classFONcByte.html#ae5813a9a3082fbb41256d131df60f7b2", null ],
+    [ "define", "de/d55/classFONcByte.html#a7355a59c9841bb1a39c3bc22ca970472", null ],
+    [ "dump", "de/d55/classFONcByte.html#ae0dc9902aa6b844c96ca7cf29e30a986", null ],
+    [ "dump", "de/d55/classFONcByte.html#a360df8801258d1b27f6b27380d95ad87", null ],
+    [ "isNetCDF4", "de/d55/classFONcByte.html#a3ebfbddaa4079288a5769b17d769f21c", null ],
+    [ "isNetCDF4_ENHANCED", "de/d55/classFONcByte.html#a8e8297c54c4b5e69b316cd538872a17c", null ],
+    [ "name", "de/d55/classFONcByte.html#a9f8f870dc709c26b20ea09efa8141830", null ],
+    [ "set_is_dap4", "de/d55/classFONcByte.html#a815de9da543f169b072164785f714ad4", null ],
+    [ "setNC4DataModel", "de/d55/classFONcByte.html#a1fc54de630706e5ee091cc9b94a058c4", null ],
+    [ "setVersion", "de/d55/classFONcByte.html#a0dc4ea259469d9c4557fda6a37138d2d", null ],
+    [ "type", "de/d55/classFONcByte.html#a930f11c180dd7109951bc2703f4d09be", null ],
+    [ "varid", "de/d55/classFONcByte.html#aaebc1aab9fc8d569dbd48dc225da337f", null ],
+    [ "write", "de/d55/classFONcByte.html#a6f81cd43c6abbdfd977b4a58b9f0e58d", null ],
+    [ "_defined", "de/d55/classFONcByte.html#a17b3a58f2cc971f5229b29e8cf6a5f68", null ],
+    [ "_embed", "de/d55/classFONcByte.html#a439d112e2ac383eb1cb831145bb119ba", null ],
+    [ "_nc4_datamodel", "de/d55/classFONcByte.html#ad7aac982b0a3c6346cd3c9b16b360ada", null ],
+    [ "_ncVersion", "de/d55/classFONcByte.html#ab50c8391debbbde26c8729dea407ef5c", null ],
+    [ "_orig_varname", "de/d55/classFONcByte.html#af5a38de91556fe56138d69c76a82bd68", null ],
+    [ "_varid", "de/d55/classFONcByte.html#a08604a460db5650991fbd154295ea64f", null ],
+    [ "_varname", "de/d55/classFONcByte.html#afc41d84450d34d8832b5bd76dba39b53", null ],
+    [ "is_dap4", "de/d55/classFONcByte.html#a6cb0122a22a2890c1ae224a611414b3e", null ],
+    [ "is_dap4_group", "de/d55/classFONcByte.html#a56129b0b04eceda3de390a42eb968a55", null ]
+];

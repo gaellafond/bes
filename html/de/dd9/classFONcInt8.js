@@ -1,0 +1,28 @@
+var classFONcInt8 =
+[
+    [ "FONcInt8", "de/dd9/classFONcInt8.html#a22ea08f32e4b3175aa0524428ce91f75", null ],
+    [ "~FONcInt8", "de/dd9/classFONcInt8.html#adff0ec9779fbef25e3a3d5eef2f27dc7", null ],
+    [ "clear_embedded", "de/dd9/classFONcInt8.html#a75d8994df58529bc3086b456656629a0", null ],
+    [ "convert", "de/dd9/classFONcInt8.html#ae5813a9a3082fbb41256d131df60f7b2", null ],
+    [ "define", "de/dd9/classFONcInt8.html#a40a33c3f5dab06aa307ad35919dca3b3", null ],
+    [ "dump", "de/dd9/classFONcInt8.html#a0b1b8fdffe819dfbf64f0fa1b20eb955", null ],
+    [ "dump", "de/dd9/classFONcInt8.html#a360df8801258d1b27f6b27380d95ad87", null ],
+    [ "isNetCDF4", "de/dd9/classFONcInt8.html#a3ebfbddaa4079288a5769b17d769f21c", null ],
+    [ "isNetCDF4_ENHANCED", "de/dd9/classFONcInt8.html#a8e8297c54c4b5e69b316cd538872a17c", null ],
+    [ "name", "de/dd9/classFONcInt8.html#a7bd877d62c73681ac1ae9a8caf5856dd", null ],
+    [ "set_is_dap4", "de/dd9/classFONcInt8.html#a815de9da543f169b072164785f714ad4", null ],
+    [ "setNC4DataModel", "de/dd9/classFONcInt8.html#a1fc54de630706e5ee091cc9b94a058c4", null ],
+    [ "setVersion", "de/dd9/classFONcInt8.html#a0dc4ea259469d9c4557fda6a37138d2d", null ],
+    [ "type", "de/dd9/classFONcInt8.html#aed0c3e4bd63e48d7d43b26debb031d6f", null ],
+    [ "varid", "de/dd9/classFONcInt8.html#aaebc1aab9fc8d569dbd48dc225da337f", null ],
+    [ "write", "de/dd9/classFONcInt8.html#a4b7c56cf9c14a43da738374965757a58", null ],
+    [ "_defined", "de/dd9/classFONcInt8.html#a17b3a58f2cc971f5229b29e8cf6a5f68", null ],
+    [ "_embed", "de/dd9/classFONcInt8.html#a439d112e2ac383eb1cb831145bb119ba", null ],
+    [ "_nc4_datamodel", "de/dd9/classFONcInt8.html#ad7aac982b0a3c6346cd3c9b16b360ada", null ],
+    [ "_ncVersion", "de/dd9/classFONcInt8.html#ab50c8391debbbde26c8729dea407ef5c", null ],
+    [ "_orig_varname", "de/dd9/classFONcInt8.html#af5a38de91556fe56138d69c76a82bd68", null ],
+    [ "_varid", "de/dd9/classFONcInt8.html#a08604a460db5650991fbd154295ea64f", null ],
+    [ "_varname", "de/dd9/classFONcInt8.html#afc41d84450d34d8832b5bd76dba39b53", null ],
+    [ "is_dap4", "de/dd9/classFONcInt8.html#a6cb0122a22a2890c1ae224a611414b3e", null ],
+    [ "is_dap4_group", "de/dd9/classFONcInt8.html#a56129b0b04eceda3de390a42eb968a55", null ]
+];

@@ -1,0 +1,6 @@
+<map id="SQLConnector&lt; SQL_TYPE, ODBC_TYPE, ERROR_TYPE, MSG_TYPE &gt;" name="SQLConnector&lt; SQL_TYPE, ODBC_TYPE, ERROR_TYPE, MSG_TYPE &gt;">
+<area shape="rect" id="node2" href="$de/db7/classSQLSimpleConnector.html" title="this interface do not use the Error Part of the Connector. This should be implemented if you want to ..." alt="" coords="95,380,298,531"/>
+<area shape="rect" id="node3" href="$d5/d27/classSQLHandleConnector.html" title="This is the Connector Handle part which should be used to open and close the connection, it also implement isReady() and setReady() methods. " alt="" coords="5,57,185,281"/>
+<area shape="rect" id="node4" href="$d7/d8a/classSQLTypeConnector.html" title="This is the main Component used to retrieve data from the database. " alt="" coords="210,5,389,332"/>
+<area shape="rect" id="node5" href="$d1/d56/classSQLErrorConnector.html" title="This is the error part of a SQLConnector. " alt="" coords="322,380,530,531"/>
+</map>

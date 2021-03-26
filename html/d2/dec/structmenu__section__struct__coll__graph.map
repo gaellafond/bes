@@ -1,0 +1,5 @@
+<map id="menu_section_struct" name="menu_section_struct">
+<area shape="rect" id="node2" href="$d7/d8c/structROW__SIZES.html" title="{ROW_SIZES\n||}" alt="" coords="5,160,105,237"/>
+<area shape="rect" id="node11" href="$d9/db2/structmenu__selection__dll__struct.html" title="{menu_selection_dll\l_struct\n||}" alt="" coords="353,461,489,553"/>
+<area shape="rect" id="node5" href="$dd/da4/structmenu__index__struct.html" title="{menu_index_struct\n|+ binary_menu\l+ correct_eol_len\l+ index_corrupt\l+ index_eol_len\l|}" alt="" coords="660,447,795,568"/>
+</map>

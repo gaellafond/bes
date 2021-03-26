@@ -1,0 +1,27 @@
+var classSQLSimpleConnector =
+[
+    [ "~SQLSimpleConnector", "de/db7/classSQLSimpleConnector.html#ae656ada09425f81325ce7153481a7479", null ],
+    [ "SQLSimpleConnector", "de/db7/classSQLSimpleConnector.html#a4d25aeaddc368c343bb21e8ef153fba3", null ],
+    [ "SQLSimpleConnector", "de/db7/classSQLSimpleConnector.html#ad326f4dcdc96ee704b83c82c38e5c5da", null ],
+    [ "close", "de/db7/classSQLSimpleConnector.html#a2c48fd1cde7fb6c31e2b39967d974fbf", null ],
+    [ "connect", "de/db7/classSQLSimpleConnector.html#ab63e99003c568f76ff51752faaf2dd20", null ],
+    [ "connect", "de/db7/classSQLSimpleConnector.html#a40f63abde5438cb0b90cb871a481b695", null ],
+    [ "getCol", "de/db7/classSQLSimpleConnector.html#a02a895188b8a7509f120d156ed88dddc", null ],
+    [ "getColDesc", "de/db7/classSQLSimpleConnector.html#ae0ee124f4d654fc9c1625d9e1548127c", null ],
+    [ "getColName", "de/db7/classSQLSimpleConnector.html#ab1dd75187d080564c3eae9e365a45019", null ],
+    [ "getCols", "de/db7/classSQLSimpleConnector.html#afefb595903afbecac21b172579634b3c", null ],
+    [ "getNext", "de/db7/classSQLSimpleConnector.html#ad681f19c6dd28f3908ffe3e4f3daa05b", null ],
+    [ "getParams", "de/db7/classSQLSimpleConnector.html#a89351ae2078afafbec513c76b9812ad5", null ],
+    [ "getRow", "de/db7/classSQLSimpleConnector.html#a1b1238fd8fd51c45773475819cdb056c", null ],
+    [ "getRows", "de/db7/classSQLSimpleConnector.html#a6175dc77e08a6a8c38804f43a02ba2b1", null ],
+    [ "getType", "de/db7/classSQLSimpleConnector.html#a732ca917a71b8618975f6835a5240c97", null ],
+    [ "isReady", "de/db7/classSQLSimpleConnector.html#a4d02ac7e5a405562f5ad101f3b56f826", null ],
+    [ "notEnd", "de/db7/classSQLSimpleConnector.html#a8af358515a5495b2e1e2903914c137a3", null ],
+    [ "query", "de/db7/classSQLSimpleConnector.html#a2917a8ab23e4a3847ca8b0fb90a0f8e5", null ],
+    [ "reset", "de/db7/classSQLSimpleConnector.html#a48b21d226a6663e7dc57e3b9701c76c6", null ],
+    [ "setCols", "de/db7/classSQLSimpleConnector.html#a489b85519b92790cd52771dedbf29f41", null ],
+    [ "setNext", "de/db7/classSQLSimpleConnector.html#a8f397e75c394c9a9a42d05800158fa2b", null ],
+    [ "setParams", "de/db7/classSQLSimpleConnector.html#ac15d1231c5c1e97a4038d49f109c50ba", null ],
+    [ "setReady", "de/db7/classSQLSimpleConnector.html#a915adfeafb3f5c8d6131629697d621e0", null ],
+    [ "setRows", "de/db7/classSQLSimpleConnector.html#ac89311f330eab5d4ee9bfa23d1ca92cb", null ]
+];

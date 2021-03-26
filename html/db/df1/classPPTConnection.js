@@ -1,0 +1,27 @@
+var classPPTConnection =
+[
+    [ "PPTConnection", "db/df1/classPPTConnection.html#a42cba93c27fe3e99be3a46652bdaf5ac", null ],
+    [ "~PPTConnection", "db/df1/classPPTConnection.html#a348cb57511b6c77fb8b9d80bdaafdb67", null ],
+    [ "brokenPipe", "db/df1/classPPTConnection.html#a38aa032be8c4f718d287292ba3847b4a", null ],
+    [ "closeConnection", "db/df1/classPPTConnection.html#ab9bd3d720a340c4f1899447422188214", null ],
+    [ "dump", "db/df1/classPPTConnection.html#a27df3374a15d211e866ed5b994b677cc", null ],
+    [ "exit", "db/df1/classPPTConnection.html#a0d38a70be31bd7b4d3707818c81b1f8c", null ],
+    [ "getOutputStream", "db/df1/classPPTConnection.html#af57ddc9af254f57531925f8e399ca7f6", null ],
+    [ "getRecvChunkSize", "db/df1/classPPTConnection.html#aff597096a94db7443a16301fca18225a", null ],
+    [ "getSendChunkSize", "db/df1/classPPTConnection.html#af8e7aef3769f7b3ab8b99389633cebca", null ],
+    [ "getSocket", "db/df1/classPPTConnection.html#a749545de62d520f07a9a3e610330d8a4", null ],
+    [ "initConnection", "db/df1/classPPTConnection.html#af12bf6bf944a801a0676dfbe8967b6b1", null ],
+    [ "isConnected", "db/df1/classPPTConnection.html#a1ea3262764024aa4b96096004455b852", null ],
+    [ "read_extensions", "db/df1/classPPTConnection.html#a899d4ed5a6bbbdfae136c61a46542eed", null ],
+    [ "readBuffer", "db/df1/classPPTConnection.html#a20648354de71337260b5ebe6a8452b0f", null ],
+    [ "readBufferNonBlocking", "db/df1/classPPTConnection.html#a993ed02c14866be98a4d00a082912b36", null ],
+    [ "receive", "db/df1/classPPTConnection.html#abd58dda1abba400cba7837ba5fd1e163", null ],
+    [ "send", "db/df1/classPPTConnection.html#a83227926dbc0e7b217b27cc0f80b78b6", null ],
+    [ "send", "db/df1/classPPTConnection.html#a911e0005108549df05b5b7a6986e1418", null ],
+    [ "sendExit", "db/df1/classPPTConnection.html#a05995624a62b70aab89813fcb574ef0f", null ],
+    [ "sendExtensions", "db/df1/classPPTConnection.html#a5b68e1d0402a71c5106f95803532e24f", null ],
+    [ "setOutputStream", "db/df1/classPPTConnection.html#aec343bd7f07f0f36fb8cc709834f6725", null ],
+    [ "_brokenPipe", "db/df1/classPPTConnection.html#a3e30238049ee5886fc11dea453a71585", null ],
+    [ "_mySock", "db/df1/classPPTConnection.html#a30386ff9beb53987efeb77b57b14f59f", null ],
+    [ "_out", "db/df1/classPPTConnection.html#ac223ce6f1700160fe7bcd404aa7ec8a3", null ]
+];

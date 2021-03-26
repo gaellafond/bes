@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d1/d56/classSQLErrorConnector.html" title="This is the error part of a SQLConnector. " alt="" coords="232,13,440,54"/>
+<area shape="rect" id="node2" href="$da/d79/classSQLConnector.html" title="This is the main Component used to retrieve data from the database. " alt="" coords="503,5,711,61"/>
+<area shape="rect" id="node3" href="$d1/d56/classSQLErrorConnector.html" title="SQLErrorConnector\&lt;\l error_t, message_t \&gt;" alt="" coords="261,143,411,185"/>
+<area shape="rect" id="node4" href="$da/d79/classSQLConnector.html" title="SQLConnector\&lt; SQL_TYPE,\l ODBC_TYPE, error_t, message_t \&gt;" alt="" coords="488,139,725,181"/>
+<area shape="rect" id="node5" href="$de/d7b/classODBCConnector.html" title="ODBCConnector implementing the SQLConnector. " alt="" coords="773,147,896,173"/>
+<area shape="rect" id="node6" href="$d5/d27/classSQLHandleConnector.html" title="This is the Connector Handle part which should be used to open and close the connection, it also implement isReady() and setReady() methods. " alt="" coords="19,56,171,83"/>
+<area shape="rect" id="node7" href="$de/db7/classSQLSimpleConnector.html" title="this interface do not use the Error Part of the Connector. This should be implemented if you want to ..." alt="" coords="235,78,437,119"/>
+<area shape="rect" id="node8" href="$d2/dc8/classSQLITESimpleConnector.html" title="SQLITESimpleConnector implementing the SQLSimpleConnector. " alt="" coords="521,85,693,112"/>
+<area shape="rect" id="node9" href="$d7/d8a/classSQLTypeConnector.html" title="This is the main Component used to retrieve data from the database. " alt="" coords="5,107,184,149"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="internal::SchemaValidationContext&lt; SchemaDocumentType &gt;" name="internal::SchemaValidationContext&lt; SchemaDocumentType &gt;">
+<area shape="rect" id="node3" href="$d2/ddb/classinternal_1_1Schema.html" title="{internal::Schema\&lt; Schema\lDocumentType \&gt;\n||+ BeginValue()\l+ Bool()\l+ Double()\l+ EndArray()\l+ EndObject()\l+ EndValue()\l+ GetPointer()\l+ GetURI()\l+ Int()\l+ Int64()\land 9 more...\l}" alt="" coords="113,5,296,244"/>
+<area shape="rect" id="node4" href="$db/def/classinternal_1_1ISchemaStateFactory.html" title="{internal::ISchemaStateFactory\l\&lt; SchemaType \&gt;\n||+ CreateHasher()\l+ CreateSchemaValidator()\l+ DestroryHasher()\l+ DestroySchemaValidator()\l+ FreeState()\l+ GetHashCode()\l+ MallocState()\l+ ~ISchemaStateFactory()\l}" alt="" coords="320,27,521,222"/>
+<area shape="rect" id="node5" href="$d2/d8a/classinternal_1_1IValidationErrorHandler.html" title="{internal::IValidationError\lHandler\&lt; SchemaType \&gt;\n||+ AboveMaximum()\l+ AboveMaximum()\l+ AboveMaximum()\l+ AddDependencySchemaError()\l+ AddExpectedType()\l+ AddMissingDependentProperty()\l+ AddMissingProperty()\l+ BelowMinimum()\l+ BelowMinimum()\l+ BelowMinimum()\land 28 more...\l}" alt="" coords="546,5,773,244"/>
+<area shape="rect" id="node7" href="$d8/d89/classinternal_1_1ISchemaValidator.html" title="{internal::ISchemaValidator\n||+ IsValid()\l+ ~ISchemaValidator()\l}" alt="" coords="967,79,1146,171"/>
+<area shape="rect" id="node8" href="$d9/db9/classbool.html" title="{bool\n||}" alt="" coords="1204,86,1251,163"/>
+</map>

@@ -1,0 +1,28 @@
+var classFONcUByte =
+[
+    [ "FONcUByte", "df/d25/classFONcUByte.html#ab34fd2a0d124f10c483e832a0094f46a", null ],
+    [ "~FONcUByte", "df/d25/classFONcUByte.html#a341cdba90d4b21fae1ae5c6e85f3da0a", null ],
+    [ "clear_embedded", "df/d25/classFONcUByte.html#a75d8994df58529bc3086b456656629a0", null ],
+    [ "convert", "df/d25/classFONcUByte.html#ae5813a9a3082fbb41256d131df60f7b2", null ],
+    [ "define", "df/d25/classFONcUByte.html#a1a15ccc9f74ac633f91bc5f845f0ef53", null ],
+    [ "dump", "df/d25/classFONcUByte.html#ad291363560a9069988cc20c28050fa48", null ],
+    [ "dump", "df/d25/classFONcUByte.html#a360df8801258d1b27f6b27380d95ad87", null ],
+    [ "isNetCDF4", "df/d25/classFONcUByte.html#a3ebfbddaa4079288a5769b17d769f21c", null ],
+    [ "isNetCDF4_ENHANCED", "df/d25/classFONcUByte.html#a8e8297c54c4b5e69b316cd538872a17c", null ],
+    [ "name", "df/d25/classFONcUByte.html#a9fa55015834bf8144a335e6ebd22b505", null ],
+    [ "set_is_dap4", "df/d25/classFONcUByte.html#a815de9da543f169b072164785f714ad4", null ],
+    [ "setNC4DataModel", "df/d25/classFONcUByte.html#a1fc54de630706e5ee091cc9b94a058c4", null ],
+    [ "setVersion", "df/d25/classFONcUByte.html#a0dc4ea259469d9c4557fda6a37138d2d", null ],
+    [ "type", "df/d25/classFONcUByte.html#a976fc19a7bc35ec744e731b1ab268f64", null ],
+    [ "varid", "df/d25/classFONcUByte.html#aaebc1aab9fc8d569dbd48dc225da337f", null ],
+    [ "write", "df/d25/classFONcUByte.html#ac2a24ad0a85ced8d3fddfbd60ff047bb", null ],
+    [ "_defined", "df/d25/classFONcUByte.html#a17b3a58f2cc971f5229b29e8cf6a5f68", null ],
+    [ "_embed", "df/d25/classFONcUByte.html#a439d112e2ac383eb1cb831145bb119ba", null ],
+    [ "_nc4_datamodel", "df/d25/classFONcUByte.html#ad7aac982b0a3c6346cd3c9b16b360ada", null ],
+    [ "_ncVersion", "df/d25/classFONcUByte.html#ab50c8391debbbde26c8729dea407ef5c", null ],
+    [ "_orig_varname", "df/d25/classFONcUByte.html#af5a38de91556fe56138d69c76a82bd68", null ],
+    [ "_varid", "df/d25/classFONcUByte.html#a08604a460db5650991fbd154295ea64f", null ],
+    [ "_varname", "df/d25/classFONcUByte.html#afc41d84450d34d8832b5bd76dba39b53", null ],
+    [ "is_dap4", "df/d25/classFONcUByte.html#a6cb0122a22a2890c1ae224a611414b3e", null ],
+    [ "is_dap4_group", "df/d25/classFONcUByte.html#a56129b0b04eceda3de390a42eb968a55", null ]
+];
