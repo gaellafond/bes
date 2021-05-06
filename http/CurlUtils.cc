@@ -76,7 +76,7 @@ static const unsigned int retry_limit = 10; // Amazon's suggestion
 static const useconds_t uone_second = 1000 * 1000; // one second in micro seconds (which is 1000
 
 // Forward declaration
-curl_slist *add_auth_headers(struct curl_slist *request_headers);
+curl_slist *add_edl_auth_headers(struct curl_slist *request_headers);
 
 // Set this to 1 to turn on libcurl's verbose mode (for debugging).
 int curl_trace = 0;
@@ -783,20 +783,20 @@ CURL *init_effective_url_retriever_handle(const string &target_url, struct curl_
  * @exception Error Thrown if libcurl encounters a problem; the libcurl
  * error message is stuffed into the Error object.
  */
-void http_get_and_write_resource(const string &target_url,
+void http_get_and_write_resource(const std::shared_ptr<http::url>& target_url,
                                  const int fd,
                                  vector<string> *http_response_headers) {
 
     char error_buffer[CURL_ERROR_SIZE];
     CURLcode res;
-    CURL *ceh = NULL;
-    curl_slist *req_headers = NULL;
+    CURL *ceh = nullptr;
+    curl_slist *req_headers = nullptr;
     BuildHeaders header_builder;
 
     BESDEBUG(MODULE, prolog << "BEGIN" << endl);
     // Before we do anything, make sure that the URL is OK to pursue.
-    if (!bes::AllowedHosts::theHosts()->is_allowed(target_url)) {
-        string err = (string) "The specified URL " + target_url
+    if (!http::AllowedHosts::theHosts()->is_allowed(target_url)) {
+        string err = (string) "The specified URL " + target_url->str()
                      + " does not match any of the accessible services in"
                      + " the allowed hosts list.";
         BESDEBUG(MODULE, prolog << err << endl);
@@ -804,11 +804,11 @@ void http_get_and_write_resource(const string &target_url,
     }
 
     // Add the authorization headers
-    req_headers = add_auth_headers(req_headers);
+    req_headers = add_edl_auth_headers(req_headers);
 
     try {
         // OK! Make the cURL handle
-        ceh = init(target_url, req_headers, http_response_headers);
+        ceh = init(target_url->str(), req_headers, http_response_headers);
 
         set_error_buffer(ceh, error_buffer);
 
@@ -932,16 +932,16 @@ rapidjson::Document http_get_as_json(const std::string &target_url) {
 void http_get(const std::string &target_url, char *response_buf) {
 
     char errbuf[CURL_ERROR_SIZE]; ///< raw error message info from libcurl
-    CURL *ceh = NULL;     ///< The libcurl handle object.
+    CURL *ceh = nullptr;     ///< The libcurl handle object.
     CURLcode res;
 
-    curl_slist *request_headers = NULL;
+    curl_slist *request_headers = nullptr;
     // Add the authorization headers
-    request_headers = add_auth_headers(request_headers);
+    request_headers = add_edl_auth_headers(request_headers);
 
     try {
 
-        ceh = curl::init(target_url, request_headers, NULL);
+        ceh = curl::init(target_url, request_headers, nullptr);
         if (!ceh)
             throw BESInternalError(string("ERROR! Failed to acquire cURL Easy Handle! "), __FILE__, __LINE__);
 
@@ -1341,11 +1341,22 @@ bool eval_http_get_response(CURL *ceh, char *error_buffer, const string &request
 
     // Newer Apache servers return 206 for range requests. jhrg 8/8/18
     switch (http_code) {
+        case 0:
+        {
+            if(requested_url.find(FILE_PROTOCOL)!=0){
+                ERROR_LOG(msg.str() << endl);
+                throw BESInternalError(msg.str(), __FILE__, __LINE__);
+            }
+            return true;
+        }
         case 200: // OK
         case 206: // Partial content - this is to be expected since we use range gets
             // cases 201-205 are things we should probably reject, unless we add more
             // comprehensive HTTP/S processing here. jhrg 8/8/18
             return true;
+
+        //case 301: // Moved Permanently - but that's ok for now?
+        //    return true;
 
         case 400: // Bad Request
             ERROR_LOG(msg.str() << endl);
@@ -1522,26 +1533,25 @@ bool eval_curl_easy_perform_code(
         }
     }
 #endif
-
     /**
      * @brief Performs a small (4 byte) range get on the target URL. If successful the value of  returende EffectiveUrl
      * will be set to the value of the last accessed URL (CURLINFO_EFFECTIVE_URL), including the query string and the
      * accumulated response headers from the journey, in the order recieved.
      *
-     * @param target_url The URL to follow
-     * @return A 'new' EffectiveUrl which will need to be deleted by the caller.
+     * @param starting_point_url The URL to follow
+     * @return A 'new' EffectiveUrl wrapped in a shared_ptr
      */
-    http::EffectiveUrl *retrieve_effective_url(const string &target_url) {
+    std::shared_ptr<http::EffectiveUrl> retrieve_effective_url(const std::shared_ptr<http::url> &starting_point_url) {
 
         vector<string> resp_hdrs;
-        CURL *ceh = NULL;
+        CURL *ceh = nullptr;
         // CURLcode curl_code;
-        curl_slist *request_headers = NULL;
+        curl_slist *request_headers = nullptr;
 
         BESDEBUG(MODULE, prolog << "BEGIN" << endl);
 
         // Add the authorization headers
-        request_headers = add_auth_headers(request_headers);
+        request_headers = add_edl_auth_headers(request_headers);
 
         try {
             BESDEBUG(MODULE,
@@ -1552,25 +1562,27 @@ bool eval_curl_easy_perform_code(
             BESDEBUG(MODULE, prolog << "BESLog::TheLog()->is_verbose(): "
                                     << (BESLog::TheLog()->is_verbose() ? "true" : "false") << endl);
 
-            ceh = init_effective_url_retriever_handle(target_url, request_headers, resp_hdrs);
+            ceh = init_effective_url_retriever_handle(starting_point_url->str(), request_headers, resp_hdrs);
 
             {
                 BESStopWatch sw;
                 if (BESDebug::IsSet("euc") || BESDebug::IsSet(MODULE) || BESDebug::IsSet(TIMING_LOG_KEY) ||
                     BESLog::TheLog()->is_verbose()) {
-                    sw.start(prolog + " Following Redirects Starting With: " + target_url);
+                    sw.start(prolog + " Following Redirects Starting With: " + starting_point_url->str());
                 }
                 super_easy_perform(ceh);
             }
 
             // After doing the thing with super_easy_perform() we retrieve the effective URL form the cURL handle.
-            string effective_url_str = get_effective_url(ceh, target_url);
-            BESDEBUG(MODULE, prolog << "Last Accessed URL(CURLINFO_EFFECTIVE_URL): " << effective_url_str << endl);
-            INFO_LOG(prolog << "Source URL: '" << target_url << "' CURLINFO_EFFECTIVE_URL: '" << effective_url_str
-                            << "'"
-                            << endl);
+            string e_url_str = get_effective_url(ceh, starting_point_url->str());
+            std::shared_ptr<http::EffectiveUrl> eurl(new EffectiveUrl(e_url_str, resp_hdrs, starting_point_url->is_trusted()));
 
-            auto *eurl = new EffectiveUrl(effective_url_str, resp_hdrs);
+            BESDEBUG(MODULE, prolog << "Last Accessed URL(CURLINFO_EFFECTIVE_URL): " << eurl->str() <<
+                "(" << (eurl->is_trusted()?"":"NOT ") << "trusted)" << endl);
+
+            INFO_LOG(prolog << "Source URL: '" << starting_point_url->str() << "(" << (starting_point_url->is_trusted() ? "" : "NOT ") << "trusted)" <<
+                            "' CURLINFO_EFFECTIVE_URL: '" << eurl->str() << "'" << "(" << (eurl->is_trusted()?"":"NOT ") << "trusted)" << endl);
+
 
             if (request_headers)
                 curl_slist_free_all(request_headers);
@@ -1609,13 +1621,13 @@ bool eval_curl_easy_perform_code(
                     // bool do_retry;
                     error_buffer[0] = 0; // Initialize to empty string
                     ++attempts;
-                    BESDEBUG(MODULE, prolog << "Requesting URL: " << target_url << " attempt: " << attempts << endl);
+                    BESDEBUG(MODULE, prolog << "Requesting URL: " << starting_point_url << " attempt: " << attempts << endl);
 
                     curl_code = curl_easy_perform(ceh);
-                    success = eval_curl_easy_perform_code(ceh, target_url, curl_code, error_buffer, attempts);
+                    success = eval_curl_easy_perform_code(ceh, starting_point_url, curl_code, error_buffer, attempts);
                     if (success) {
                         // Nothing obvious went wrong with the curl_easy_perfom() so now we check the HTTP stuff
-                        success = eval_http_get_response(ceh, target_url);
+                        success = eval_http_get_response(ceh, starting_point_url);
                         if (!success) {
                             if (attempts == retry_limit) {
                                 string msg = prolog +
@@ -1623,7 +1635,7 @@ bool eval_curl_easy_perform_code(
                                 LOG(msg << endl);
                                 throw BESInternalError(msg, __FILE__, __LINE__);
                             } else {
-                                LOG(prolog << "ERROR - Problem with data transfer. Will retry (url: " << target_url <<
+                                LOG(prolog << "ERROR - Problem with data transfer. Will retry (url: " << starting_point_url <<
                                            " attempt: " << attempts << ")." << endl);
                             }
                         }
@@ -1640,7 +1652,7 @@ bool eval_curl_easy_perform_code(
                 BESDEBUG(MODULE, prolog << " CURLINFO_EFFECTIVE_URL: " << effective_url << endl);
                 last_accessed_url = effective_url;
 
-                LOG(prolog << "Source URL: '" << target_url << "' Last Accessed URL: '" << last_accessed_url << "'" << endl);
+                LOG(prolog << "Source URL: '" << starting_point_url << "' Last Accessed URL: '" << last_accessed_url << "'" << endl);
 
                 unset_error_buffer(ceh);
 
@@ -1711,8 +1723,14 @@ void unset_error_buffer(CURL *ceh) {
  * @return The Hyrax User-Agent string.
  */
 string hyrax_user_agent() {
-    // return curl_version();
-    return "Hyrax";
+    string user_agent;
+    bool found;
+    TheBESKeys::TheKeys()->get_value(HTTP_USER_AGENT_KEY,user_agent, found);
+    if(!found || user_agent.empty()){
+        user_agent = HTTP_DEFAULT_USER_AGENT;
+    }
+    BESDEBUG(MODULE, prolog << "User-Agent: "<< user_agent << endl);
+    return user_agent;
 }
 
 /**
@@ -1808,7 +1826,7 @@ curl_slist *append_http_header(curl_slist *slist, const string &header_name, con
  * @param request_headers
  * @return
  */
-curl_slist *add_auth_headers(curl_slist *request_headers) {
+curl_slist *add_edl_auth_headers(curl_slist *request_headers) {
     bool found;
     string s;
 
@@ -1838,7 +1856,7 @@ curl_slist *add_auth_headers(curl_slist *request_headers) {
  * @return  The value of CURLINFO_EFFECTIVE_URL from the cURL handle ceh.
  */
 string get_effective_url(CURL *ceh, string requested_url) {
-    char *effectve_url = NULL;
+    char *effectve_url = nullptr;
     CURLcode curl_code = curl_easy_getinfo(ceh, CURLINFO_EFFECTIVE_URL, &effectve_url);
     if (curl_code != CURLE_OK) {
         stringstream msg;

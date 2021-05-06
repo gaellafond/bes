@@ -27,10 +27,10 @@
 #ifndef _bes_http_EffectiveUrlCache_h_
 #define _bes_http_EffectiveUrlCache_h_ 1
 
+#include <memory>
 #include <map>
 #include <string>
-
-#include <pthread.h>
+#include <mutex>
 
 #include "BESObj.h"
 #include "BESDataHandlerInterface.h"
@@ -40,30 +40,20 @@
 
 namespace http {
 
-    /**
- * RAII. Lock access to the get_easy_handle() and release_handle() methods.
- */
-class EucLock {
-private:
-    pthread_mutex_t &m_mutex;
-    EucLock();
-    EucLock(const EucLock &rhs);
-public:
-    EucLock(pthread_mutex_t &lock);
-    ~EucLock();
-};
 
-
-    /**
- *
+/**
+ * This is a singleton class. It is used to associate a URL with its "effective" URL.  This means that
+ * when a URL is dereferenced the request may go through a potentially large number of redirect actions
+ * before the requested resource is retrieved. This final location, from which the requested bytes are transmitted,
+ * is termed the "effective url" and that is stored in an in memory cache (std::map) so that later requests may
+ * skip the redirects and just get required bytes from the actual source.
  */
 class EffectiveUrlCache: public BESObj {
 private:
     static EffectiveUrlCache * d_instance;
-    static pthread_once_t d_init_control;
+    std::mutex d_cache_lock_mutex;
 
-    std::map<std::string , http::EffectiveUrl *> d_effective_urls;
-    pthread_mutex_t d_get_effective_url_cache_mutex;
+    std::map<std::string , std::shared_ptr<http::EffectiveUrl>> d_effective_urls;
 
     // Things that match get skipped.
     BESRegex *d_skip_regex;
@@ -73,22 +63,23 @@ private:
     static void initialize_instance();
     static void delete_instance();
 
-    friend class EffectiveUrlCacheTest;
-    http::EffectiveUrl *get(const std::string  &source_url);
+    std::shared_ptr<EffectiveUrl> get_cached_eurl(std::string const &url_key);
     BESRegex *get_skip_regex();
     bool is_enabled();
 
-    EffectiveUrlCache();
+    EffectiveUrlCache(): d_skip_regex(nullptr), d_enabled(-1){}
 
-    virtual ~EffectiveUrlCache();
+    ~EffectiveUrlCache() override;
+
+    friend class EffectiveUrlCacheTest;
 
 public:
 
     static EffectiveUrlCache *TheCache();
 
-    std::string get_effective_url(const std::string &source_url);
+    std::shared_ptr<EffectiveUrl> get_effective_url(std::shared_ptr<url> source_url);
 
-    virtual void dump(std::ostream &strm) const;
+    void dump(std::ostream &strm) const override;
     virtual std::string dump() const;
 
 };

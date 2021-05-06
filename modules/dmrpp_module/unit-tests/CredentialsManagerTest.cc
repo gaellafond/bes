@@ -40,6 +40,7 @@
 #include "BESDebug.h"
 #include "TheBESKeys.h"
 
+#include "DmrppNames.h"
 #include "CredentialsManager.h"
 
 #include "test_config.h"
@@ -53,7 +54,7 @@ static string bes_conf_file = "/bes.conf";
 #undef DBG
 #define DBG(x) do { if (debug) x; } while(false)
 
-namespace dmrpp {
+// namespace dmrpp {
 
 class CredentialsManagerTest: public CppUnit::TestFixture {
 private:
@@ -141,9 +142,9 @@ public:
                 " AccessCredentials. Expected: "<< expected << endl;
             CPPUNIT_ASSERT( CredentialsManager::theCM()->size() == expected);
 
-            string cloudydap_dataset_url = "https://s3.amazonaws.com/cloudydap/samples/d_int.h5";
-            string cloudyopendap_dataset_url = "https://s3.amazonaws.com/cloudyopendap/samples/d_int.h5";
-            string someother_dataset_url = "https://ssotherone.org/opendap/data/fnoc1.nc";
+            shared_ptr<http::url> cloudydap_dataset_url(new http::url("https://s3.amazonaws.com/cloudydap/samples/d_int.h5"));
+            shared_ptr<http::url> cloudyopendap_dataset_url(new http::url("https://s3.amazonaws.com/cloudyopendap/samples/d_int.h5"));
+            shared_ptr<http::url> someother_dataset_url(new http::url("https://ssotherone.org/opendap/data/fnoc1.nc"));
             AccessCredentials *ac;
             string url, id, key, region, bucket;
 
@@ -206,9 +207,9 @@ public:
      * Clears the environment variable used by the CredentialsManager for credentials injection.
      */
     void clear_cm_env(){
-        unsetenv(CredentialsManager::ENV_ID_KEY.c_str());
-        unsetenv(CredentialsManager::ENV_ACCESS_KEY.c_str());
-        unsetenv(CredentialsManager::ENV_REGION_KEY.c_str());
+        unsetenv(CredentialsManager::ENV_ID_KEY);
+        unsetenv(CredentialsManager::ENV_ACCESS_KEY);
+        unsetenv(CredentialsManager::ENV_REGION_KEY);
         //unsetenv(CredentialsManager::ENV_BUCKET_KEY.c_str());
     }
 
@@ -224,7 +225,7 @@ public:
         CPPUNIT_ASSERT( CredentialsManager::theCM()->size() == 0);
 
         clear_cm_env();
-        TheBESKeys::TheKeys()->set_key(CATALOG_MANAGER_CREDENTIALS, CredentialsManager::ENV_CREDS_KEY_VALUE);
+        TheBESKeys::TheKeys()->set_key(CATALOG_MANAGER_CREDENTIALS, CredentialsManager::USE_ENV_CREDS_KEY_VALUE);
 
         if(debug) cout << "check_incomplete_env_credentials() - Setting incomplete env injected credentials. "
                           "They should be ignored."<< endl;
@@ -235,10 +236,10 @@ public:
         string url("https://s3.amazonaws.com/emerald_city");
         string some_dataset_url(url+"data/fnoc1.nc");
 
-        setenv(CredentialsManager::ENV_ID_KEY.c_str(), id.c_str(), true);
-        setenv(CredentialsManager::ENV_REGION_KEY.c_str(), region.c_str(), true);
-        //setenv(CredentialsManager::ENV_BUCKET_KEY.c_str(), bucket.c_str(),true);
-        setenv(CredentialsManager::ENV_URL_KEY.c_str(), url.c_str(), true);
+        setenv(CredentialsManager::ENV_ID_KEY, id.c_str(), true);
+        setenv(CredentialsManager::ENV_REGION_KEY, region.c_str(), true);
+        //setenv(CredentialsManager::ENV_BUCKET_KEY, bucket.c_str(),true);
+        setenv(CredentialsManager::ENV_URL_KEY, url.c_str(), true);
 
         CredentialsManager::theCM()->load_credentials();
 
@@ -256,20 +257,20 @@ public:
         CPPUNIT_ASSERT( CredentialsManager::theCM()->size() == 0);
 
         clear_cm_env();
-        TheBESKeys::TheKeys()->set_key(CATALOG_MANAGER_CREDENTIALS, CredentialsManager::ENV_CREDS_KEY_VALUE, false);
+        TheBESKeys::TheKeys()->set_key(CATALOG_MANAGER_CREDENTIALS, CredentialsManager::USE_ENV_CREDS_KEY_VALUE, false);
 
         string id("Frank Morgan");
         string key("Ihadasecretthingforthewickedwitchofthewest");
         string region("oz-east-1");
         string bucket("emerald_city");
-        string url("https://s3.amazonaws.com/emerald_city/");
-        string some_dataset_url(url+"data/fnoc1.nc");
+        string base_url("https://s3.amazonaws.com/emerald_city/");
+        shared_ptr<http::url> some_dataset_url(new http::url(base_url+"data/fnoc1.nc"));
 
-        setenv(CredentialsManager::ENV_ID_KEY.c_str(),     id.c_str(), true);
-        setenv(CredentialsManager::ENV_ACCESS_KEY.c_str(), key.c_str(), true);
-        setenv(CredentialsManager::ENV_REGION_KEY.c_str(), region.c_str(), true);
-        //setenv(CredentialsManager::ENV_BUCKET_KEY.c_str(), bucket.c_str(),true);
-        setenv(CredentialsManager::ENV_URL_KEY.c_str(),    url.c_str(), true);
+        setenv(CredentialsManager::ENV_ID_KEY,     id.c_str(), true);
+        setenv(CredentialsManager::ENV_ACCESS_KEY, key.c_str(), true);
+        setenv(CredentialsManager::ENV_REGION_KEY, region.c_str(), true);
+        //setenv(CMAC_ENV_BUCKET_KEY, bucket.c_str(),true);
+        setenv(CredentialsManager::ENV_URL_KEY,    base_url.c_str(), true);
         if(debug) cout << "check_env_credentials() - Environment conditioned, calling CredentialsManager::load_credentials()" << endl;
         CredentialsManager::theCM()->load_credentials();
 
@@ -283,7 +284,7 @@ public:
         AccessCredentials *ac = CredentialsManager::theCM()->get(some_dataset_url);
         CPPUNIT_ASSERT( ac );
 
-        CPPUNIT_ASSERT( ac->get(AccessCredentials::URL_KEY) == url);
+        CPPUNIT_ASSERT( ac->get(AccessCredentials::URL_KEY) == base_url);
         CPPUNIT_ASSERT( ac->get(AccessCredentials::ID_KEY) == id);
         CPPUNIT_ASSERT( ac->get(AccessCredentials::KEY_KEY) == key);
         CPPUNIT_ASSERT( ac->get(AccessCredentials::REGION_KEY) == region);
@@ -310,8 +311,8 @@ public:
                      << CredentialsManager::theCM()->size() << " AccessCredentials. Expected:" << expected << endl;
             CPPUNIT_ASSERT( CredentialsManager::theCM()->size() == expected);
 
-
-            AccessCredentials *ac = CredentialsManager::theCM()->get("https://s3.us-west-2.amazonaws.com");
+            shared_ptr<http::url> target_url(new http::url("https://s3.us-west-2.amazonaws.com"));
+            AccessCredentials *ac = CredentialsManager::theCM()->get(target_url);
             CPPUNIT_ASSERT( ac );
 
             if(debug){
@@ -353,7 +354,7 @@ CPPUNIT_TEST_SUITE( CredentialsManagerTest );
 
 CPPUNIT_TEST_SUITE_REGISTRATION(CredentialsManagerTest);
 
-} // namespace dmrpp
+// } // namespace dmrpp
 
 int main(int argc, char*argv[])
 {
@@ -390,7 +391,7 @@ int main(int argc, char*argv[])
     else {
         while (i < argc) {
             if (debug) cerr << "Running " << argv[i] << endl;
-            string test = dmrpp::CredentialsManagerTest::suite()->getName().append("::").append(argv[i]);
+            string test = CredentialsManagerTest::suite()->getName().append("::").append(argv[i]);
             wasSuccessful = wasSuccessful && runner.run(test);
             ++i;
         }

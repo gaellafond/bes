@@ -31,14 +31,15 @@
 
 #include <curl/curl.h>
 
-#include <BaseType.h>
-#include <D4Attributes.h>
-#include <XMLWriter.h>
+#include "BaseType.h"
+#include "D4Attributes.h"
+#include "XMLWriter.h"
 
-#include <BESIndent.h>
-#include <BESDebug.h>
-#include <BESLog.h>
-#include <BESInternalError.h>
+#include "BESIndent.h"
+#include "BESDebug.h"
+#include "BESUtil.h"
+#include "BESLog.h"
+#include "BESInternalError.h"
 
 #include "DmrppRequestHandler.h"
 #include "DmrppCommon.h"
@@ -125,14 +126,14 @@ void DmrppCommon::parse_chunk_dimension_sizes(const string &chunk_dims_string)
         while ((strPos = chunk_dims.find(space)) != string::npos) {
             strVal = chunk_dims.substr(0, strPos);
 
-            d_chunk_dimension_sizes.push_back(strtol(strVal.c_str(), NULL, 10));
+            d_chunk_dimension_sizes.push_back(strtol(strVal.c_str(), nullptr, 10));
             chunk_dims.erase(0, strPos + space.length());
         }
     }
 
     // If it's multi valued there's still one more value left to process
     // If it's single valued the same is true, so let's ingest that.
-    d_chunk_dimension_sizes.push_back(strtol(chunk_dims.c_str(), NULL, 10));
+    d_chunk_dimension_sizes.push_back(strtol(chunk_dims.c_str(), nullptr, 10));
 }
 
 /**
@@ -197,24 +198,24 @@ std::string DmrppCommon::get_byte_order()
  * @return The number of chunk refs (byteStreams) held.
  */
 unsigned long DmrppCommon::add_chunk(
-        const string &data_url,
+        std::shared_ptr<http::url> data_url,
         const string &byte_order,
         unsigned long long size,
         unsigned long long offset,
         const string &position_in_array)
 
 {
-    vector<unsigned int> cpia_vector;
+    vector<unsigned long long> cpia_vector;
     Chunk::parse_chunk_position_in_array_string(position_in_array, cpia_vector);
     return add_chunk(data_url, byte_order, size, offset, cpia_vector);
 }
 
 unsigned long DmrppCommon::add_chunk(
-        const string &data_url,
+        std::shared_ptr<http::url> data_url,
         const string &byte_order,
         unsigned long long size,
         unsigned long long offset,
-        const vector<unsigned int> &position_in_array)
+        const vector<unsigned long long> &position_in_array)
 {
     std::shared_ptr<Chunk> chunk(new Chunk(data_url, byte_order, size, offset, position_in_array));
 #if 0
@@ -262,6 +263,37 @@ unsigned long DmrppCommon::add_chunk(
     d_chunks.push_back(chunk);
     return d_chunks.size();
 }
+
+
+
+
+unsigned long DmrppCommon::add_chunk(
+        const string &byte_order,
+        unsigned long long size,
+        unsigned long long offset,
+        const string &position_in_array)
+
+{
+    vector<unsigned long long> cpia_vector;
+    Chunk::parse_chunk_position_in_array_string(position_in_array, cpia_vector);
+    return add_chunk(byte_order, size, offset, cpia_vector);
+}
+
+unsigned long DmrppCommon::add_chunk(
+        const string &byte_order,
+        unsigned long long size,
+        unsigned long long offset,
+        const vector<unsigned long long> &position_in_array)
+{
+    std::shared_ptr<Chunk> chunk(new Chunk( byte_order, size, offset, position_in_array));
+
+    d_chunks.push_back(chunk);
+    return d_chunks.size();
+}
+
+
+
+
 
 /**
  * @brief read method for the atomic types
@@ -360,7 +392,7 @@ DmrppCommon::print_chunks_element(XMLWriter &xml, const string &name_space)
 
         if (chunk->get_position_in_array().size() > 0) {
             // Get position in array string:
-            vector<unsigned int> pia = chunk->get_position_in_array();
+            vector<unsigned long long> pia = chunk->get_position_in_array();
             ostringstream oss;
             oss << "[";
             copy(pia.begin(), pia.end(), ostream_iterator<unsigned int>(oss, ","));
@@ -436,7 +468,7 @@ void DmrppCommon::dump(ostream & strm) const
     strm << BESIndent::LMarg << "is_deflate:             " << (is_deflate_compression() ? "true" : "false") << endl;
     strm << BESIndent::LMarg << "is_shuffle_compression: " << (is_shuffle_compression() ? "true" : "false") << endl;
 
-    const vector<unsigned int> &chunk_dim_sizes = get_chunk_dimension_sizes();
+    const vector<unsigned long long> &chunk_dim_sizes = get_chunk_dimension_sizes();
 
     strm << BESIndent::LMarg << "chunk dimension sizes:  [";
     for (unsigned int i = 0; i < chunk_dim_sizes.size(); i++) {

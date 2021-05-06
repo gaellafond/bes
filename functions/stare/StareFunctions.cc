@@ -24,9 +24,11 @@
 
 #include <sstream>
 #include <memory>
+#include <cassert>
 
 #include <STARE.h>
 #include <hdf5.h>
+#include <netcdf.h>
 
 #include <BaseType.h>
 #include <Float64.h>
@@ -73,7 +75,7 @@ string stare_sidecar_suffix = "_sidecar";
  * @brief Write a collection of STARE Matches to an ostream
  *
  * STARE matches is not a vector of stare_match objects. It's a self-contained
- * commection of vectors that holds a collection of STARE matches in a way that
+ * connection of vectors that holds a collection of STARE matches in a way that
  * can be dumped into libdap::Array instances easily and efficiently.
  *
  * @param out The ostream
@@ -145,16 +147,16 @@ extract_uint64_array(Array *var, vector<dods_uint64> &values) {
 
 /**
  * @brief Do any of the targetIndices STARE indices overlap the dataset's STARE indices?
- * @param targetIndices - stare values from a constraint expression
- * @param dataStareIndices - stare values being compared, retrieved from the sidecar file. These
+ * @param target_indices - stare values from a constraint expression
+ * @param data_stare_indices - stare values being compared, retrieved from the sidecar file. These
  * are the index values that describe the coverage of the dataset.
  */
 bool
-target_in_dataset(const vector<dods_uint64> &targetIndices, const vector<dods_uint64> &dataStareIndices) {
+target_in_dataset(const vector<dods_uint64> &target_indices, const vector<dods_uint64> &data_stare_indices) {
     // Changes to the range-for loop, fixed the type (was unsigned long long
     // which works on OSX but not CentOS7). jhrg 11/5/19
-    for (const dods_uint64 &i : targetIndices) {
-        for (const dods_uint64 &j :dataStareIndices ) {
+    for (const dods_uint64 &i : target_indices) {
+        for (const dods_uint64 &j :data_stare_indices ) {
             // Check to see if the index 'i' overlaps the index 'j'. The cmpSpatial()
             // function returns -1, 0, 1 depending on i in j, no overlap or, j in i.
             // testing for !0 covers the general overlap case.
@@ -171,7 +173,7 @@ target_in_dataset(const vector<dods_uint64> &targetIndices, const vector<dods_ui
  * @brief How many of the dataset's STARE indices overlap the target STARE indices?
  *
  * This method should return the number of indices of the dataset's spatial coverage
- * that overlap the spatial coverage passed to the server as defined by  the target
+ * that overlap the spatial coverage passed to the server as defined by the target
  * STARE indices.
  *
  * @param target_indices - stare values from a constraint expression
@@ -373,6 +375,37 @@ get_sidecar_int32_values(const string &filename, const string &variable, vector<
 
     //Read the data file and store the values of each dataset into an array
     H5Dread(dataset, H5T_NATIVE_INT, memspace, filespace, H5P_DEFAULT, &values[0]);
+}
+
+/**
+ * @brief Read the unsigned 64-bit integer array data
+ * @param filename The name of the netCDF/HDF5 sidecar file
+ * @param variable Get the stare indices for this dependent variable
+ * @param values Value-result parameter, a vector that can hold dods_uint64 values
+ */
+void
+get_sidecar_uint64_values_2(const string &filename, BaseType *variable, vector<dods_uint64> &values)
+{
+    int ncid;
+    GeoFile *gf = new GeoFile();
+    vector<long long unsigned int> my_values;
+    int ret;
+
+    // Open and scan the sidecar file.
+    if ((ret = gf->readSidecarFile(filename.c_str(), 1, ncid)))
+        throw BESInternalError("Could not open file " + filename + " - " + nc_strerror(ret), __FILE__, __LINE__);
+
+    // Get the STARE index data for variable.
+    if ((ret = gf->getSTAREIndex_2(variable->name(), 1, ncid, my_values)))
+        throw BESInternalError("Could get stare indexes from file " + filename + " - " + nc_strerror(ret), __FILE__, __LINE__);
+
+    // Copy vector.
+    for (int i = 0; i < my_values.size(); i++)
+    	values.push_back(my_values.at(i));
+
+    // Close the sidecar file.
+    if ((ret = gf->closeSidecarFile(1, ncid)))
+        throw BESInternalError("Could not close file " + filename + " - " + nc_strerror(ret),  __FILE__, __LINE__);
 }
 
 /**

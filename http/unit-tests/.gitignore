@@ -1,2 +1,7 @@
 RemoteResourceTest
 HttpUtilsTest
+CurlUtilsTest
+EffectiveUrlCacheTest
+HttpUrlTest
+AllowedHostsTest
+
