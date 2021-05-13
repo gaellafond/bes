@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xmlns:dmrpp="http://xml.opendap.org/dap/dmrpp/1.0.0#" dapVersion="4.0" dmrVersion="1.0" name="ATM_SURFACE_TEMP_HUM_WIND_PRES_day_mean_2017-12-31_ECCO_V4r4_latlon_0p50deg.nc" dmrpp:href="https://ngap-ssmis-west.s3-us-west-2.amazonaws.com/ATM_SURFACE_TEMP_HUM_WIND_PRES_day_mean_2017-12-31_ECCO_V4r4_latlon_0p50deg.nc">
+    <Dimension name="time" size="1"/>
+    <Dimension name="latitude" size="360"/>
+    <Dimension name="longitude" size="720"/>
+    <Dimension name="nv" size="2"/>
+    <Float32 name="EXFatemp">
+        <Dim name="/time"/>
+        <Dim name="/latitude"/>
+        <Dim name="/longitude"/>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>9.969209968e+36</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>1953.705444</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>3128.451172</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>modelResult</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>Atmosphere surface (2 m) air temperature </Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>air_temperature</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>degree_C</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Surface (2 m) air temperature over open water. Note: sum of ERA-Interim surface air temperature and the control adjustment from ocean state estimation.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>EXFatemp</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/EXFatemp</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate shuffle" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>1 360 720</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="39182" nBytes="240732" chunkPositionInArray="[0,0,0]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="EXFewind">
+        <Dim name="/time"/>
+        <Dim name="/latitude"/>
+        <Dim name="/longitude"/>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>9.969209968e+36</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>-335.2474365</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>394.8556824</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>modelResult</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>Zonal (east-west) wind speed</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>eastward_wind</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>m s-1</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Zonal (east-west) component of ocean surface wind. Note: EXFewind is calculated by interpolating the model's x and y components of wind velocity (EXFuwind and EXFvwind) to tracer cell centers and then finding the zonal component of the interpolated vectors. ECCO V4r4 is forced with wind stress (see EXFtaux, EXFtauy), not vector winds + bulk formulae. EXFewind is calculated by converting wind stress to vector wind using bulk formulae.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>EXFewind</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/EXFewind</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate shuffle" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>1 360 720</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="611861" nBytes="340903" chunkPositionInArray="[0,0,0]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="EXFwspee">
+        <Dim name="/time"/>
+        <Dim name="/latitude"/>
+        <Dim name="/longitude"/>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>9.969209968e+36</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>2.727103233</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>458.7086487</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>modelResult</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>Wind speed</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>wind_speed</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>m s-1</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>10-m wind speed magnitude (&gt;= 0 ) over open water. Only used for the calculation of air-sea fluxes using bulk formulae. Note: not adjusted by the ocean state estimation and not necesarily consistent with EXFuwind and EXFvwind because EXFuwind and EXFvwind are calculated from EXFtaux and EXFtauy using bulk formulae. EXFwspee != sqrt(EXFuwind**2 + EXFvwind**2.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>EXFwspee</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/EXFwspee</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate shuffle" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>1 360 720</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="1317041" nBytes="329818" chunkPositionInArray="[0,0,0]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="EXFnwind">
+        <Dim name="/time"/>
+        <Dim name="/latitude"/>
+        <Dim name="/longitude"/>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>9.969209968e+36</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>-300.4268799</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>339.5014038</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>modelResult</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>Meridional (north-south) wind speed</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>northward_wind</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>m s-1</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Meridional (north-south) component of ocean surface wind. Note: EXFnwind is calculated by interpolating the model's x and y components of wind velocity (EXFuwind and EXFvwind) to tracer cell centers and then finding the meridional component of the interpolated vectors. ECCO V4r4 is forced with wind stress (see EXFtaux, EXFtauy), not vector winds + bulk formulae.  EXFnwind is calculated by converting wind stress to vector wind using bulk formulae.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>EXFnwind</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/EXFnwind</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate shuffle" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>1 360 720</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="960184" nBytes="349410" chunkPositionInArray="[0,0,0]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="latitude_bnds">
+        <Dim name="/latitude"/>
+        <Dim name="/nv"/>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>latitude bounds grid cells</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>latitude_bnds</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/latitude_bnds</Value>
+        </Attribute>
+        <dmrpp:chunks byteOrder="LE">
+            <dmrpp:chunk offset="279914" nBytes="2880"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="EXFpress">
+        <Dim name="/time"/>
+        <Dim name="/latitude"/>
+        <Dim name="/longitude"/>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>9.969209968e+36</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>920903.1250</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>1063147.750</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>modelResult</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>Atmosphere surface pressure</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>surface_air_pressure</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>N m-2</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Atmospheric pressure field at sea level. Note: ERA-Interim atmospheric pressure, with air tides removed using a variety of methods. Not adjusted by the ocean state estimation.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>EXFpress</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/EXFpress</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate shuffle" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>1 360 720</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="1651019" nBytes="230874" chunkPositionInArray="[0,0,0]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Int32 name="time_bnds">
+        <Dim name="/time"/>
+        <Dim name="/nv"/>
+        <Attribute name="comment" type="String">
+            <Value>Start and end times of averaging period.</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>time bounds of averaging period</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>time_bnds</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/time_bnds</Value>
+        </Attribute>
+        <dmrpp:chunks byteOrder="LE">
+            <dmrpp:chunk offset="18296" nBytes="8"/>
+        </dmrpp:chunks>
+    </Int32>
+    <Float32 name="EXFaqh">
+        <Dim name="/time"/>
+        <Dim name="/latitude"/>
+        <Dim name="/longitude"/>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>9.969209968e+36</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>-0.01402021479</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>0.3014513850</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>modelResult</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>Atmosphere surface (2 m) specific humidity </Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>surface_specific_humidity</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kg kg-1</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Surface (2 m) specific humidity over open water. Note: sum of ERA-Interim surface specific humidity and the control adjustment from ocean state estimation.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>EXFaqh</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/EXFaqh</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate shuffle" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>1 360 720</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="297668" nBytes="306744" chunkPositionInArray="[0,0,0]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="longitude_bnds">
+        <Dim name="/longitude"/>
+        <Dim name="/nv"/>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>longitude bounds grid cells</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>longitude_bnds</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/longitude_bnds</Value>
+        </Attribute>
+        <dmrpp:chunks byteOrder="LE">
+            <dmrpp:chunk offset="282794" nBytes="5760"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="latitude">
+        <Dim name="/latitude"/>
+        <Attribute name="axis" type="String">
+            <Value>Y</Value>
+        </Attribute>
+        <Attribute name="bounds" type="String">
+            <Value>latitude_bnds</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>uniform grid spacing from -89.75 to 89.75 by 0.5</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>latitude at grid cell center</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>latitude</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>degrees_north</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>latitude</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/latitude</Value>
+        </Attribute>
+        <dmrpp:chunks byteOrder="LE">
+            <dmrpp:chunk offset="16856" nBytes="1440"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="longitude">
+        <Dim name="/longitude"/>
+        <Attribute name="axis" type="String">
+            <Value>X</Value>
+        </Attribute>
+        <Attribute name="bounds" type="String">
+            <Value>longitude_bnds</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>uniform grid spacing from -179.75 to 179.75 by 0.5</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>longitude at grid cell center</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>longitude</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>degrees_east</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>longitude</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/longitude</Value>
+        </Attribute>
+        <dmrpp:chunks byteOrder="LE">
+            <dmrpp:chunk offset="24974" nBytes="2880"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="nv">
+        <Dim name="/nv"/>
+        <dmrpp:chunks compressionType="deflate" byteOrder="LE">
+            <dmrpp:chunkDimensionSizes>2</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="2777" nBytes="13" chunkPositionInArray="[0]" href="https://ngap-ssmis-west.s3-us-west-2.amazonaws.com/ATM_SURFACE_TEMP_HUM_WIND_PRES_day_mean_2017-12-31_ECCO_V4r4_latlon_0p50deg.nc.missing" />
+        </dmrpp:chunks>
+    </Float32>
+    <Int32 name="time">
+        <Dim name="/time"/>
+        <Attribute name="axis" type="String">
+            <Value>T</Value>
+        </Attribute>
+        <Attribute name="bounds" type="String">
+            <Value>time_bnds</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="long_name" type="String">
+            <Value>center time of averaging period</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>hours since 1992-01-01T12:00:00</Value>
+        </Attribute>
+        <Attribute name="calendar" type="String">
+            <Value>proleptic_gregorian</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/time</Value>
+        </Attribute>
+        <dmrpp:chunks byteOrder="LE">
+            <dmrpp:chunk offset="16852" nBytes="4"/>
+        </dmrpp:chunks>
+    </Int32>
+    <Attribute name="HDF5_GLOBAL" type="Container">
+        <Attribute name="acknowledgement" type="String">
+            <Value>This research was carried out by the Jet Propulsion Laboratory, managed by the California Institute of Technology under a contract with the National Aeronautics and Space Administration.</Value>
+        </Attribute>
+        <Attribute name="author" type="String">
+            <Value>Ian Fenty and Ou Wang</Value>
+        </Attribute>
+        <Attribute name="cdm_data_type" type="String">
+            <Value>Grid</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Fields provided on a regular lat-lon grid. They have been mapped to the regular lat-lon grid from the original ECCO lat-lon-cap 90 (llc90) native model grid.</Value>
+        </Attribute>
+        <Attribute name="Conventions" type="String">
+            <Value>CF-1.8, ACDD-1.3</Value>
+        </Attribute>
+        <Attribute name="creator_email" type="String">
+            <Value>ecco-group@mit.edu</Value>
+        </Attribute>
+        <Attribute name="creator_institution" type="String">
+            <Value>NASA Jet Propulsion Laboratory (JPL)</Value>
+        </Attribute>
+        <Attribute name="creator_name" type="String">
+            <Value>ECCO Consortium</Value>
+        </Attribute>
+        <Attribute name="creator_type" type="String">
+            <Value>group</Value>
+        </Attribute>
+        <Attribute name="creator_url" type="String">
+            <Value>https://ecco-group.org</Value>
+        </Attribute>
+        <Attribute name="date_created" type="String">
+            <Value>2020-12-17T02:23:56</Value>
+        </Attribute>
+        <Attribute name="date_issued" type="String">
+            <Value>2020-12-17T02:23:56</Value>
+        </Attribute>
+        <Attribute name="date_metadata_modified" type="String">
+            <Value>2020-12-23T20:04:10</Value>
+        </Attribute>
+        <Attribute name="date_modified" type="String">
+            <Value>2020-12-17T02:23:56</Value>
+        </Attribute>
+        <Attribute name="geospatial_bounds_crs" type="String">
+            <Value>EPSG:4326</Value>
+        </Attribute>
+        <Attribute name="geospatial_lat_max" type="Float64">
+            <Value>90.000000000000000</Value>
+        </Attribute>
+        <Attribute name="geospatial_lat_min" type="Float64">
+            <Value>-90.000000000000000</Value>
+        </Attribute>
+        <Attribute name="geospatial_lat_resolution" type="Float64">
+            <Value>0.50000000000000000</Value>
+        </Attribute>
+        <Attribute name="geospatial_lat_units" type="String">
+            <Value>degrees_north</Value>
+        </Attribute>
+        <Attribute name="geospatial_lon_max" type="Float64">
+            <Value>180.00000000000000</Value>
+        </Attribute>
+        <Attribute name="geospatial_lon_min" type="Float64">
+            <Value>-180.00000000000000</Value>
+        </Attribute>
+        <Attribute name="geospatial_lon_resolution" type="Float64">
+            <Value>0.50000000000000000</Value>
+        </Attribute>
+        <Attribute name="geospatial_lon_units" type="String">
+            <Value>degrees_east</Value>
+        </Attribute>
+        <Attribute name="history" type="String">
+            <Value>Inaugural release of an ECCO Central Estimate solution to PO.DAAC</Value>
+        </Attribute>
+        <Attribute name="id" type="String">
+            <Value>10.5067/ECG5D-ATM44</Value>
+        </Attribute>
+        <Attribute name="institution" type="String">
+            <Value>NASA Jet Propulsion Laboratory (JPL)</Value>
+        </Attribute>
+        <Attribute name="instrument_vocabulary" type="String">
+            <Value>GCMD instrument keywords</Value>
+        </Attribute>
+        <Attribute name="keywords" type="String">
+            <Value>EARTH SCIENCE &gt; ATMOSPHERE &gt; ATMOSPHERIC WINDS &gt; SURFACE WINDS &gt; WIND SPEED, EARTH SCIENCE &gt; OCEANS &gt; OCEAN WINDS &gt; SURFACE WINDS, EARTH SCIENCE &gt; OCEANS &gt; OCEAN PRESSURE &gt; SEA LEVEL PRESSURE, EARTH SCIENCE &gt; ATMOSPHERE &gt; ATMOSPHERIC WATER VAPOR &gt; WATER VAPOR INDICATORS &gt; HUMIDITY &gt; SPECIFIC HUMIDITY, EARTH SCIENCE SERVICES &gt; MODELS &gt; EARTH SCIENCE REANALYSES/ASSIMILATION MODELS, EARTH SCIENCE &gt; ATMOSPHERE &gt; ATMOSPHERIC TEMPERATURE &gt; SURFACE TEMPERATURE &gt; AIR TEMPERATURE</Value>
+        </Attribute>
+        <Attribute name="keywords_vocabulary" type="String">
+            <Value>NASA Global Change Master Directory (GCMD) Science Keywords</Value>
+        </Attribute>
+        <Attribute name="license" type="String">
+            <Value>Public Domain</Value>
+        </Attribute>
+        <Attribute name="metadata_link" type="String">
+            <Value>https://cmr.earthdata.nasa.gov/search/collections.umm_json?ShortName=ECCO_L4_ATM_STATE_05DEG_DAILY_V4R4</Value>
+        </Attribute>
+        <Attribute name="naming_authority" type="String">
+            <Value>gov.nasa.jpl</Value>
+        </Attribute>
+        <Attribute name="platform" type="String">
+            <Value>ERS-1/2, TOPEX/Poseidon, Geosat Follow-On (GFO), ENVISAT, Jason-1, Jason-2, CryoSat-2, SARAL/AltiKa, Jason-3, AVHRR, Aquarius, SSM/I, SSMIS, GRACE, DTU17MDT, Argo, WOCE, GO-SHIP, MEOP, Ice Tethered Profilers (ITP)</Value>
+        </Attribute>
+        <Attribute name="platform_vocabulary" type="String">
+            <Value>GCMD platform keywords</Value>
+        </Attribute>
+        <Attribute name="processing_level" type="String">
+            <Value>L4</Value>
+        </Attribute>
+        <Attribute name="product_name" type="String">
+            <Value>ATM_SURFACE_TEMP_HUM_WIND_PRES_day_mean_2017-12-31_ECCO_V4r4_latlon_0p50deg.nc</Value>
+        </Attribute>
+        <Attribute name="product_time_coverage_end" type="String">
+            <Value>2018-01-01T00:00:00</Value>
+        </Attribute>
+        <Attribute name="product_time_coverage_start" type="String">
+            <Value>1992-01-01T12:00:00</Value>
+        </Attribute>
+        <Attribute name="product_version" type="String">
+            <Value>Version 4, Release 4</Value>
+        </Attribute>
+        <Attribute name="program" type="String">
+            <Value>NASA Physical Oceanography, Cryosphere, Modeling, Analysis, and Prediction (MAP)</Value>
+        </Attribute>
+        <Attribute name="project" type="String">
+            <Value>Estimating the Circulation and Climate of the Ocean (ECCO)</Value>
+        </Attribute>
+        <Attribute name="publisher_email" type="String">
+            <Value>podaac@podaac.jpl.nasa.gov</Value>
+        </Attribute>
+        <Attribute name="publisher_institution" type="String">
+            <Value>PO.DAAC</Value>
+        </Attribute>
+        <Attribute name="publisher_name" type="String">
+            <Value>Physical Oceanography Distributed Active Archive Center (PO.DAAC)</Value>
+        </Attribute>
+        <Attribute name="publisher_type" type="String">
+            <Value>institution</Value>
+        </Attribute>
+        <Attribute name="publisher_url" type="String">
+            <Value>https://podaac.jpl.nasa.gov</Value>
+        </Attribute>
+        <Attribute name="references" type="String">
+            <Value>ECCO Consortium, Fukumori, I., Wang, O., Fenty, I., Forget, G., Heimbach, P., &amp; Ponte, R. M. 2020. Synopsis of the ECCO Central Production Global Ocean and Sea-Ice State Estimate (Version 4 Release 4). doi:10.5281/zenodo.3765929</Value>
+        </Attribute>
+        <Attribute name="source" type="String">
+            <Value>The ECCO V4r4 state estimate was produced by fitting a free-running solution of the MITgcm (checkpoint 66g) to satellite and in situ observational data in a least squares sense using the adjoint method. https://ecco-group.org/docs/v4r4_synopsis.pdf</Value>
+        </Attribute>
+        <Attribute name="standard_name_vocabulary" type="String">
+            <Value>NetCDF Climate and Forecast (CF) Metadata Convention</Value>
+        </Attribute>
+        <Attribute name="summary" type="String">
+            <Value>This dataset contains daily-averaged atmosphere surface temperature, humidity, wind, and pressure interpolated to a regular 0.5-degree grid from the ECCO Version 4 revision 4 (V4r4) ocean and sea-ice state estimate. Estimating the Circulation and Climate of the Ocean (ECCO) ocean and sea-ice state estimates are dynamically and kinematically-consistent reconstructions of the three-dimensional, time-evolving ocean, sea-ice, and surface atmospheric states. ECCO V4r4 is a free-running solution of the 1-degree global configuration of the MIT general circulation model (MITgcm) that has been fit to observations in a least-squares sense. Observational data constraints used in V4r4 include sea surface height (SSH) from satellite altimeters [ERS-1/2, TOPEX/Poseidon, GFO, ENVISAT, Jason-1,2,3, CryoSat-2, and SARAL/AltiKa]; sea surface temperature (SST) from satellite radiometers [AVHRR], sea surface salinity (SSS) from the Aquarius satellite radiometer/scatterometer, ocean bottom pressure (OBP) from the GRACE satellite gravimeter; sea ice concentration from satellite radiometers [SSM/I and SSMIS], and in-situ ocean temperature and salinity measured with conductivity-temperature-depth (CTD) sensors and expendable bathythermographs (XBTs) from several programs [e.g., WOCE, GO-SHIP, Argo, and others] and platforms [e.g., research vessels, gliders, moorings, ice-tethered profilers, and instrumented pinnipeds]. V4r4 covers the period 1992-01-01T12:00:00 to 2018-01-01T00:00:00.</Value>
+        </Attribute>
+        <Attribute name="time_coverage_duration" type="String">
+            <Value>P1D</Value>
+        </Attribute>
+        <Attribute name="time_coverage_end" type="String">
+            <Value>2017-12-31T12:00:00</Value>
+        </Attribute>
+        <Attribute name="time_coverage_resolution" type="String">
+            <Value>P1D</Value>
+        </Attribute>
+        <Attribute name="time_coverage_start" type="String">
+            <Value>2017-12-31T00:00:00</Value>
+        </Attribute>
+        <Attribute name="title" type="String">
+            <Value>ECCO Atmosphere Surface Temperature, Humidity, Wind, and Pressure - Daily Mean 0.5 Degree (Version 4 Release 4)</Value>
+        </Attribute>
+        <Attribute name="uuid" type="String">
+            <Value>f8578d30-4051-11eb-8ae0-0cc47a3f8727</Value>
+        </Attribute>
+        <Attribute name="coordinates_comment" type="String">
+            <Value>Note: the global 'coordinates' attribute descibes auxillary coordinates.</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time_bnds latitude_bnds longitude_bnds</Value>
+        </Attribute>
+    </Attribute>
+</Dataset>
