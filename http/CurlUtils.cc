@@ -1404,7 +1404,7 @@ bool eval_http_get_response(CURL *ceh, char *error_buffer, const string &request
  * This function assumes that two types of cURL error may be retried:
  *  - CURLE_SSL_CONNECT_ERROR
  *  - CURLE_SSL_CACERT_BADFILE
- *  And for these values of curl_code the fundtion returns false.
+ *  And for these values of curl_code the foundation returns false.
  *
  *  The function returns success iff curl_code == CURLE_OK.
  *
