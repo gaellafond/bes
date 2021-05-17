@@ -400,7 +400,7 @@ CurlHandlePool::get_easy_handle(Chunk *chunk) {
 
     Lock lock(d_get_easy_handle_mutex); // RAII
 
-    dmrpp_easy_handle *handle = 0;
+    dmrpp_easy_handle *handle = nullptr;
     for (auto i = d_easy_handles.begin(), e = d_easy_handles.end(); i != e; ++i) {
         if (!(*i)->d_in_use) {
             handle = *i;
@@ -489,42 +489,10 @@ CurlHandlePool::get_easy_handle(Chunk *chunk) {
                             credentials->get(AccessCredentials::REGION_KEY),
                             "s3");
 
-
             handle->d_request_headers = curl::append_http_header((curl_slist *)0, "Authorization", auth_header);
             handle->d_request_headers = curl::append_http_header(handle->d_request_headers, "x-amz-content-sha256",
                                                   "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
             handle->d_request_headers = curl::append_http_header(handle->d_request_headers, "x-amz-date", AWSV4::ISO8601_date(request_time));
-#if 0
-
-            // passing nullptr for the first call allocates the curl_slist
-            // The following code builds the slist that holds the headers. This slist is freed
-            // once the URL is dereferenced in dmrpp_easy_handle::read_data(). jhrg 11/26/19
-            handle->d_request_headers = append_http_header(0, "Authorization:", auth_header);
-            if (!handle->d_request_headers)
-                throw BESInternalError(
-                        string("CURL Error setting Authorization header: ").append(
-                                curl::error_message(res, handle->d_errbuf)), __FILE__, __LINE__);
-
-            // We pre-compute the sha256 hash of a null message body
-            curl_slist *temp = append_http_header(handle->d_request_headers, "x-amz-content-sha256:",
-                                                  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
-            if (!temp)
-                throw BESInternalError(
-                        string("CURL Error setting x-amz-content-sha256: ").append(
-                                curl::error_message(res, handle->d_errbuf)),
-                        __FILE__, __LINE__);
-            handle->d_request_headers = temp;
-
-            temp = append_http_header(handle->d_request_headers, "x-amz-date:", AWSV4::ISO8601_date(request_time));
-            if (!temp)
-                throw BESInternalError(
-                        string("CURL Error setting x-amz-date header: ").append(
-                                curl::error_message(res, handle->d_errbuf)),
-                        __FILE__, __LINE__);
-            handle->d_request_headers = temp;
-#endif
-
-            // handle->d_request_headers = curl::add_edl_auth_headers(handle->d_request_headers);
 
             res = curl_easy_setopt(handle->d_handle, CURLOPT_HTTPHEADER, handle->d_request_headers);
             curl::eval_curl_easy_setopt_result(res, prolog, "CURLOPT_HTTPHEADER", handle->d_errbuf, __FILE__, __LINE__);
@@ -554,7 +522,7 @@ void CurlHandlePool::release_handle(dmrpp_easy_handle *handle) {
 
 #if KEEP_ALIVE
     handle->d_url = nullptr;
-    handle->d_chunk = 0;
+    handle->d_chunk = nullptr;
     handle->d_in_use = false;
 #else
     // This is to test the effect of libcurl Keep Alive support
