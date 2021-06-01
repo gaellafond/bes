@@ -58,3 +58,25 @@ C4_DIR=./cccc
 cccc:	
 	cccc --outdir=$(C4_DIR) $(libgateway_module_la_SOURCES)
 
+# PyBind
+
+# PYBIND11_INC is from: $(python3 -m pybind11 --includes)
+PYBIND11_INC = -I/Users/jimg/anaconda3/envs/pybind/include/python3.9 \
+-I/Users/jimg/anaconda3/envs/pybind/lib/python3.9/site-packages/pybind11/include
+
+PYBIND_CPPFLAGS = $(PYBIND11_INC) -I$(top_srcdir)/dispatch -I$(top_srcdir) -I. $(DAP_CFLAGS)
+
+PYBIND_CXXFLAGS = -O0 -g3 -Wall -std=c++14
+
+# PYBIND11_EXT from: $(python3-config --extension-suffix)
+PYBIND11_EXT = .cpython-39-darwin.so
+
+PYBIND_LDFLAGS = -shared -undefined dynamic_lookup -L$(prefix)/lib -ldap
+
+# c++ -I$(top_srcdir)/dispatch -I$(top_srcdir) -I. $(DAP_CFLAGS) -O3 -Wall -shared -std=c++14
+# -undefined dynamic_lookup $(python3 -m pybind11 --includes) pybindCSV.cpp
+# -o pybindCSV$(python3-config --extension-suffix) -L$(prefix)/lib -ldap
+
+pybindCSV:
+	c++  $(PYBIND_CPPFLAGS) $(PYBIND_CXXFLAGS) pybindCSV.cpp -o pybindCSV$(PYBIND11_EXT) $(PYBIND_LDFLAGS)
+

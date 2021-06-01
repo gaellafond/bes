@@ -13,6 +13,12 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/iostream.h>
 
+// NB Build using:
+// c++ -I/Users/kodi/src/hyrax/bes/modules/csv_handler -I/Users/kodi/src/hyrax/bes/dispatch
+// -I/Users/kodi/src/hyrax/libdap4 -O3 -Wall -shared -std=c++14 -undefined dynamic_lookup
+// $(python3 -m pybind11 --includes) pybindCSV.cpp -o pybindCSV$(python3-config --extension-suffix)
+// -L$prefix/lib -ldap
+
 namespace py = pybind11;
 
 PYBIND11_MODULE(pybindDAS, m) {
@@ -48,7 +54,8 @@ PYBIND11_MODULE(pybindCSV, m) {
     py::class_<CSVRequestHandler>(m, "CSVhandler")
         .def(py::init<const CSVRequestHandler &>());
         py::print("test");
-
+#if 0
         .def("dump", py::overload_cast<std::ostream>(&bes::BESDataHandlerInterface::csv_build_das))
         .def("csv_build_das", py::overload_cast<BESDataHandlerInterface>(&bes::BESDataHandlerInterface::csv_build_das));
+#endif
 }
