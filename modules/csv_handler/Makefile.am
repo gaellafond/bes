@@ -71,7 +71,8 @@ PYBIND_CXXFLAGS = -O0 -g3 -Wall -std=c++14
 # PYBIND11_EXT from: $(python3-config --extension-suffix)
 PYBIND11_EXT = .cpython-39-darwin.so
 
-PYBIND_LDFLAGS = -shared -undefined dynamic_lookup -L$(prefix)/lib -ldap
+PYBIND_LDFLAGS = -shared -undefined dynamic_lookup -L$(prefix)/lib -ldap ./.libs/libcsv_module.a \
+$(top_builddir)/dispatch/.libs/libbes_dipatch.a $(top_builddir)/dap/.libs/libdap_module.a
 
 # c++ -I$(top_srcdir)/dispatch -I$(top_srcdir) -I. $(DAP_CFLAGS) -O3 -Wall -shared -std=c++14
 # -undefined dynamic_lookup $(python3 -m pybind11 --includes) pybindCSV.cpp
