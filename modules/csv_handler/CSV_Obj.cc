@@ -51,223 +51,214 @@ using std::endl;
 using std::vector;
 using std::ostringstream;
 
-CSV_Obj::CSV_Obj()
-{
-	_reader = new CSV_Reader();
-	_header = new CSV_Header();
-	_data = new vector<CSV_Data*>();
+CSV_Obj::CSV_Obj() {
+    _reader = new CSV_Reader();
+    _header = new CSV_Header();
+    _data = new vector<CSV_Data *>();
 }
 
-CSV_Obj::~CSV_Obj()
-{
-	if (_reader) {
-		_reader->close();
-		delete _reader;
-		_reader = 0;
-	}
-	if (_header) {
-		delete _header;
-		_header = 0;
-	}
-	if (_data) {
-		CSV_Data *d = 0;
-		vector<CSV_Data*>::iterator i = _data->begin();
-		vector<CSV_Data*>::iterator e = _data->end();
-		while (i != e) {
-			d = (*i);
-			delete d;
-			_data->erase(i);
-			i = _data->begin();
-			e = _data->end();
-		}
-		delete _data;
-		_data = 0;
-	}
+CSV_Obj::~CSV_Obj() {
+    if (_reader) {
+        _reader->close();
+        delete _reader;
+        _reader = 0;
+    }
+    if (_header) {
+        delete _header;
+        _header = 0;
+    }
+    if (_data) {
+        CSV_Data *d = 0;
+        vector<CSV_Data *>::iterator i = _data->begin();
+        vector<CSV_Data *>::iterator e = _data->end();
+        while (i != e) {
+            d = (*i);
+            delete d;
+            _data->erase(i);
+            i = _data->begin();
+            e = _data->end();
+        }
+        delete _data;
+        _data = 0;
+    }
 }
 
-bool CSV_Obj::open(const string& filepath)
-{
-	return _reader->open(filepath);
+bool CSV_Obj::open(const string &filepath) {
+    return _reader->open(filepath);
 }
 
-void CSV_Obj::load()
-{
-	vector<string> txtLine;
-	bool OnHeader = true;
-	_reader->reset();
-	while (!_reader->eof()) {
-		_reader->get(txtLine);
+void CSV_Obj::load() {
+    vector<string> txtLine;
+    bool OnHeader = true;
+    _reader->reset();
+    while (!_reader->eof()) {
+        _reader->get(txtLine);
 
-		if (OnHeader) {
-			if (_header->populate(&txtLine)) {
-				for (unsigned int i = 0; i < txtLine.size(); i++) {
-					_data->push_back(new CSV_Data());
-				}
-			}
-			OnHeader = false;
-		}
-		else if (!txtLine.empty()) {
-			int index = 0;
-			vector<CSV_Data *>::iterator it = _data->begin();
-			vector<CSV_Data *>::iterator et = _data->end();
-			for (; it != et; it++) {
-				CSV_Data *d = (*it);
-				try {
+        if (OnHeader) {
+            if (_header->populate(&txtLine)) {
+                for (unsigned int i = 0; i < txtLine.size(); i++) {
+                    _data->push_back(new CSV_Data());
+                }
+            }
+            OnHeader = false;
+        }
+        else if (!txtLine.empty()) {
+            int index = 0;
+            vector<CSV_Data *>::iterator it = _data->begin();
+            vector<CSV_Data *>::iterator et = _data->end();
+            for (; it != et; it++) {
+                CSV_Data *d = (*it);
+                try {
                     string token = txtLine.at(index);
                     CSV_Utils::slim(token);
                     CSV_Field *f = _header->getField(index);
                     if (!f) {
                         ostringstream err;
-                        err << " Attempting to add value " << token << " to field " << index << ", field does not exist";
+                        err << " Attempting to add value " << token << " to field " << index
+                            << ", field does not exist";
                         ERROR_LOG(err.str());
                         throw BESInternalError(err.str(), __FILE__, __LINE__);
                     }
                     d->insert(f, &token);
                 }
-				catch (const std::out_of_range &/*e*/) {
+                catch (const std::out_of_range &/*e*/) {
                     ostringstream err;
                     err << "Error in CSV dataset, too few data elements on line " << _reader->get_row_number();
-                        // FIXME: Different on OSX and Linux << " (C++ Error: " << e.what() << ")";
+                    // FIXME: Different on OSX and Linux << " (C++ Error: " << e.what() << ")";
                     ERROR_LOG(err.str());
                     throw BESSyntaxUserError(err.str(), __FILE__, __LINE__);
-				}
-				index++;
-			}
-		}
-		txtLine.clear();
-	}
+                }
+                index++;
+            }
+        }
+        txtLine.clear();
+    }
 }
 
-void CSV_Obj::getFieldList(vector<string> &list)
-{
-	_header->getFieldList(list);
+void CSV_Obj::getFieldList(vector<string> &list) {
+    _header->getFieldList(list);
 }
 
-string CSV_Obj::getFieldType(const string& fieldName)
-{
-	return _header->getFieldType(fieldName);
+string CSV_Obj::getFieldType(const string &fieldName) {
+    return _header->getFieldType(fieldName);
 }
 
-int CSV_Obj::getRecordCount()
-{
-	CSV_Data* alphaField = _data->at(0);
-	string type = alphaField->getType();
+int CSV_Obj::getRecordCount() {
+    CSV_Data *alphaField = _data->at(0);
+    string type = alphaField->getType();
 
-	if (type.compare(string(STRING)) == 0) {
-		return ((vector<string>*) alphaField->getData())->size();
-	}
-	else if (type.compare(string(FLOAT32)) == 0) {
-		return ((vector<float>*) alphaField->getData())->size();
-	}
-	else if (type.compare(string(FLOAT64)) == 0) {
-		return ((vector<double>*) alphaField->getData())->size();
-	}
-	else if (type.compare(string(INT16)) == 0) {
-		return ((vector<short>*) alphaField->getData())->size();
-	}
-	else if (type.compare(string(INT32)) == 0) {
-		return ((vector<int>*) alphaField->getData())->size();
-	}
-	else {
-		return -1;
-	}
+    if (type.compare(string(STRING)) == 0) {
+        return ((vector<string> *) alphaField->getData())->size();
+    }
+    else if (type.compare(string(FLOAT32)) == 0) {
+        return ((vector<float> *) alphaField->getData())->size();
+    }
+    else if (type.compare(string(FLOAT64)) == 0) {
+        return ((vector<double> *) alphaField->getData())->size();
+    }
+    else if (type.compare(string(INT16)) == 0) {
+        return ((vector<short> *) alphaField->getData())->size();
+    }
+    else if (type.compare(string(INT32)) == 0) {
+        return ((vector<int> *) alphaField->getData())->size();
+    }
+    else {
+        return -1;
+    }
 }
 
 void *
-CSV_Obj::getFieldData(const string& field)
-{
-	void *ret = 0;
-	CSV_Field *f = _header->getField(field);
-	if (f) {
-		int index = f->getIndex();
-		CSV_Data *d = _data->at(index);
-		if (d) {
-			ret = d->getData();
-		}
-		else {
-			string err = (string) "Unable to get data for field " + field;
-			throw BESInternalError(err, __FILE__, __LINE__);
-		}
-	}
-	else {
-		string err = (string) "Unable to get data for field " + field + ", no such field exists";
-		throw BESInternalError(err, __FILE__, __LINE__);
-	}
-	return ret;
+CSV_Obj::getFieldData(const string &field) {
+    void *ret = 0;
+    CSV_Field *f = _header->getField(field);
+    if (f) {
+        int index = f->getIndex();
+        CSV_Data *d = _data->at(index);
+        if (d) {
+            ret = d->getData();
+        }
+        else {
+            string err = (string) "Unable to get data for field " + field;
+            throw BESInternalError(err, __FILE__, __LINE__);
+        }
+    }
+    else {
+        string err = (string) "Unable to get data for field " + field + ", no such field exists";
+        throw BESInternalError(err, __FILE__, __LINE__);
+    }
+    return ret;
 }
 
-vector<string> CSV_Obj::getRecord(const int rowNum)
-{
-	vector<string> record;
-	void* fieldData;
-	string type;
+vector<string> CSV_Obj::getRecord(const int rowNum) {
+    vector<string> record;
+    void *fieldData;
+    string type;
 
-	int maxRows = getRecordCount();
-	if (rowNum > maxRows) {
-		ostringstream err;
-		err << "Attempting to retrieve row " << rowNum << " of " << maxRows;
-		throw BESInternalError(err.str(), __FILE__, __LINE__);
-	}
+    int maxRows = getRecordCount();
+    if (rowNum > maxRows) {
+        ostringstream err;
+        err << "Attempting to retrieve row " << rowNum << " of " << maxRows;
+        throw BESInternalError(err.str(), __FILE__, __LINE__);
+    }
 
-	vector<string> fieldList;
-	getFieldList(fieldList);
-	vector<string>::iterator it = fieldList.begin();
-	vector<string>::iterator et = fieldList.end();
-	for (; it != et; it++) {
-		string fieldName = (*it);
-		ostringstream oss;
-		fieldData = getFieldData(fieldName);
-		CSV_Field *f = _header->getField(fieldName);
-		if (!f) {
-			ostringstream err;
-			err << "Unable to retrieve data for field " << fieldName << " on row " << rowNum;
-			throw BESInternalError(err.str(), __FILE__, __LINE__);
-		}
-		type = f->getType();
+    vector<string> fieldList;
+    getFieldList(fieldList);
+    vector<string>::iterator it = fieldList.begin();
+    vector<string>::iterator et = fieldList.end();
+    for (; it != et; it++) {
+        string fieldName = (*it);
+        ostringstream oss;
+        fieldData = getFieldData(fieldName);
+        CSV_Field *f = _header->getField(fieldName);
+        if (!f) {
+            ostringstream err;
+            err << "Unable to retrieve data for field " << fieldName << " on row " << rowNum;
+            throw BESInternalError(err.str(), __FILE__, __LINE__);
+        }
+        type = f->getType();
 
-		if (type.compare(string(STRING)) == 0) {
-			record.push_back(((vector<string>*) fieldData)->at(rowNum));
-		}
-		else if (type.compare(string(FLOAT32)) == 0) {
-			oss << ((vector<float>*) fieldData)->at(rowNum);
-			record.push_back(oss.str());
-		}
-		else if (type.compare(string(FLOAT64)) == 0) {
-			oss << ((vector<double>*) fieldData)->at(rowNum);
-			record.push_back(oss.str());
-		}
-		else if (type.compare(string(INT16)) == 0) {
-			oss << ((vector<short>*) fieldData)->at(rowNum);
-			record.push_back(oss.str());
-		}
-		else if (type.compare(string(INT32)) == 0) {
-			oss << ((vector<int>*) fieldData)->at(rowNum);
-			record.push_back(oss.str());
-		}
-	}
+        if (type.compare(string(STRING)) == 0) {
+            record.push_back(((vector<string> *) fieldData)->at(rowNum));
+        }
+        else if (type.compare(string(FLOAT32)) == 0) {
+            oss << ((vector<float> *) fieldData)->at(rowNum);
+            record.push_back(oss.str());
+        }
+        else if (type.compare(string(FLOAT64)) == 0) {
+            oss << ((vector<double> *) fieldData)->at(rowNum);
+            record.push_back(oss.str());
+        }
+        else if (type.compare(string(INT16)) == 0) {
+            oss << ((vector<short> *) fieldData)->at(rowNum);
+            record.push_back(oss.str());
+        }
+        else if (type.compare(string(INT32)) == 0) {
+            oss << ((vector<int> *) fieldData)->at(rowNum);
+            record.push_back(oss.str());
+        }
+    }
 
-	return record;
+    return record;
 }
 
-void CSV_Obj::dump(ostream &strm) const
-{
-	strm << BESIndent::LMarg << "CSV_Obj::dump - (" << (void *) this << ")" << endl;
-	BESIndent::Indent();
-	if (_reader) {
-		strm << BESIndent::LMarg << "reader:" << endl;
-		BESIndent::Indent();
-		_reader->dump(strm);
-		BESIndent::UnIndent();
-	}
-	if (_header) {
-		strm << BESIndent::LMarg << "header:" << endl;
-		BESIndent::Indent();
-		_header->dump(strm);
-		BESIndent::UnIndent();
-	}
-	if (_data) {
-		strm << BESIndent::LMarg << "data:" << endl;
-	}
-	BESIndent::UnIndent();
+void CSV_Obj::dump(ostream &strm) const {
+    strm << BESIndent::LMarg << "CSV_Obj::dump - (" << (void *) this << ")" << endl;
+    BESIndent::Indent();
+    if (_reader) {
+        strm << BESIndent::LMarg << "reader:" << endl;
+        BESIndent::Indent();
+        _reader->dump(strm);
+        BESIndent::UnIndent();
+    }
+    if (_header) {
+        strm << BESIndent::LMarg << "header:" << endl;
+        BESIndent::Indent();
+        _header->dump(strm);
+        BESIndent::UnIndent();
+    }
+    if (_data) {
+        strm << BESIndent::LMarg << "data:" << endl;
+    }
+    BESIndent::UnIndent();
 }
 

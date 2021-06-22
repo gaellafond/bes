@@ -22,3 +22,7 @@ Also, for this initial release, the test data are the documentation
 for the handler. We will include more documentation on our web site at
 http://docs.opendap.org/index.php/Hyrax when it is available.
 
+For the pybind experimental code:
+
+run `python3`
+then: `import pybindCSV`

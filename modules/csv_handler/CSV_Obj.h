@@ -23,7 +23,7 @@
 //
 // You can contact University Corporation for Atmospheric Research at
 // 3080 Center Green Drive, Boulder, CO 80301
- 
+
 // (c) COPYRIGHT University Corporation for Atmospheric Research 2004-2005
 // Please read the full copyright statement in the file COPYRIGHT_UCAR.
 //
@@ -44,32 +44,33 @@
 #include "CSV_Header.h"
 #include "CSV_Data.h"
 
-class CSV_Obj : public BESObj
-{
+class CSV_Obj : public BESObj {
 private:
-    CSV_Reader*			_reader ;
-    CSV_Header*			_header ;
-    std::vector<CSV_Data*>*		_data ;
+    CSV_Reader *_reader;
+    CSV_Header *_header;
+    std::vector<CSV_Data *> *_data;
+
 public:
-    				CSV_Obj() ;
-    virtual			~CSV_Obj() ;
+    CSV_Obj();
 
-    bool			open( const std::string& filepath ) ;
+    virtual ~CSV_Obj();
 
-    void			load() ;
+    bool open(const std::string &filepath);
 
-    void			getFieldList( std::vector<std::string> &list ) ;
+    void load();
 
-    std::string		getFieldType( const std::string& fieldName ) ;
+    void getFieldList(std::vector<std::string> &list);
 
-    int				getRecordCount() ;
+    std::string getFieldType(const std::string &fieldName);
 
-    void *			getFieldData( const std::string& field ) ;
+    int getRecordCount();
 
-    std::vector<std::string>		getRecord( const int rowCount ) ;
+    void *getFieldData(const std::string &field);
 
-    virtual void		dump( std::ostream &strm ) const ;
-} ;
+    std::vector<std::string> getRecord(const int rowCount);
+
+    virtual void dump(std::ostream &strm) const;
+};
 
 #endif // I_CSV_Obj_h
 
