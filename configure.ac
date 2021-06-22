@@ -127,6 +127,30 @@ AS_IF([test x$enable_coverage = xyes && which gcov],
 
 AC_SUBST([GCOVR_FLAGS])
 
+dnl Look for pybind11. This is part of an experiment in using parts of the
+dnl server in Python programs. jhrg 6/22/21
+
+PYBIND11_INC=
+PYBIND11_OPS=
+PYBIND11_EXT=.so
+
+dnl If pybind11 is found, set the includes for the header library and then
+dnl set the other variables if they should have non-default values. jhrg 6/22/21
+AS_IF([python3 -m pybind11 --help > /dev/null],
+    [PYBIND11_INC=$(python3 -m pybind11 --includes)
+     AC_MSG_NOTICE([Set PYBIND11_INC to $PYBIND11_INC])
+     AS_IF([python3-config --extension-suffix > /dev/null],
+        [PYBIND11_EXT=$(python3-config --extension-suffix)
+         AC_MSG_NOTICE([Set PYBIND11_EXT to $PYBIND11_EXT])])
+     dnl Only use this option for OSX
+     AS_CASE([$host],
+         [*darwin*], [PYBIND11_OPS="-undefined dynamic_lookup"
+                      AC_MSG_NOTICE([Set PYBIND11_OPS to $PYBIND11_OPS])])],
+    [AC_MSG_NOTICE([Not Found: pybind11, experimental options disabled])])
+
+AC_SUBST(PYBIND11_INC)
+AC_SUBST(PYBIND11_OPS)
+AC_SUBST(PYBIND11_EXT)
 
 dnl  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 dnl AC_ARG_WITH([cmr], [AS_HELP_STRING([--with-cmr], [Build the CMR Module (built by default in developer mode)])],

@@ -42,7 +42,10 @@ libcsv_module_la_LIBADD = $(LIBADD)
 
 EXTRA_DIST = data csv.conf.in 
 
-CLEANFILES = *~ csv.conf
+CLEANFILES = *~ pybindCSV*.so csv.conf
+
+clean-local:
+	-rm -rf pybindCSV*.dSYM
 
 sample_datadir = $(datadir)/hyrax/data/csv
 sample_data_DATA = data/temperature.csv
@@ -56,28 +59,17 @@ csv.conf: csv.conf.in $(top_builddir)/config.status
 C4_DIR=./cccc
 .PHONY: cccc
 cccc:	
-	cccc --outdir=$(C4_DIR) $(libgateway_module_la_SOURCES)
+	cccc --outdir=$(C4_DIR) $(libcsv_module_la_SOURCES)
 
 # PyBind
-
-# PYBIND11_INC is from: $(python3 -m pybind11 --includes)
-PYBIND11_INC = -I/Library/Frameworks/Python.framework/Versions/3.7/include/python3.7m \
--I/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pybind11/include
 
 PYBIND_CPPFLAGS = $(PYBIND11_INC) -I$(top_srcdir)/dispatch -I$(top_srcdir) -I. $(DAP_CFLAGS)
 
 PYBIND_CXXFLAGS = -O0 -g3 -Wall -std=c++14
 
-# PYBIND11_EXT from: $(python3-config --extension-suffix)
-PYBIND11_EXT = .cpython-39-darwin.so
-
-PYBIND_LDFLAGS = -shared -undefined dynamic_lookup -L$(prefix)/lib -ldap .libs/libcsv_module.a \
+PYBIND_LDFLAGS = -shared $(PYBIND11_OPS) -L$(prefix)/lib -ldap .libs/libcsv_module.a \
 ../../dispatch/.libs/libbes_dispatch.a $(top_builddir)/dap/.libs/libdap_module.a \
 ../../../libdap4/.libs/libdapserver.a
-
-# c++ -I$(top_srcdir)/dispatch -I$(top_srcdir) -I. $(DAP_CFLAGS) -O3 -Wall -shared -std=c++14
-# -undefined dynamic_lookup $(python3 -m pybind11 --includes) pybindCSV.cpp
-# -o pybindCSV$(python3-config --extension-suffix) -L$(prefix)/lib -ldap
 
 pybindCSV:
 	c++  $(PYBIND_CPPFLAGS) $(PYBIND_CXXFLAGS) pybindCSV.cpp -o pybindCSV$(PYBIND11_EXT) $(PYBIND_LDFLAGS)
