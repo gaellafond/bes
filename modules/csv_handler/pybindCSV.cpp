@@ -52,7 +52,8 @@ PYBIND11_MODULE(pybindDAS, m) {
 
 PYBIND11_MODULE(pybindCSV, m) {
     py::class_<CSVRequestHandler>(m, "CSVhandler")
-        .def(py::init<const CSVRequestHandler &>());
+        .def(py::init<const CSVRequestHandler &>())
+        .def("csv_read_attributes", &csv_read_attributes);
         py::print("test");
 #if 0
         .def("dump", py::overload_cast<std::ostream>(&bes::BESDataHandlerInterface::csv_build_das))

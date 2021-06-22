@@ -47,6 +47,7 @@ using std::endl;
 void csv_read_attributes(DAS &das, const string &filename)
 {
     CSV_Obj csvObj;
+
     if (!csvObj.open(filename))
         throw BESNotFoundError(string("Unable to open file ").append(filename), __FILE__, __LINE__);
 
