@@ -63,6 +63,7 @@
 #include <BESDataNames.h>
 #include <BESDebug.h>
 #include <BESUtil.h>
+#include <BESStopWatch.h>
 #include <TempFile.h>
 
 #include <BESDapResponseBuilder.h>
@@ -284,34 +285,43 @@ void updateHistoryAttribute(DMR *dmr, const string &ce)
 void FONcTransmitter::send_data(BESResponseObject *obj, BESDataHandlerInterface &dhi)
 {
     BESDEBUG(MODULE,  prolog << "BEGIN" << endl);
+    ostream &strm = dhi.get_output_stream();
+    if (!strm) throw BESInternalError("Output stream is not set, unable to transmit response.", __FILE__, __LINE__);
+
+#if !NDEBUG
+    stringstream msg;
+    msg << prolog << "Using ostream: " << (void *) &strm << endl;
+    BESDEBUG(MODULE,  msg.str());
+    INFO_LOG( msg.str());
+#endif
 
     try { // Expanded try block so all DAP errors are caught. ndp 12/23/2015
 
         // This object closes the file when it goes out of scope.
         bes::TempFile temp_file(FONcRequestHandler::temp_dir + "/ncXXXXXX");
 
-        BESDEBUG(MODULE,  prolog << "Building response file " << temp_file.get_name() << endl);
-        // Note that 'RETURN_CMD' is the same as the string that determines the file type:
-        // netcdf 3 or netcdf 4. Hack. jhrg 9/7/16
-        FONcTransform ft(obj, &dhi, temp_file.get_name(), dhi.data[RETURN_CMD]);
-        ft.transform();
+        { // These braces define the scope of the BESStopWatch timer below.
 
-        ostream &strm = dhi.get_output_stream();
-        if (!strm) throw BESInternalError("Output stream is not set, can not return as", __FILE__, __LINE__);
+            BESStopWatch bsw(MODULE);
+            bsw.start("DAP2-build-netcdf-response");
 
+            BESDEBUG(MODULE,  prolog << "Building response file " << temp_file.get_name() << endl);
+            // Note that 'RETURN_CMD' is the same as the string that determines the file type:
+            // netcdf 3 or netcdf 4. Hack. jhrg 9/7/16
+            FONcTransform ft(obj, &dhi, temp_file.get_name(), dhi.data[RETURN_CMD]);
+            ft.transform();
+        }
         BESDEBUG(MODULE,  prolog << "Transmitting temp file " << temp_file.get_name() << endl);
-
-        // FONcTransmitter::write_temp_file_to_stream(temp_file.get_fd(), strm); //, loaded_dds->filename(), ncVersion);
         BESUtil::file_to_stream(temp_file.get_name(),strm);
     }
     catch (Error &e) {
-        throw BESDapError("Failed to read data: " + e.get_error_message(), false, e.get_error_code(), __FILE__, __LINE__);
+        throw BESDapError("Failed to read data. Caught libdap::Error, message: " + e.get_error_message(), false, e.get_error_code(), __FILE__, __LINE__);
     }
     catch (BESError &e) {
         throw;
     }
     catch (std::exception &e) {
-        throw BESInternalError("Failed to read data: STL Error: " + string(e.what()), __FILE__, __LINE__);
+        throw BESInternalError("Failed to read data. Caught std::exception, message: " + string(e.what()), __FILE__, __LINE__);
     }
     catch (...) {
         throw BESInternalError("Failed to get read data: Unknown exception caught", __FILE__, __LINE__);
@@ -340,35 +350,36 @@ void FONcTransmitter::send_data(BESResponseObject *obj, BESDataHandlerInterface 
 void FONcTransmitter::send_dap4_data(BESResponseObject *obj, BESDataHandlerInterface &dhi)
 {
     BESDEBUG(MODULE,  prolog << "BEGIN" << endl);
+    ostream &strm = dhi.get_output_stream();
+    if (!strm) throw BESInternalError("Output stream is not set, unable to transmit response.", __FILE__, __LINE__);
+
+#if !NDEBUG
+    stringstream msg;
+    msg << prolog << "Using ostream: " << (void *) &strm << endl;
+    BESDEBUG(MODULE,  msg.str());
+    INFO_LOG( msg.str());
+#endif
 
     try { // Expanded try block so all DAP errors are caught. ndp 12/23/2015
 
         // This object closes the file when it goes out of scope.
         bes::TempFile temp_file(FONcRequestHandler::temp_dir + "/ncXXXXXX");
 
-        BESDEBUG(MODULE,  prolog << "Building response file " << temp_file.get_name() << endl);
-        // Note that 'RETURN_CMD' is the same as the string that determines the file type:
-        // netcdf 3 or netcdf 4. Hack. jhrg 9/7/16
-        // FONcTransform ft(loaded_dmr, dhi, temp_file.get_name(), dhi.data[RETURN_CMD]);
-        FONcTransform ft(obj, &dhi, temp_file.get_name(), dhi.data[RETURN_CMD]);
+        { // These braces define the scope of the BESStopWatch timer below.
 
-        // Call the transform function for DAP4.
-        ft.transform_dap4();
+            BESStopWatch bsw(MODULE);
+            bsw.start("DAP4-build-netcdf-response");
 
-        ostream &strm = dhi.get_output_stream();
+            BESDEBUG(MODULE,  prolog << "Building response file " << temp_file.get_name() << endl);
+            // Note that 'RETURN_CMD' is the same as the string that determines the file type:
+            // netcdf 3 or netcdf 4. Hack. jhrg 9/7/16
+            // FONcTransform ft(loaded_dmr, dhi, temp_file.get_name(), dhi.data[RETURN_CMD]);
+            FONcTransform ft(obj, &dhi, temp_file.get_name(), dhi.data[RETURN_CMD]);
 
-#if !NDEBUG
-        stringstream msg;
-        msg << prolog << "Using ostream: " << (void *) &strm << endl;
-        BESDEBUG(MODULE,  msg.str());
-        INFO_LOG( msg.str());
-#endif
-
-        if (!strm) throw BESInternalError("Output stream is not set, can not return as", __FILE__, __LINE__);
-
+            // Call the transform function for DAP4.
+            ft.transform_dap4();
+        }
         BESDEBUG(MODULE,  prolog << "Transmitting temp file " << temp_file.get_name() << endl);
-
-        // FONcTransmitter::write_temp_file_to_stream(temp_file.get_fd(), strm); //, loaded_dds->filename(), ncVersion);
         BESUtil::file_to_stream(temp_file.get_name(),strm);
     }
     catch (Error &e) {
