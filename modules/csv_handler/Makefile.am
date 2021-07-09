@@ -72,5 +72,6 @@ PYBIND_LDFLAGS = -shared $(PYBIND11_OPS) -L$(prefix)/lib -ldap .libs/libcsv_modu
 ../../../libdap4/.libs/libdapserver.a
 
 pybindCSV:
-	c++  $(PYBIND_CPPFLAGS) $(PYBIND_CXXFLAGS) pybindCSV.cpp -o pybindCSV$(PYBIND11_EXT) $(PYBIND_LDFLAGS)
+	c++  $(PYBIND_CPPFLAGS) $(PYBIND_CXXFLAGS) pybindCSV.cpp pybindDAS.cpp \
+	-o pybindCSV$(PYBIND11_EXT) pybindDAS$(PYBIND11_EXT) $(PYBIND_LDFLAGS)
 

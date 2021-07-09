@@ -4,38 +4,14 @@
 #include <iostream>
 #include <sstream>
 
-#include "config.h"
-
 #include <DAS.h>
-
-#include <CSVRequestHandler.h>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/iostream.h>
 
-// NB Build using:
-// c++ -I/Users/kodi/src/hyrax/bes/modules/csv_handler -I/Users/kodi/src/hyrax/bes/dispatch
-// -I/Users/kodi/src/hyrax/libdap4 -O3 -Wall -shared -std=c++14 -undefined dynamic_lookup
-// $(python3 -m pybind11 --includes) pybindCSV.cpp -o pybindCSV$(python3-config --extension-suffix)
-// -L$prefix/lib -ldap
-
 namespace py = pybind11;
 
-PYBIND11_MODULE(pybindCSV, m) {
-py::class_<CSVRequestHandler>(m, "CSVhandler")
-.def(py::init<const std::string &>())
-.def("dump", &CSVRequestHandler::dump, "dump")
-.def("csv_build_das", &CSVRequestHandler::csv_build_das, "build the das");
-//Where is "csv_read_attributes" located?
-//.def("csv_read_attributes", &CSVRequestHandler::csv_read_attributes, "read the csv attributes");
-
-//.def("csv_build_das", py::overload_cast<BESDataHandlerInterface>(&CSVRequestHandler::csv_build_das));
-//.def("csv_read_attributes", &csv_read_attributes);
-py::print("test");
-}
-
 //FIXME: You may have to limit the number of pybind modules to 1 per cpp file...
-#if 0
 PYBIND11_MODULE(pybindDAS, m) {
     py::class_<libdap::DAS>(m, "DAS")
         //init() is a convenience function that takes the types of a constructor’s
@@ -58,10 +34,9 @@ PYBIND11_MODULE(pybindDAS, m) {
 
         m.def("redirect_func", []() {
             py::scoped_ostream_redirect stream(
-                    std::cout,                               // std::ostream&
-                    py::module_::import("sys").attr("stdout") // Python output
+                std::cout,                               // std::ostream&
+                py::module_::import("sys").attr("stdout") // Python output
             );
-        //call_redirect_func();
+            //call_redirect_func();
         });
 }
-#endif
