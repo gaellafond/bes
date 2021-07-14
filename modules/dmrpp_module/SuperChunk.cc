@@ -505,7 +505,7 @@ void SuperChunk::read_aggregate_bytes()
 void SuperChunk::retrieve_data() {
     BESDEBUG(SUPER_CHUNK_MODULE, prolog << "BEGIN" << endl );
     if (d_is_read) {
-        BESDEBUG(SUPER_CHUNK_MODULE, prolog << "SuperChunk (" << (void **) this << ") has already been read! Returning." << endl);
+        BESDEBUG(SUPER_CHUNK_MODULE, prolog << "SuperChunk(" << (void **) this << ") has already been read! Returning." << endl);
         return;
     }
 
@@ -533,7 +533,7 @@ void SuperChunk::retrieve_data() {
         chunk->set_is_read(true);
         chunk->set_bytes_read(chunk->get_size());
     }
-    BESDEBUG(SUPER_CHUNK_MODULE, prolog << "END - SuperChunk (" << (void **) this << ") data retrieval completed." << endl );
+    BESDEBUG(SUPER_CHUNK_MODULE, prolog << "END - SuperChunk(" << (void **) this << ") data retrieval completed." << endl );
 }
 
 
@@ -543,7 +543,8 @@ void SuperChunk::retrieve_data() {
  */
 void SuperChunk::process_child_chunks() {
     BESDEBUG(SUPER_CHUNK_MODULE, prolog << "BEGIN" << endl );
-    retrieve_data();
+    if(!d_is_read)
+        retrieve_data();
 
     vector<unsigned long long> constrained_array_shape = d_parent_array->get_shape(true);
     BESDEBUG(SUPER_CHUNK_MODULE, prolog << "d_use_compute_threads: " << (DmrppRequestHandler::d_use_compute_threads ? "true" : "false") << endl);
@@ -556,7 +557,7 @@ void SuperChunk::process_child_chunks() {
         sw.start(prolog+"Serial Chunk Processing. id: " + d_id);
 #endif
         for(const auto &chunk :get_chunks()){
-            BESDEBUG(SUPER_CHUNK_MODULE, prolog << "Processing chunk(" << ((void *)chunk.get()) << ")" << endl);
+            BESDEBUG(SUPER_CHUNK_MODULE, prolog << "Processing Chunk(" << ((void *)chunk.get()) << ")" << endl);
             process_one_chunk(chunk,d_parent_array,constrained_array_shape);
         }
     }
@@ -570,7 +571,7 @@ void SuperChunk::process_child_chunks() {
 #endif
         queue<shared_ptr<Chunk>> chunks_to_process;
         for(const auto &chunk:get_chunks()){
-            BESDEBUG(SUPER_CHUNK_MODULE, prolog << "Queued chunk(" << ((void *)chunk.get()) << ")" << endl);
+            BESDEBUG(SUPER_CHUNK_MODULE, prolog << "Queued Chunk(" << ((void *)chunk.get()) << ")" << endl);
             chunks_to_process.push(chunk);
         }
 
