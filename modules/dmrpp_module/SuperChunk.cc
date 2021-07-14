@@ -39,7 +39,7 @@
 
 #define prolog std::string("SuperChunk::").append(__func__).append("() - ")
 
-#define SUPER_CHUNK_MODULE "dmrpp:3"
+#define SUPER_CHUNK_MODULE "dmrpp:sc"
 
 using std::stringstream;
 using std::string;
@@ -503,6 +503,7 @@ void SuperChunk::read_aggregate_bytes()
  * @brief Cause the SuperChunk and all of it's subordinate Chunks to be read.
  */
 void SuperChunk::retrieve_data() {
+    BESDEBUG(SUPER_CHUNK_MODULE, prolog << "BEGIN" << endl );
     if (d_is_read) {
         BESDEBUG(SUPER_CHUNK_MODULE, prolog << "SuperChunk (" << (void **) this << ") has already been read! Returning." << endl);
         return;
@@ -532,6 +533,7 @@ void SuperChunk::retrieve_data() {
         chunk->set_is_read(true);
         chunk->set_bytes_read(chunk->get_size());
     }
+    BESDEBUG(SUPER_CHUNK_MODULE, prolog << "END - SuperChunk (" << (void **) this << ") data retrieval completed." << endl );
 }
 
 
@@ -548,15 +550,18 @@ void SuperChunk::process_child_chunks() {
     BESDEBUG(SUPER_CHUNK_MODULE, prolog << "d_max_compute_threads: " << DmrppRequestHandler::d_max_compute_threads << endl);
 
     if(!DmrppRequestHandler::d_use_compute_threads){
+        // This is the single thread experience.
 #if DMRPP_ENABLE_THREAD_TIMERS
         BESStopWatch sw(SUPER_CHUNK_MODULE);
         sw.start(prolog+"Serial Chunk Processing. id: " + d_id);
 #endif
         for(const auto &chunk :get_chunks()){
+            BESDEBUG(SUPER_CHUNK_MODULE, prolog << "Processing chunk(" << ((void *)chunk.get()) << ")" << endl);
             process_one_chunk(chunk,d_parent_array,constrained_array_shape);
         }
     }
     else {
+        // This is the multi-threaded experience.
 #if DMRPP_ENABLE_THREAD_TIMERS
         stringstream timer_name;
         timer_name << prolog << "Concurrent Chunk Processing. id: " << d_id;
@@ -564,8 +569,10 @@ void SuperChunk::process_child_chunks() {
         sw.start(timer_name.str());
 #endif
         queue<shared_ptr<Chunk>> chunks_to_process;
-        for(const auto &chunk:get_chunks())
+        for(const auto &chunk:get_chunks()){
+            BESDEBUG(SUPER_CHUNK_MODULE, prolog << "Queued chunk(" << ((void *)chunk.get()) << ")" << endl);
             chunks_to_process.push(chunk);
+        }
 
         process_chunks_concurrent(d_id, chunks_to_process, d_parent_array, constrained_array_shape);
     }

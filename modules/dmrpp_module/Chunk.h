@@ -242,7 +242,6 @@ public:
             unsigned long long size,
             unsigned long long offset,
             const std::vector<unsigned long long> &pia_vec) :
-            d_query_marker(""),
             d_byte_order(std::move(order)),
             d_size(size), d_offset(offset),
             d_read_buffer_is_mine(true),
