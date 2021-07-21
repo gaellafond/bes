@@ -24,5 +24,21 @@ http://docs.opendap.org/index.php/Hyrax when it is available.
 
 For the pybind experimental code:
 
+To set up a conda environment with pybind11 named 'pybind':
+
+conda create -n pybind
+conda activate pybind
+conda install pybind11
+
+To build the python code:
+Once in the pybind conda env, run configure at the top-level of the bes:
+./configure --prefix=$prefix --with-dependencies=$prefix/deps --enable-developer
+
+Then
+make pybindCSV
+make pybindDAS
+
+To run/test the Python code:
+
 run `python3`
 then: `import pybindCSV`

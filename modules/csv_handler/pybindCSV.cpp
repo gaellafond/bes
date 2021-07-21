@@ -9,6 +9,7 @@
 #include <DAS.h>
 
 #include <CSVRequestHandler.h>
+#include <CSVDAS.h>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/iostream.h>
@@ -22,16 +23,16 @@
 namespace py = pybind11;
 
 PYBIND11_MODULE(pybindCSV, m) {
-py::class_<CSVRequestHandler>(m, "CSVhandler")
-.def(py::init<const std::string &>())
-.def("dump", &CSVRequestHandler::dump, "dump")
-.def("csv_build_das", &CSVRequestHandler::csv_build_das, "build the das");
-//Where is "csv_read_attributes" located?
-//.def("csv_read_attributes", &CSVRequestHandler::csv_read_attributes, "read the csv attributes");
+    py::class_<CSVRequestHandler>(m, "CSVHandler")
+        .def(py::init<const std::string &>())
+        .def("dump", &CSVRequestHandler::dump, "dump")
+        .def("csv_build_das", &CSVRequestHandler::csv_build_das, "build the das")
+        //Where is "csv_read_attributes" located?
+        .def("csv_read_attributes", &::csv_read_attributes, "read the csv attributes");
 
-//.def("csv_build_das", py::overload_cast<BESDataHandlerInterface>(&CSVRequestHandler::csv_build_das));
-//.def("csv_read_attributes", &csv_read_attributes);
-py::print("test");
+    //.def("csv_build_das", py::overload_cast<BESDataHandlerInterface>(&CSVRequestHandler::csv_build_das));
+    //.def("csv_read_attributes", &csv_read_attributes);
+    py::print("test");
 }
 
 //FIXME: You may have to limit the number of pybind modules to 1 per cpp file...

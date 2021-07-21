@@ -24,13 +24,27 @@ PYBIND11_MODULE(pybindDAS, m) {
         .def("parse", py::overload_cast<int>(&libdap::DAS::parse), "parse with int")
         .def("parse", py::overload_cast<FILE*>(&libdap::DAS::parse), "parse with FILE")
         .def("print", py::overload_cast<FILE*, bool>(&libdap::DAS::print), "print das with FILE out")
-        .def("print", py::overload_cast<ostream&, bool>(&libdap::DAS::print), "print das with ostream")
+        .def("print", py::overload_cast<ostream&, bool>(&libdap::DAS::print), "print das with ostream");
+
         //print statement
-        .def("__repr__", [](const libdap::DAS &a) {
+        m.def("print2", [](const libdap::DAS &a) {
             std::ostringstream oss;
             const_cast<libdap::DAS&>(a).print(oss, false);
             return oss.str();
         });
+
+#if 0
+        m.def("__repr__", [](const libdap::DAS &a) {
+            std::ostringstream oss;
+            const_cast<libdap::DAS&>(a).print(oss, false);
+            return oss.str();
+        });
+
+        m.def("get_das", [](const libdap::DAS &a) {
+            return a;
+        }, py::return_value_policy::reference);
+
+#endif
 
         m.def("redirect_func", []() {
             py::scoped_ostream_redirect stream(
@@ -38,5 +52,5 @@ PYBIND11_MODULE(pybindDAS, m) {
                 py::module_::import("sys").attr("stdout") // Python output
             );
             //call_redirect_func();
-        });
+            });
 }
