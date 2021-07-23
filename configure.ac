@@ -274,8 +274,8 @@ AS_IF([test -z "$CXX11_FLAG"],
       [CXX_FLAGS_CHECK([--std=c++0x], [CXX11_FLAG=--std=c++0x], [])])
 
 AS_IF([test -z "$CXX11_FLAG"],
-      [AC_MSG_ERROR([Not using C++-11 (or C++0x)])],
-      [AC_MSG_NOTICE([Using $CXX11_FLAG for C++-11 support])
+      [AC_MSG_ERROR([Not using C++11 (or C++0x)])],
+      [AC_MSG_NOTICE([Using $CXX11_FLAG for C++11 support])
        cxx_debug_flags="$cxx_debug_flags --pedantic $CXX11_FLAG"])
 
 AC_SUBST(CXX11_FLAG)
@@ -1129,6 +1129,7 @@ AM_COND_IF([DAP_BUILTIN_MODULES],
 	
     modules/fileout_netcdf/Makefile 	
     modules/fileout_netcdf/tests/Makefile 
+    modules/fileout_netcdf/unit-tests/Makefile
     modules/fileout_netcdf/tests/atlocal
     modules/fileout_netcdf/data/build_test_data/Makefile 
 	

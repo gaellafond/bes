@@ -49,6 +49,7 @@ using namespace::libdap ;
 #include <BESDataHandlerInterface.h>
 
 class FONcBaseType ;
+class BESResponseObject;
 
 /** @brief Transformation object that converts an OPeNDAP DataDDS to a
  * netcdf file
@@ -62,6 +63,8 @@ private:
 	int _ncid;
 	DDS *_dds;
     DMR *_dmr;
+    BESResponseObject *d_obj;
+    BESDataHandlerInterface *d_dhi;
 	string _localfile;
 	string _returnAs;
 	vector<FONcBaseType *> _fonc_vars;
@@ -84,8 +87,9 @@ public:
 	 */
 	FONcTransform(DDS *dds, BESDataHandlerInterface &dhi, const string &localfile, const string &netcdfVersion = "netcdf");
 	FONcTransform(DMR *dmr, BESDataHandlerInterface &dhi, const string &localfile, const string &netcdfVersion = "netcdf");
-	virtual ~FONcTransform();
-	virtual void transform();
+    FONcTransform(BESResponseObject *obj, BESDataHandlerInterface *dhi, const string &localfile, const string &ncVersion = "netcdf");
+    virtual ~FONcTransform();
+	virtual void transform_dap2(ostream &strm);
 	virtual void transform_dap4();
 
 
@@ -99,6 +103,9 @@ private:
     virtual bool check_group_support();
     virtual void gen_included_grp_list(D4Group*grp);
 
+    virtual bool is_streamable();
+    virtual bool is_dds_streamable();
+    virtual bool is_dmr_streamable(D4Group *group);
 
 };
 

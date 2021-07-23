@@ -34,6 +34,11 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
+#include <string>     // std::string, std::stol
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
@@ -950,13 +955,19 @@ bool BESUtil::endsWith(string const &fullString, string const &ending)
 }
 
 /**
- * If the value of the BES Key BES.CancelTimeoutOnSend is true, cancel the
- * timeout. The intent of this is to stop the timeout counter once the
+ * @brief Checks if the timeout alarm should be canceled based on the value of the BES key BES.CancelTimeoutOnSend
+ *
+ * If the value of the BES Key BES.CancelTimeoutOnSend is false || no, then
+ * do not cancel the timeout alarm.
+ * The intent of this is to stop the timeout counter once the
  * BES starts sending data back since, the network link used by a remote
  * client may be low-bandwidth and data providers might want to ensure those
  * users get their data (and don't submit second, third, ..., requests when/if
  * the first one fails). The timeout is initiated in the BES framework when it
  * first processes the request.
+ *
+ * Default: If the BES key BES.CancelTimeoutOnSend is not set, or if it is set
+ * to true || yes then the timeout alrm will be canceled.
  *
  * @note The BES timeout is set/controlled in bes/dispatch/BESInterface
  * in the 'int BESInterface::execute_request(const string &from)' method.
@@ -966,16 +977,17 @@ bool BESUtil::endsWith(string const &fullString, string const &ending)
  */
 void BESUtil::conditional_timeout_cancel()
 {
-    bool cancel_timeout_on_send = false;
-    bool found = false;
-    string doset = "";
-    const string dosettrue = "true";
-    const string dosetyes = "yes";
+    const string false_str = "false";
+    const string no_str = "no";
 
-    TheBESKeys::TheKeys()->get_value(BES_KEY_TIMEOUT_CANCEL, doset, found);
-    if (true == found) {
-        doset = BESUtil::lowercase(doset);
-        if (dosettrue == doset || dosetyes == doset) cancel_timeout_on_send = true;
+    bool cancel_timeout_on_send = true;
+    bool found = false;
+    string value;
+
+    TheBESKeys::TheKeys()->get_value(BES_KEY_TIMEOUT_CANCEL, value, found);
+    if (found) {
+        value = BESUtil::lowercase(value);
+        if ( value == false_str || value == no_str) cancel_timeout_on_send = false;
     }
     BESDEBUG(MODULE, __func__ << "() - cancel_timeout_on_send: " << (cancel_timeout_on_send ? "true" : "false") << endl);
     if (cancel_timeout_on_send) alarm(0);
@@ -1201,6 +1213,11 @@ void ios_state_msg(std::ios &ios_ref, std::stringstream &msg) {
  */
 void BESUtil::file_to_stream(const std::string &file_name, std::ostream &o_strm)
 {
+    stringstream msg;
+    msg << prolog << "Using ostream: " << (void *) &o_strm << " cout: " << (void *) &cout << endl;
+    BESDEBUG(MODULE,  msg.str());
+    INFO_LOG( msg.str());
+
     char rbuffer[OUTPUT_FILE_BLOCK_SIZE];
     std::ifstream i_stream(file_name, std::ios_base::in | std::ios_base::binary);  // Use binary mode so we can
 
@@ -1258,17 +1275,185 @@ void BESUtil::file_to_stream(const std::string &file_name, std::ostream &o_strm)
     if(!o_strm.good()){
         stringstream msg;
         msg << prolog << "There was an ostream error during transmit. Transmitted " << tcount  << " bytes.";
+        ios_state_msg(o_strm, msg);
+        auto crntpos = o_strm.tellp();
+        msg << " current_position: " << crntpos << endl;
+        BESDEBUG(MODULE, msg.str());
+        ERROR_LOG(msg.str());
+        // TODO Should we throw an exception here? Maybe BESInternalFatalError ??
+    }
+
+    msg.str("");
+    msg << prolog << "Sent "<< tcount << " bytes from file '" << file_name<< "'. " << endl;
+    BESDEBUG(MODULE,msg.str());
+    INFO_LOG(msg.str());
+}
+
+uint64_t BESUtil::file_to_stream_helper(const std::string &file_name, std::ostream &o_strm, uint64_t byteCount){
+
+    stringstream msg;
+    msg << prolog << "Using ostream: " << (void *) &o_strm << " cout: " << (void *) &cout << endl;
+    BESDEBUG(MODULE,  msg.str());
+    INFO_LOG( msg.str());
+
+    char rbuffer[OUTPUT_FILE_BLOCK_SIZE];
+    std::ifstream i_stream(file_name, std::ios_base::in | std::ios_base::binary);  // Use binary mode so we can
+
+    // good() returns true if !(eofbit || badbit || failbit)
+    if(!i_stream.good()){
+        stringstream msg;
+        msg << prolog << "Failed to open file " << file_name;
         ios_state_msg(i_stream, msg);
+        BESDEBUG(MODULE, msg.str() << endl);
+        throw BESInternalError(msg.str(),__FILE__,__LINE__);
+    }
+
+    // good() returns true if !(eofbit || badbit || failbit)
+    if(!o_strm.good()){
+        stringstream msg;
+        msg << prolog << "Problem with ostream. " << file_name;
+        ios_state_msg(i_stream, msg);
+        BESDEBUG(MODULE, msg.str() << endl);
+        throw BESInternalError(msg.str(),__FILE__,__LINE__);
+    }
+
+    // this is where we advance to the last byte that was read
+    i_stream.seekg(byteCount);
+
+    //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    // This is where the file is copied.
+    while (i_stream.good() && o_strm.good()){
+        i_stream.read(&rbuffer[0], OUTPUT_FILE_BLOCK_SIZE);      // Read at most n bytes into
+        o_strm.write(&rbuffer[0], i_stream.gcount()); // buf, then write the buf to
+        BESDEBUG(MODULE, "i_stream: " << i_stream.gcount() << endl);
+        byteCount += i_stream.gcount();
+    }
+    o_strm.flush();
+
+    // fail() is true if failbit || badbit got set, but does not consider eofbit
+    if(i_stream.fail() && !i_stream.eof()){
+        stringstream msg;
+        msg << prolog << "There was an ifstream error when reading from: " << file_name;
+        ios_state_msg(i_stream, msg);
+        msg << " last_lap: " << i_stream.gcount() << " bytes";
+        msg << " total_read: " << byteCount << " bytes";
+        BESDEBUG(MODULE, msg.str() << endl);
+        throw BESInternalError(msg.str(),__FILE__,__LINE__);
+    }
+
+    // If we're not at the eof of the input stream then we have failed.
+    if (!i_stream.eof()){
+        stringstream msg;
+        msg << prolog << "Failed to reach EOF on source file: " << file_name;
+        ios_state_msg(i_stream, msg);
+        msg << " last_lap: " << i_stream.gcount() << " bytes";
+        msg << " total_read: " << byteCount << " bytes";
+        BESDEBUG(MODULE, msg.str() << endl);
+        throw BESInternalError(msg.str(),__FILE__,__LINE__);
+    }
+
+    // And if something went wrong on the output stream we have failed.
+    if(!o_strm.good()){
+        stringstream msg;
+        msg << prolog << "There was an ostream error during transmit. Transmitted " << byteCount  << " bytes.";
+        ios_state_msg(o_strm, msg);
+        auto crntpos = o_strm.tellp();
+        msg << " current_position: " << crntpos << endl;
+        BESDEBUG(MODULE, msg.str());
+        ERROR_LOG(msg.str());
+        // TODO Should we throw an exception here? Maybe BESInternalFatalError ??
+    }
+
+    msg.str(prolog);
+    msg << "Sent "<< byteCount << " bytes from file '" << file_name<< "'. " << endl;
+    BESDEBUG(MODULE,msg.str());
+    INFO_LOG(msg.str());
+
+    i_stream.close();
+
+    return byteCount;
+}
+
+
+// I added this because maybe using the low-level file calls was important. I'm not
+// sure and the iostreams in C++ are safer. jhrg 6/4/21
+#define FILE_CALLS 0
+
+/**
+ * *brief child thread/task to stream a netCDF file as it is built
+ * @param file_name
+ * @param o_strm
+ */
+uint64_t BESUtil::file_to_stream_task(const std::string &file_name, std::atomic<bool> &file_write_done, std::ostream &o_strm) {
+    stringstream msg;
+    msg << prolog << "Using ostream: " << (void *) &o_strm << " cout: " << (void *) &cout << endl;
+    BESDEBUG(MODULE, msg.str());
+    INFO_LOG(msg.str());
+
+    char rbuffer[OUTPUT_FILE_BLOCK_SIZE];
+
+    // this hack gets the code past the tests when the task is launched
+    // using the async policy. It's not needed if the task is run as a
+    // deferred task. jhrg 6/4/21
+    //sleep(1);
+
+    std::ifstream i_stream(file_name, std::ios_base::in | std::ios_base::binary);
+#if FILE_CALLS
+    int fd = open(file_name.c_str(), O_RDONLY | O_NONBLOCK);
+    int eof = false;
+#endif
+
+    //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    // This is where the file is copied.
+    BESDEBUG(MODULE, "Starting transfer" << endl);
+    uint64_t tcount = 0;
+    while (!i_stream.bad() && !i_stream.fail() && o_strm.good()) {
+        if (file_write_done && i_stream.eof()) {
+            BESDEBUG(MODULE, "breaking out of loop" << endl);
+            break;
+        }
+        else {
+            i_stream.read(&rbuffer[0], OUTPUT_FILE_BLOCK_SIZE);      // Read at most n bytes into
+
+#if FILE_CALLS
+            int status = read(fd, &rbuffer[0], OUTPUT_FILE_BLOCK_SIZE);
+            if (status == 0) {
+                eof = true;
+            }
+            else if (status == -1) {
+                BESDEBUG(MODULE, "read() call error: " << errno << endl);
+            }
+
+            o_strm.write(&rbuffer[0], status); // buf, then write the buf to
+            tcount += status;
+#endif
+
+            o_strm.write(&rbuffer[0], i_stream.gcount()); // buf, then write the buf to
+            tcount += i_stream.gcount();
+            BESDEBUG(MODULE, "transfer bytes " << tcount << endl);
+        }
+    }
+
+#if FILE_CALLS
+    close(fd);
+#endif
+    o_strm.flush();
+
+    // And if something went wrong on the output stream we have failed.
+    if(!o_strm.good()){
+        stringstream msg;
+        msg << prolog << "There was an ostream error during transmit. Transmitted " << tcount  << " bytes.";
+        ios_state_msg(o_strm, msg);
         auto crntpos = o_strm.tellp();
         msg << " current_position: " << crntpos << endl;
         BESDEBUG(MODULE, msg.str());
         INFO_LOG(msg.str());
     }
 
-    stringstream msg;
-    msg << prolog << "Sent "<< tcount << " bytes from file '" << file_name<< "'. " << endl;
+    msg.str(prolog);
+    msg << "Sent "<< tcount << " bytes from file '" << file_name<< "'. " << endl;
     BESDEBUG(MODULE,msg.str());
     INFO_LOG(msg.str());
+
+    return tcount;
 }
-
-

@@ -29,8 +29,8 @@ BES.Catalog.catalog.TypeMatch+=h5:.*\.h5(\.bz2|\.gz|\.Z)?$;
 BES.Catalog.catalog.Include=;
 BES.Catalog.catalog.Exclude=^\..*;
 
-BES.FollowSymLinks=No
-BES.Catalog.catalog.FollowSymLinks=No
+BES.FollowSymLinks=Yes
+BES.Catalog.catalog.FollowSymLinks=Yes
 
 BES.ServerPort=10002
 
@@ -68,7 +68,7 @@ FONc.ChunkSize=4096
 FONc.ClassicModel=true
 # Uncomment the following line to suppress the output of global attributes.
 #FONc.NoGlobalAttrs=true
-
+NC.PromoteByteToShort=true
 
 # For HDF4
 
