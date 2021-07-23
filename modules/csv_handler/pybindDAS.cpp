@@ -25,7 +25,7 @@ PYBIND11_MODULE(pybindDAS, m) {
         .def("parse", py::overload_cast<FILE*>(&libdap::DAS::parse), "parse with FILE")
         .def("print", py::overload_cast<FILE*, bool>(&libdap::DAS::print), "print das with FILE out")
         .def("print", py::overload_cast<ostream&, bool>(&libdap::DAS::print), "print das with ostream")
-
+#if 0
         //print statement
         .def("print", [](const libdap::DAS &a) {
             std::ostringstream oss;
@@ -43,6 +43,14 @@ PYBIND11_MODULE(pybindDAS, m) {
             std::ostringstream oss;
             const_cast<libdap::DAS&>(a).print(oss, false);
             return oss.str();
+        })
+#endif
+        .def("print", [](const libdap::DAS &a) {
+            py::scoped_ostream_redirect stream(
+                std::cout,                               // std::ostream&
+                py::module_::import("sys").attr("stdout") // Python output
+            );
+            const_cast<libdap::DAS&>(a).print(std::cout, false);
         });
 #if 0
         m.def("__repr__", [](const libdap::DAS &a) {
