@@ -24,15 +24,26 @@ PYBIND11_MODULE(pybindDAS, m) {
         .def("parse", py::overload_cast<int>(&libdap::DAS::parse), "parse with int")
         .def("parse", py::overload_cast<FILE*>(&libdap::DAS::parse), "parse with FILE")
         .def("print", py::overload_cast<FILE*, bool>(&libdap::DAS::print), "print das with FILE out")
-        .def("print", py::overload_cast<ostream&, bool>(&libdap::DAS::print), "print das with ostream");
+        .def("print", py::overload_cast<ostream&, bool>(&libdap::DAS::print), "print das with ostream")
 
         //print statement
-        m.def("print2", [](const libdap::DAS &a) {
+        .def("print", [](const libdap::DAS &a) {
+            std::ostringstream oss;
+            const_cast<libdap::DAS&>(a).print(oss, false);
+            return oss.str();
+        })
+
+        // This does not do what I'd expect. jhrg 7/23/21
+        .def("ref", [](const libdap::DAS &a) {
+            return a;
+        }, py::return_value_policy::reference)
+
+        // Why does this not print the '\n' stuff like the 'print' method above? jhrg 7/23/21
+        .def("__repr__", [](const libdap::DAS &a) {
             std::ostringstream oss;
             const_cast<libdap::DAS&>(a).print(oss, false);
             return oss.str();
         });
-
 #if 0
         m.def("__repr__", [](const libdap::DAS &a) {
             std::ostringstream oss;
@@ -44,7 +55,7 @@ PYBIND11_MODULE(pybindDAS, m) {
             return a;
         }, py::return_value_policy::reference);
 
-#endif
+
 
         m.def("redirect_func", []() {
             py::scoped_ostream_redirect stream(
@@ -53,4 +64,5 @@ PYBIND11_MODULE(pybindDAS, m) {
             );
             //call_redirect_func();
             });
+#endif
 }
