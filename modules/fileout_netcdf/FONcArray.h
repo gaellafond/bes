@@ -91,6 +91,9 @@ private:
     // The netcdf chunk sizes for each dimension of this array.
     std::vector<size_t> d_chunksizes;
 
+    unsigned int storagesize;
+    unsigned int def_level;
+
     // This is vector holds instances of FONcMap* that wrap existing Array
     // objects that are pushed onto the global FONcGrid::Maps vector. These
     // are hand made reference counting pointers. I'm not sure we need to

@@ -67,7 +67,7 @@ const int MAX_CHUNK_SIZE = 1024;
  */
 FONcArray::FONcArray(BaseType *b) :
         FONcBaseType(), d_a(0), d_array_type(NC_NAT), d_ndims(0), d_actual_ndims(0), d_nelements(1), d4_dim_ids(0),
-        d_dim_ids(0), d_dim_sizes(0), /* FIXME d_str_data(0),*/ d_dont_use_it(false), d_chunksizes(0),
+        d_dim_ids(0), d_dim_sizes(0), /* FIXME d_str_data(0),*/ d_dont_use_it(false), d_chunksizes(0),storagesize(0),def_level(0),
         d_grid_maps(0), d4_def_dim(false) {
     d_a = dynamic_cast<Array *>(b);
     if (!d_a) {
@@ -314,6 +314,9 @@ void FONcArray::convert(vector<string> embed, bool _dap4, bool is_dap4_group) {
         }
     }
 
+    // Obtain the storagesize and deflate level
+    storagesize = d_a->get_storagesize();
+    def_level = d_a->get_deflate_level();
     BESDEBUG("fonc", "FONcArray::convert() - done converting array " << _varname << endl);
 }
 
@@ -446,6 +449,24 @@ void FONcArray::define(int ncid) {
         BESDEBUG("fonc", "FONcArray::define() netcdf-4 version is " << _ncVersion << endl);
         if (isNetCDF4()) {
             BESDEBUG("fonc", "FONcArray::define() Working netcdf-4 branch " << endl);
+
+            if(storagesize >0 && def_level >0) { //direct chunk IO
+                stax = nc_def_var_chunking_enhanced(ncid, _varid, 0, storagesize, &d_chunksizes[0]);
+                if (stax != NC_NOERR) {
+                    string err = "fileout.netcdf DC - Failed to define chunking for variable " + _varname;
+                    FONcUtils::handle_error(stax, err, __FILE__, __LINE__);
+                }
+                stax = nc_def_var_deflate(ncid, _varid, 0, 1, def_level);
+
+                if (stax != NC_NOERR) {
+                    string err = (string) "fileout.netcdf DC - Failed to define compression (deflate) level for variable "
+                                 + _varname;
+                    FONcUtils::handle_error(stax, err, __FILE__, __LINE__);
+                }
+
+
+            }
+            else {
             if (FONcRequestHandler::chunk_size == 0)
                 // I have no idea if chunksizes is needed in this case.
                 stax = nc_def_var_chunking(ncid, _varid, NC_CONTIGUOUS, &d_chunksizes[0]);
@@ -470,6 +491,7 @@ void FONcArray::define(int ncid) {
                                  + _varname;
                     FONcUtils::handle_error(stax, err, __FILE__, __LINE__);
                 }
+            }
             }
         }
 
