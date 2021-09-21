@@ -143,6 +143,9 @@ void FONcArray::convert(vector<string> embed, bool _dap4, bool is_dap4_group) {
     _varname = FONcUtils::gen_name(embed, _varname, _orig_varname);
 
     BESDEBUG("fonc", "FONcArray::convert() - converting array " << _varname << endl);
+    // Obtain the storagesize and deflate level
+    storagesize = d_a->get_storagesize();
+    def_level = d_a->get_deflate_level();
 
     d_array_type = FONcUtils::get_nc_type(d_a->var(), isNetCDF4_ENHANCED());
 
@@ -175,7 +178,11 @@ void FONcArray::convert(vector<string> embed, bool _dap4, bool is_dap4_group) {
         d_nelements *= size;
 
         // Set COMPRESSION CHUNK SIZE for each dimension.
-        d_chunksizes.push_back(size <= MAX_CHUNK_SIZE ? size : MAX_CHUNK_SIZE);
+        //d_chunksizes.push_back(size <= MAX_CHUNK_SIZE ? size : MAX_CHUNK_SIZE);
+        if(storagesize >0 && def_level >0)  
+            d_chunksizes.push_back(size);
+        else 
+            d_chunksizes.push_back(size <= MAX_CHUNK_SIZE ? size : MAX_CHUNK_SIZE);
 
         BESDEBUG("fonc", "FONcArray::convert() - dim num: " << dimnum << ", dim size: " << size << ", chunk size: "
                                                             << d_chunksizes[dimnum] << endl);
@@ -315,8 +322,8 @@ void FONcArray::convert(vector<string> embed, bool _dap4, bool is_dap4_group) {
     }
 
     // Obtain the storagesize and deflate level
-    storagesize = d_a->get_storagesize();
-    def_level = d_a->get_deflate_level();
+//    storagesize = d_a->get_storagesize();
+//    def_level = d_a->get_deflate_level();
     BESDEBUG("fonc", "FONcArray::convert() - done converting array " << _varname << endl);
 }
 
@@ -451,6 +458,12 @@ void FONcArray::define(int ncid) {
             BESDEBUG("fonc", "FONcArray::define() Working netcdf-4 branch " << endl);
 
             if(storagesize >0 && def_level >0) { //direct chunk IO
+
+                BESDEBUG("fonc","FONcArray:: storagesize is "<<storagesize <<endl);
+                BESDEBUG("fonc","FONcArray:: deflate level is "<<def_level <<endl);
+                //for (unsigned int i =0; i<d_chunksizes.size();i++) 
+                //    BESDEBUG("fonc","FONcArray:: d_chunksizes["<<i<<"] = "<<d_chunksizes[i] <<endl);
+
                 stax = nc_def_var_chunking_enhanced(ncid, _varid, 0, storagesize, &d_chunksizes[0]);
                 if (stax != NC_NOERR) {
                     string err = "fileout.netcdf DC - Failed to define chunking for variable " + _varname;
