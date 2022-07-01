@@ -14,7 +14,7 @@ implementation, the data must be stored in HDF5 or NetCDF4 files. The data
 do not, however, have to be reformatted to be used with the Hyrax server.
 Furthermore, the data objects are subset 'in-place' from S3 instead of first
 transferring the object and then serving it, resulting in lower response 
-latency than other solutions for S3 darta access such as those based on FUSE
+latency than other solutions for S3 data access such as those based on FUSE
 filesystems. For data users, access is seamless - there is no difference between
 access to data stored in S3 or on spinning disk.
 
