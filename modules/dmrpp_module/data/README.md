@@ -95,7 +95,7 @@ netcdf-4/hdf5 file. It is used by both `ingest_filesystem` and `ingest_s3bucket`
 
 ### example 1
 
-Creates a _dmr++_ file (_foo.dmrpp_) whose binary object URL is a file URL containing the fully qualifed path to the source data file as it's value. 
+Creates a _dmr++_ file (_foo.dmrpp_) whose binary object URL is a file URL containing the fully qualifed path to the source data file as its value. 
 
 ```
 get_dmrpp -v -d `pwd` -o foo.dmrpp -u file://`pwd`/dmrpp/chunked_shuffled_fourD.h5 dmrpp/chunked_shuffled_fourD.h5
