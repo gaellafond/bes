@@ -41,7 +41,7 @@ There are three programs for building _dmr++_ files:
 `netcdf-4`/`hdf5` file. 
 - The program `ingest_filesystem` builds a collection of _dmr++_ files
 from data held in the locally mounted filesystem. 
-- The program `ingest3bucket` builds a collection of _dmr++_ files
+- The program `ingest_s3bucket` builds a collection of _dmr++_ files
 from data held in Amazon's S3 storage.
 
 NOTE: Organizationally, this directory (_data_) and it's child directory 
