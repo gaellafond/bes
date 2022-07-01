@@ -107,9 +107,9 @@ get_dmrpp -v -d `pwd` -o foo.dmrpp -u file://`pwd`/dmrpp/chunked_shuffled_fourD.
     <dd><em>The data root directory to be used by the BES. 
     In this example it is set to the current directory.</em></dd>
     <dt><tt>-o  foo.dmrpp</tt></dt>
-    <dd><em>The dmr++ content will be written to the file foo.dmrpp<</em></dd>
+    <dd><em>The dmr++ content will be written to the file foo.dmrpp</em></dd>
     <dt><tt>-u  file://`pwd`/dmrpp/chunked_shuffled_fourD.h5</tt></dt>
-    <dd><em>The dmr++ file will use this full qualified file URL as its binary data location.</em></dd>
+    <dd><em>The dmr++ file will use this fully qualified file URL as its binary data location.</em></dd>
     <dt><tt>dmrpp/chunked_shuffled_fourD.h5</tt></dt>
     <dd><em>The hdf5 file from which to build the dmr++ file.</em></dd>
 </dl>
