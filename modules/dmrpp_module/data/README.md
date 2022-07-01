@@ -128,9 +128,9 @@ get_dmrpp -v -d `pwd` -o foo.dmrpp -u https://s3.amazonaws.com/opendap.scratch/d
     <dd><em>The data root directory to be used by the BES. 
     In this example it is set to the current directory.</em></dd>       
     <dt><tt>-o  foo.dmrpp</tt></dt>
-    <dd><em>The dmr++ content will be written to the file foo.dmrpp<</em></dd>
+    <dd><em>The dmr++ content will be written to the file foo.dmrpp</em></dd>
     <dt><tt>-u  https://s3.amazonaws.com/opendap.scratch/data/dmrpp/chunked_fourD.h5</tt></dt>
-    <dd><em>The dmr++ file will use this AWS S3 object URL as its binary data location..</em></dd>   
+    <dd><em>The dmr++ file will use this AWS S3 object URL as its binary data location.</em></dd>   
     <dt><tt>dmrpp/chunked_shuffled_fourD.h5</tt></dt>
     <dd><em>The hdf5 file from which to build the dmr++ file.</em></dd>
 </dl>
@@ -226,7 +226,7 @@ ingest_filesystem -f -u https://s3.amazonaws.com/cloudydap -d /usr/share/hyrax -
 
 
 ## `ingest_s3bucket` - building _dmr++_ files from files held in S3.
-The shell script `ingest_s3bucket` utilizes the AWS CLI to list the contents of an S3 bucket. The name of each object in the bucket is checked against either the defaukt or user supplied regex. Each matching file is retrieved from S3 and then a _dmr++_ is built from the retrived data object. Once the _dmr++_ file is built the downloaded object is deleted unless otherwise instructed. The code relies on the AWS CLI being installed and configured using the `aws configure` command (or it's equivalent).
+The shell script `ingest_s3bucket` utilizes the AWS CLI to list the contents of an S3 bucket. The name of each object in the bucket is checked against either the default or user supplied regex. Each matching file is retrieved from S3 and then a _dmr++_ is built from the retrieved data object. Once the _dmr++_ file is built the downloaded object is deleted unless otherwise instructed. The code relies on the AWS CLI being installed and configured using the `aws configure` command (or it's equivalent).
 
 ``` 
  Usage: ingest_s3bucket [options] 
@@ -295,9 +295,9 @@ ingest_s3bucket -v -f -b opendap.scratch -d /tmp/s3_scratch -t /usr/share/hyrax
     <dt><tt>-v</tt></dt>
     <dd><em>verbose mode</em></dd>
     <dt><tt>-f</tt></dt>
-    <dd><em>Use the `find` command along with the regular expression to traverse the object names
+    <dd><em>Use the <tt>find</tt> command along with the regular expression to traverse the object names
     retrieved from S3 and locate all of the matching files. These file names saved in the file
-     `./s3_BUCKETNAME_data_files.txt` to be reused or hand edited if needed.</em></dd>
+     <tt>./s3_BUCKETNAME_data_files.txt</tt> to be reused or hand edited if needed.</em></dd>
         <dt><tt>-v</tt></dt>
     <dd><em>verbose mode</em></dd>
     <dt><tt>-b opendap.scratch</tt></dt>
@@ -316,9 +316,9 @@ ingest_s3bucket -v -f -b opendap.scratch -d /tmp/s3_scratch -t /usr/share/hyrax
 intend to utilize. For example in S3 you need to know the _bucket name_ and the AWS S3 URL (https://s3.amazonaws.com)  
 1. If you haven't already done so put your data into the hosting service space (And if you _do_ have it locally 
 don't remove it until the _dmr++_ process is completed!)
-1. Use the tools discussed below to make one or dmr++ files for your data (you'll need the bucket name and all that from previosuly)
+1. Use the tools discussed above to make one or more _dmr++_ files for your data (you'll need the bucket name and all that from previosuly)
 1. Place the _dmr++_ files, in any organization desired, into the BES.Catalog.catalog.RootDirectory tree.
-1. You can now access the remote data by navigating to the location of the _dmr++_ files and access them through the Data REquest Form or the DAP2 and DAP4 protocols.
+1. You can now access the remote data by navigating to the location of the _dmr++_ files and access them through the Data Request Form or the DAP2 and DAP4 protocols.
 
 
 # Previously
@@ -336,5 +336,5 @@ using the mkChunkNewTypes.py script. jhrg
 - Renamed conf files to something less tedious, bes.hdf5.cf.conf(.in)
 - Removed  bes.hdf5.cf.conf from git as it will now be built.
 - Created "check-local" and "clean-local" targets that cause the 
-bes.hdf5.cf.conf gile to be built correctly for use with get_dmrpp.sh
+bes.hdf5.cf.conf file to be built correctly for use with get_dmrpp.sh
 This all happens when running "make check"
