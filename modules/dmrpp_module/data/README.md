@@ -193,9 +193,9 @@ ingest_filesystem -f -t scratch
 ```
 <dl>
     <dt><tt>-f</tt></dt>
-    <dd><em>Use the `find` command along with the regular expression to traverse the filesystem
+    <dd><em>Use the <tt>find</tt> command along with the regular expression to traverse the filesystem
     and locate all of the matching files. These file names are placed, as fully qualified path 
-    names, in the file `./data_files.txt` to be reused or hand edited if needed.</em></dd>    
+    names, in the file <tt>./data_files.txt</tt> to be reused or hand edited if needed.</em></dd>    
     <dt><tt>-t  scratch</tt></dt>
     <dd><em>Sets name of the directory to which the dmr++ output tree will be written to $CWD/scratch</em></dd>
 </dl>
