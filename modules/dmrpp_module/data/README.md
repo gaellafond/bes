@@ -296,7 +296,7 @@ ingest_s3bucket -v -f -b opendap.scratch -d /tmp/s3_scratch -t /usr/share/hyrax
     <dd><em>verbose mode</em></dd>
     <dt><tt>-f</tt></dt>
     <dd><em>Use the <tt>find</tt> command along with the regular expression to traverse the object names
-    retrieved from S3 and locate all of the matching files. These file names saved in the file
+    retrieved from S3 and locate all of the matching files. These file names are saved in the file
      <tt>./s3_BUCKETNAME_data_files.txt</tt> to be reused or hand edited if needed.</em></dd>
         <dt><tt>-v</tt></dt>
     <dd><em>verbose mode</em></dd>
