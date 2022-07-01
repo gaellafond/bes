@@ -209,9 +209,9 @@ ingest_filesystem -f -u https://s3.amazonaws.com/cloudydap -d /usr/share/hyrax -
 ```
 <dl>
     <dt><tt>-f</tt></dt>
-    <dd><em>Use the `find` command along with the regular expression to traverse the filesystem
+    <dd><em>Use the <tt>find</tt> command along with the regular expression to traverse the filesystem
     and locate all of the matching files. These file names are placed, as fully qualified path 
-    names, in the file `./data_files.txt` to be reused or hand edited if needed.</em></dd>    
+    names, in the file <tt>./data_files.txt</tt> to be reused or hand edited if needed.</em></dd>    
     <dt><tt>-u  https://s3.amazonaws.com/cloudydap</tt></dt>
     <dd><em>Sets the base URL for the web accessible binary data files to the AWS S3 bucket 
     URL <tt>https://s3.amazonaws.com/cloudydap</tt> File paths relative to the 
